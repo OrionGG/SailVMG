@@ -116,13 +116,14 @@ class TWDAdjustDelegate extends WatchUi.BehaviorDelegate {
 
     function onSelect() {
         me.view.save();
-        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE); // remove fine-adjust
-        WatchUi.popView(WatchUi.SLIDE_RIGHT);     // remove compass menu -> Settings
+        // The compass menu already dismissed itself on selection, so a single
+        // pop returns to the data screen (a double pop would exit the app).
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }
 
     function onBack() {
-        WatchUi.popView(WatchUi.SLIDE_RIGHT);     // back to compass snap menu
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }
 }

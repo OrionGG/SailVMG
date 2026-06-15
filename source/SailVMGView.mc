@@ -5,6 +5,7 @@ using Toybox.Sensor as Sensor;
 using Toybox.Time as Time;
 using Toybox.Timer as Timer;
 using Toybox.System as System;
+using Toybox.Math as Math;
 
 class SailVMGView extends WatchUi.View {
     var app;
@@ -65,7 +66,9 @@ class SailVMGView extends WatchUi.View {
         var hr = null;
         if (pos != null && pos.accuracy >= Position.QUALITY_USABLE) {
             sog = pos.speed;    // m/s
-            cog = pos.heading;  // deg
+            if (pos.heading != null) {
+                cog = Math.toDegrees(pos.heading);  // Position.heading is RADIANS
+            }
         }
         if (sensor != null) { hr = sensor.heartRate; }
         me.lastHr = hr;

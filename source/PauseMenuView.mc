@@ -21,15 +21,16 @@ class PauseMenuDelegate extends WatchUi.MenuInputDelegate {
     }
 
     function onMenuItem(item) {
+        // The legacy WatchUi.Menu dismisses itself when an item is selected, so
+        // we must NOT call popView here (that would pop the data view too and
+        // exit the app). Just perform the action; the menu closes on its own.
         if (item == :resume) {
-            WatchUi.popView(WatchUi.SLIDE_DOWN);
+            // nothing to do — menu closes, recording continues
         } else if (item == :save) {
             me.app.model.saveRecording();
-            WatchUi.popView(WatchUi.SLIDE_DOWN);
             me.view.showFlash(:stop);
         } else if (item == :exit) {
             me.app.model.discardRecording();
-            WatchUi.popView(WatchUi.SLIDE_DOWN);
             me.view.showFlash(:stop);
         }
     }

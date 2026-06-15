@@ -804,7 +804,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_111
     }
     [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc"; @line = 117; @symbol_functiondef = [onSelect,117,13,21]; ]
     function onSelect() {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_117_24_122_4_start:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_117_24_123_4_start:
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc" 118 8 ]
         %tmp.1 = self;
         symbol [ me %tmp.1 118 8 10 ];
@@ -813,48 +813,38 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_117
         symbol [ save %tmp.3 118 16 20 ];
         %tmp.3 = getv function %tmp.2 :save;
         invoke %tmp.2 %tmp.3();
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc" 119 8 ]
-        symbol [ WatchUi %tmp.4 119 8 15 ];
-        %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.5 119 16 23 ];
-        %tmp.5 = getv function %tmp.4 :popView;
-        symbol [ WatchUi %tmp.6 119 24 31 ];
-        %tmp.6 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.7 119 32 47 ];
-        %tmp.7 = getv %tmp.6 :SLIDE_IMMEDIATE;
-        invoke %tmp.4 %tmp.5(%tmp.7);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc" 120 8 ]
-        symbol [ WatchUi %tmp.8 120 8 15 ];
-        %tmp.8 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.9 120 16 23 ];
-        %tmp.9 = getv function %tmp.8 :popView;
-        symbol [ WatchUi %tmp.10 120 24 31 ];
-        %tmp.10 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.11 120 32 43 ];
-        %tmp.11 = getv %tmp.10 :SLIDE_RIGHT;
-        invoke %tmp.8 %tmp.9(%tmp.11);
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc" 121 8 ]
-        %tmp.12 = true;
-        ret %tmp.12;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_117_24_122_4_stop:
+        symbol [ WatchUi %tmp.4 121 8 15 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.5 121 16 23 ];
+        %tmp.5 = getv function %tmp.4 :popView;
+        symbol [ WatchUi %tmp.6 121 24 31 ];
+        %tmp.6 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.7 121 32 43 ];
+        %tmp.7 = getv %tmp.6 :SLIDE_RIGHT;
+        invoke %tmp.4 %tmp.5(%tmp.7);
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc" 122 8 ]
+        %tmp.8 = true;
+        ret %tmp.8;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_117_24_123_4_stop:
     }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc"; @line = 124; @symbol_functiondef = [onBack,124,13,19]; ]
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc"; @line = 125; @symbol_functiondef = [onBack,125,13,19]; ]
     function onBack() {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_124_22_127_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc" 125 8 ]
-        symbol [ WatchUi %tmp.1 125 8 15 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_125_22_128_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc" 126 8 ]
+        symbol [ WatchUi %tmp.1 126 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.2 125 16 23 ];
+        symbol [ popView %tmp.2 126 16 23 ];
         %tmp.2 = getv function %tmp.1 :popView;
-        symbol [ WatchUi %tmp.3 125 24 31 ];
+        symbol [ WatchUi %tmp.3 126 24 31 ];
         %tmp.3 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.4 125 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.4 126 32 43 ];
         %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
         invoke %tmp.1 %tmp.2(%tmp.4);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc" 126 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc" 127 8 ]
         %tmp.5 = true;
         ret %tmp.5;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_124_22_127_4_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SettingsTWDView_mc_125_22_128_4_stop:
     }
 }
 [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SettingsTWDView.mc"; @line = 1; ]
