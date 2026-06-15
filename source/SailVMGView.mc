@@ -252,31 +252,36 @@ class SailVMGView extends WatchUi.View {
         var midX = w / 2;
         var leftX = w * 26 / 100;
         var rightX = w * 74 / 100;
-        var valueY = h * 8 / 100;
-
-        // Small title + HERO value in the largest number font, centre-top.
+        // Small title + HERO value in the largest number font. The value is
+        // vertically centred in the band above the first divider so the taller
+        // font can't collide with the line regardless of its exact height.
+        // FONT_NUMBER_HOT is the largest number font that actually renders on
+        // fenix3_hr (THAI_HOT has no glyphs in the "ww" font set -> blank).
+        var valueCy = h * 26 / 100;
         dc.drawText(midX, h * 1 / 100, Graphics.FONT_XTINY, title, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(midX, valueY, Graphics.FONT_NUMBER_HOT, valueText, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(midX, valueCy, Graphics.FONT_NUMBER_HOT, valueText,
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         if (frozen) {
             // Number fonts have no '*', so draw the "held value" marker separately.
             var half = dc.getTextWidthInPixels(valueText, Graphics.FONT_NUMBER_HOT) / 2;
-            dc.drawText(midX + half + 3, valueY, Graphics.FONT_XTINY, "*", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(midX + half + 3, valueCy, Graphics.FONT_XTINY, "*",
+                        Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
         // Split lines: one horizontal above the columns, one vertical between
         // them, one horizontal below.
         dc.drawLine(w * 12 / 100, h * 46 / 100, w * 88 / 100, h * 46 / 100);
-        dc.drawLine(midX, h * 46 / 100, midX, h * 78 / 100);
-        dc.drawLine(w * 12 / 100, h * 78 / 100, w * 88 / 100, h * 78 / 100);
+        dc.drawLine(midX, h * 46 / 100, midX, h * 81 / 100);
+        dc.drawLine(w * 12 / 100, h * 81 / 100, w * 88 / 100, h * 81 / 100);
 
-        dc.drawText(leftX, h * 49 / 100, Graphics.FONT_XTINY, colT1, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(rightX, h * 49 / 100, Graphics.FONT_XTINY, colT2, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(leftX, h * 57 / 100, Graphics.FONT_NUMBER_MILD, colV1, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(rightX, h * 57 / 100, Graphics.FONT_NUMBER_MILD, colV2, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(leftX, h * 48 / 100, Graphics.FONT_XTINY, colT1, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(rightX, h * 48 / 100, Graphics.FONT_XTINY, colT2, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(leftX, h * 56 / 100, Graphics.FONT_NUMBER_MEDIUM, colV1, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(rightX, h * 56 / 100, Graphics.FONT_NUMBER_MEDIUM, colV2, Graphics.TEXT_JUSTIFY_CENTER);
 
         // Small footer (centre-bottom)
         if (footerText != null && !footerText.equals("")) {
-            dc.drawText(midX, h * 86 / 100, Graphics.FONT_TINY, footerText, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(midX, h * 89 / 100, Graphics.FONT_TINY, footerText, Graphics.TEXT_JUSTIFY_CENTER);
         }
     }
 
