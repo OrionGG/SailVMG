@@ -28,10 +28,8 @@ class PauseMenuDelegate extends WatchUi.MenuInputDelegate {
             // nothing to do — menu closes, recording continues
         } else if (item == :save) {
             me.app.model.saveRecording();
-            me.view.showFlash(:stop);
         } else if (item == :exit) {
             me.app.model.discardRecording();
-            me.view.showFlash(:stop);
         }
     }
 }

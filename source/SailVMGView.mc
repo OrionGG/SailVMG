@@ -18,6 +18,7 @@ class SailVMGView extends WatchUi.View {
     // Transient start/stop confirmation overlay (:start green, :stop red).
     var statusFlash = null;
     var flashTimer = null;
+    var afterFlashMenu = false;
 
     function initialize(params) {
         WatchUi.View.initialize();
@@ -97,13 +98,13 @@ class SailVMGView extends WatchUi.View {
             me.app.model.reset();
             me.app.model.startRecording();
             Notify.start();
-            me.showFlash(:start);
+            me.showFlash(:start, 1500);
         } else {
-            // Pressing START while recording = Stop: beep/vibrate, then open the
-            // Resume / Save / Exit menu. Pushed straight from this input handler
-            // (never from a Timer callback, which corrupts the view stack).
+            // Stop (like the stock apps): vibrate + red ring/square for ~2s,
+            // then open the Resume / Save / Exit menu.
             Notify.stop();
-            WatchUi.pushView(new PauseMenu(), new PauseMenuDelegate(me.app, me), WatchUi.SLIDE_UP);
+            me.afterFlashMenu = true;
+            me.showFlash(:stop, 2000);
         }
     }
 
@@ -112,17 +113,23 @@ class SailVMGView extends WatchUi.View {
     }
 
     // Brief green (start) / red (stop) confirmation, like the stock apps.
-    function showFlash(kind) {
+    function showFlash(kind, durationMs) {
         me.statusFlash = kind;
         if (me.flashTimer != null) { me.flashTimer.stop(); }
         me.flashTimer = new Timer.Timer();
-        me.flashTimer.start(method(:clearFlash), 1200, false);
+        me.flashTimer.start(method(:clearFlash), durationMs, false);
         WatchUi.requestUpdate();
     }
 
     function clearFlash() as Void {
         me.statusFlash = null;
         if (me.flashTimer != null) { me.flashTimer.stop(); me.flashTimer = null; }
+        if (me.afterFlashMenu) {
+            // Safe now: the menu auto-dismisses and its onMenuItem no longer
+            // popViews, so pushing it from this timer callback won't over-pop.
+            me.afterFlashMenu = false;
+            WatchUi.pushView(new PauseMenu(), new PauseMenuDelegate(me.app, me), WatchUi.SLIDE_UP);
+        }
         WatchUi.requestUpdate();
     }
 
@@ -142,7 +149,8 @@ class SailVMGView extends WatchUi.View {
         }
     }
 
-    // Full-screen start/stop indicator: coloured circle + play/stop glyph.
+    // Full-screen start/stop indicator: coloured ring around the watch edge plus
+    // a centre glyph — green play triangle for start, red square for stop.
     function drawStatusFlash(dc) {
         var w = dc.getWidth();
         var h = dc.getHeight();
@@ -153,15 +161,19 @@ class SailVMGView extends WatchUi.View {
 
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
-        dc.setColor(color, Graphics.COLOR_BLACK);
-        dc.fillCircle(cx, cy, h * 30 / 100);
 
-        dc.setColor(Graphics.COLOR_WHITE, color);
+        // Red/green ring around the edge of the watch
+        dc.setColor(color, Graphics.COLOR_BLACK);
+        dc.setPenWidth(9);
+        dc.drawCircle(cx, cy, (w / 2) - 6);
+        dc.setPenWidth(1);
+
+        // Centre glyph
         if (isStart) {
-            var t = h * 13 / 100;
+            var t = h * 14 / 100;
             dc.fillPolygon([[cx - t / 2, cy - t], [cx - t / 2, cy + t], [cx + t, cy]]);
         } else {
-            var s = h * 10 / 100;
+            var s = h * 13 / 100;
             dc.fillRectangle(cx - s, cy - s, 2 * s, 2 * s);
         }
     }
