@@ -17,7 +17,6 @@ class SailVMGView extends WatchUi.View {
     // Transient start/stop confirmation overlay (:start green, :stop red).
     var statusFlash = null;
     var flashTimer = null;
-    var afterFlashMenu = false;
 
     function initialize(params) {
         WatchUi.View.initialize();
@@ -97,11 +96,11 @@ class SailVMGView extends WatchUi.View {
             Notify.start();
             me.showFlash(:start);
         } else {
-            // Pressing START while recording = Stop: red flash + beep/vibrate,
-            // then open the Resume / Save / Exit menu once the flash clears.
+            // Pressing START while recording = Stop: beep/vibrate, then open the
+            // Resume / Save / Exit menu. Pushed straight from this input handler
+            // (never from a Timer callback, which corrupts the view stack).
             Notify.stop();
-            me.afterFlashMenu = true;
-            me.showFlash(:stop);
+            WatchUi.pushView(new PauseMenu(), new PauseMenuDelegate(me.app, me), WatchUi.SLIDE_UP);
         }
     }
 
@@ -121,10 +120,6 @@ class SailVMGView extends WatchUi.View {
     function clearFlash() as Void {
         me.statusFlash = null;
         if (me.flashTimer != null) { me.flashTimer.stop(); me.flashTimer = null; }
-        if (me.afterFlashMenu) {
-            me.afterFlashMenu = false;
-            WatchUi.pushView(new PauseMenu(), new PauseMenuDelegate(me.app, me), WatchUi.SLIDE_UP);
-        }
         WatchUi.requestUpdate();
     }
 
