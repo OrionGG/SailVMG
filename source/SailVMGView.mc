@@ -17,6 +17,7 @@ class SailVMGView extends WatchUi.View {
     // Transient start/stop confirmation overlay (:start green, :stop red).
     var statusFlash = null;
     var flashTimer = null;
+    var afterFlashMenu = false;
 
     function initialize(params) {
         WatchUi.View.initialize();
@@ -96,7 +97,11 @@ class SailVMGView extends WatchUi.View {
             Notify.start();
             me.showFlash(:start);
         } else {
-            WatchUi.pushView(new PauseMenu(), new PauseMenuDelegate(me.app, me), WatchUi.SLIDE_UP);
+            // Pressing START while recording = Stop: red flash + beep/vibrate,
+            // then open the Resume / Save / Exit menu once the flash clears.
+            Notify.stop();
+            me.afterFlashMenu = true;
+            me.showFlash(:stop);
         }
     }
 
@@ -116,6 +121,10 @@ class SailVMGView extends WatchUi.View {
     function clearFlash() as Void {
         me.statusFlash = null;
         if (me.flashTimer != null) { me.flashTimer.stop(); me.flashTimer = null; }
+        if (me.afterFlashMenu) {
+            me.afterFlashMenu = false;
+            WatchUi.pushView(new PauseMenu(), new PauseMenuDelegate(me.app, me), WatchUi.SLIDE_UP);
+        }
         WatchUi.requestUpdate();
     }
 
@@ -210,10 +219,10 @@ class SailVMGView extends WatchUi.View {
         var hrText = (hr == null) ? "--" : hr.format("%d");
         var avg = me.app.model.avgHr();
         var avgText = (avg == null) ? "--" : avg.format("%d");
-        var ct = System.getClockTime();
-        var timeText = ct.hour.format("%02d") + ":" + ct.min.format("%02d");
+        var elapsed = me.app.model.elapsedSeconds();
+        var timeText = (elapsed == null) ? "0:00" : Util.fmtDuration(elapsed);
 
-        me.drawGrid(dc, "HR", hrText, false, "AVG HR", "TIME",
+        me.drawGrid(dc, "HR", hrText, false, "AVG HR", "TIMER",
                     avgText, timeText, "");
     }
 
@@ -223,7 +232,6 @@ class SailVMGView extends WatchUi.View {
         var w = dc.getWidth();
         var h = dc.getHeight();
         var midX = w / 2;
-        var dots = (me.screenIndex == 0) ? "*.." : ((me.screenIndex == 1) ? ".*." : "..*");
         var leftX = w * 26 / 100;
         var rightX = w * 74 / 100;
         var valueY = h * 10 / 100;
@@ -248,10 +256,9 @@ class SailVMGView extends WatchUi.View {
         dc.drawText(leftX, h * 47 / 100, Graphics.FONT_NUMBER_MEDIUM, colV1, Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(rightX, h * 47 / 100, Graphics.FONT_NUMBER_MEDIUM, colV2, Graphics.TEXT_JUSTIFY_CENTER);
 
-        // Small footer (centre-bottom) + screen indicator
+        // Small footer (centre-bottom)
         if (footerText != null && !footerText.equals("")) {
-            dc.drawText(midX, h * 81 / 100, Graphics.FONT_TINY, footerText, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(midX, h * 84 / 100, Graphics.FONT_TINY, footerText, Graphics.TEXT_JUSTIFY_CENTER);
         }
-        dc.drawText(midX, h * 92 / 100, Graphics.FONT_TINY, dots, Graphics.TEXT_JUSTIFY_CENTER);
     }
 }

@@ -214,6 +214,14 @@ class DataModel {
         return me.negBuffer.getAvgWindow(windowMins * 60);
     }
 
+    // Elapsed activity time in seconds since the activity was started.
+    function elapsedSeconds() {
+        if (me.running && me.startTime != null) {
+            return Time.now().value() - me.startTime;
+        }
+        return null;
+    }
+
     function getLastPositive() { return me.lastPositive; }
     function getLastNegative() { return me.lastNegative; }
 }

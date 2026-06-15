@@ -25,13 +25,9 @@ class PauseMenuDelegate extends WatchUi.MenuInputDelegate {
             WatchUi.popView(WatchUi.SLIDE_DOWN);
         } else if (item == :save) {
             me.app.model.saveRecording();
-            Notify.stop();
-            me.view.showFlash(:stop);
             WatchUi.popView(WatchUi.SLIDE_DOWN);
         } else if (item == :exit) {
             me.app.model.discardRecording();
-            Notify.stop();
-            me.view.showFlash(:stop);
             WatchUi.popView(WatchUi.SLIDE_DOWN);
         }
     }
