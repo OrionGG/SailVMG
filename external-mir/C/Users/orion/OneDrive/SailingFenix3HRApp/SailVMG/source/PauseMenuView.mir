@@ -93,67 +93,86 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_17_35
     }
     [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc"; @line = 23; @symbol_functiondef = [onMenuItem,23,13,23]; @symbol_param<0> = [item,23,24,28]; ]
     function onMenuItem(item) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_23_30_34_4_start:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_23_30_37_4_start:
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 27 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_33_8_if_stmt:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_36_8_if_stmt:
         %tmp.1 = lgetv %item;
         symbol [ item %tmp.1 27 12 16 ];
         %tmp.3 = const :resume;
         symbol [ resume %tmp.3 27 21 27 const ];
         %tmp.4 = eq %tmp.1 %tmp.3;
-        bf %tmp.4 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_33_8_if_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_33_8_if_true:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_33_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_33_8_if_false:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 29 15 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_29_15_33_8_if_stmt:
-        %tmp.5 = lgetv %item;
-        symbol [ item %tmp.5 29 19 23 ];
-        %tmp.7 = const :save;
-        symbol [ save %tmp.7 29 28 32 const ];
-        %tmp.8 = eq %tmp.5 %tmp.7;
-        bf %tmp.8 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_29_15_33_8_if_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_29_15_33_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_29_34_31_8_start:
+        bf %tmp.4 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_36_8_if_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_36_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_29_32_8_start:
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 30 12 ]
-        %tmp.9 = self;
-        symbol [ me %tmp.9 30 12 14 ];
-        symbol [ app %tmp.10 30 15 18 ];
-        %tmp.10 = getv %tmp.9 :app;
-        symbol [ model %tmp.11 30 19 24 ];
-        %tmp.11 = getv %tmp.10 :model;
-        symbol [ saveRecording %tmp.12 30 25 38 ];
-        %tmp.12 = getv function %tmp.11 :saveRecording;
-        invoke %tmp.11 %tmp.12();
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_29_34_31_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_29_15_33_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_29_15_33_8_if_false:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 31 15 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_31_15_33_8_if_stmt:
-        %tmp.13 = lgetv %item;
-        symbol [ item %tmp.13 31 19 23 ];
-        %tmp.15 = const :exit;
-        symbol [ exit %tmp.15 31 28 32 const ];
-        %tmp.16 = eq %tmp.13 %tmp.15;
-        bf %tmp.16 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_31_15_33_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_31_15_33_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_31_34_33_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 32 12 ]
-        %tmp.17 = self;
-        symbol [ me %tmp.17 32 12 14 ];
-        symbol [ app %tmp.18 32 15 18 ];
-        %tmp.18 = getv %tmp.17 :app;
-        symbol [ model %tmp.19 32 19 24 ];
-        %tmp.19 = getv %tmp.18 :model;
-        symbol [ discardRecording %tmp.20 32 25 41 ];
-        %tmp.20 = getv function %tmp.19 :discardRecording;
-        invoke %tmp.19 %tmp.20();
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_31_34_33_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_31_15_33_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_31_15_33_8_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_29_15_33_8_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_33_8_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_23_30_34_4_stop:
+        symbol [ Notify %tmp.6 30 12 18 ];
+        %tmp.6 = getv ? :Notify;
+        symbol [ start %tmp.7 30 19 24 ];
+        %tmp.7 = getv function %tmp.6 :start;
+        invoke %tmp.6 %tmp.7();
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 31 12 ]
+        %tmp.8 = self;
+        symbol [ me %tmp.8 31 12 14 ];
+        symbol [ view %tmp.9 31 15 19 ];
+        %tmp.9 = getv %tmp.8 :view;
+        symbol [ showFlash %tmp.10 31 20 29 ];
+        %tmp.10 = getv function %tmp.9 :showFlash;
+        %tmp.12 = const :start;
+        symbol [ start %tmp.12 31 31 36 const ];
+        %tmp.13 = 1500;
+        invoke %tmp.9 %tmp.10(%tmp.12, %tmp.13);
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_29_32_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_36_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_36_8_if_false:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 32 15 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_32_15_36_8_if_stmt:
+        %tmp.14 = lgetv %item;
+        symbol [ item %tmp.14 32 19 23 ];
+        %tmp.16 = const :save;
+        symbol [ save %tmp.16 32 28 32 const ];
+        %tmp.17 = eq %tmp.14 %tmp.16;
+        bf %tmp.17 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_32_15_36_8_if_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_32_15_36_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_32_34_34_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 33 12 ]
+        %tmp.18 = self;
+        symbol [ me %tmp.18 33 12 14 ];
+        symbol [ app %tmp.19 33 15 18 ];
+        %tmp.19 = getv %tmp.18 :app;
+        symbol [ model %tmp.20 33 19 24 ];
+        %tmp.20 = getv %tmp.19 :model;
+        symbol [ saveRecording %tmp.21 33 25 38 ];
+        %tmp.21 = getv function %tmp.20 :saveRecording;
+        invoke %tmp.20 %tmp.21();
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_32_34_34_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_32_15_36_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_32_15_36_8_if_false:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 34 15 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_34_15_36_8_if_stmt:
+        %tmp.22 = lgetv %item;
+        symbol [ item %tmp.22 34 19 23 ];
+        %tmp.24 = const :exit;
+        symbol [ exit %tmp.24 34 28 32 const ];
+        %tmp.25 = eq %tmp.22 %tmp.24;
+        bf %tmp.25 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_34_15_36_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_34_15_36_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_34_34_36_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc" 35 12 ]
+        %tmp.26 = self;
+        symbol [ me %tmp.26 35 12 14 ];
+        symbol [ app %tmp.27 35 15 18 ];
+        %tmp.27 = getv %tmp.26 :app;
+        symbol [ model %tmp.28 35 19 24 ];
+        %tmp.28 = getv %tmp.27 :model;
+        symbol [ discardRecording %tmp.29 35 25 41 ];
+        %tmp.29 = getv function %tmp.28 :discardRecording;
+        invoke %tmp.28 %tmp.29();
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_34_34_36_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_34_15_36_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_34_15_36_8_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_32_15_36_8_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_27_8_36_8_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_PauseMenuView_mc_23_30_37_4_stop:
     }
 }
 [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\PauseMenuView.mc"; @line = 1; ]
