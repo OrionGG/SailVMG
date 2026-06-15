@@ -51,7 +51,8 @@ class DataModel {
     function bufferCapacity() {
         var capSeconds = Util.max(1, me.secondsWindow);
         var capMinutesSec = Util.max(1, me.minutesWindow * 60);
-        return Util.min(Util.max(capSeconds, capMinutesSec), 3600);
+        // Cap entries so the preallocated buffers stay well within device RAM.
+        return Util.min(Util.max(capSeconds, capMinutesSec), 900);
     }
 
     // Start (or restart) a recording session and register FIT fields.
@@ -205,12 +206,7 @@ class DataModel {
         // Write FIT record fields (best-effort).
         if (me.vmgField != null && vmg != null) { me.vmgField.setData(vmg.toFloat()); }
         if (me.twdField != null && twd != null) { me.twdField.setData(twd.toFloat()); }
-
-        // Prune entries beyond the max window to keep memory bounded.
-        var maxWindow = Util.max(me.secondsWindow, me.minutesWindow * 60);
-        var cutoff = Time.now().value() - maxWindow;
-        if (me.posBuffer != null) { me.posBuffer.pruneOlderThan(cutoff); }
-        if (me.negBuffer != null) { me.negBuffer.pruneOlderThan(cutoff); }
+        // No prune needed: the ring buffers self-bound to their capacity.
     }
 
     function avgPositiveSinceStart() {

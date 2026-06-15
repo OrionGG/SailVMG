@@ -11,7 +11,7 @@ class SettingsAvgSecsView extends WatchUi.View {
         me.value = me.app.avgLastSeconds;
     }
 
-    function incr() { me.value += 1; }
+    function incr() { me.value = Util.min(300, me.value + 1); }   // capped to bound memory
     function decr() { me.value = Util.max(1, me.value - 1); }
     function save() { me.app.saveSetting("avgLastSeconds", me.value); }
 

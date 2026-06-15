@@ -1,5 +1,6 @@
 using Toybox.Test as Test;
 using Toybox.System as System;
+using Toybox.Time as Time;
 
 // Exercises the exact path that crashed on START
 // (handleStart -> DataModel.startRecording). Before the fix this threw
@@ -58,6 +59,27 @@ function testSaveResetsTimer(logger) {
 function testNotifyNoCrash(logger) {
     Notify.start();
     Notify.stop();
+    return true;
+}
+
+// Circular RingBuffer: capacity bound, windowed average, and resize keep newest.
+(:test)
+function testRingBuffer(logger) {
+    var now = Time.now().value();
+    var rb = new RingBuffer(3);
+    rb.add(now - 40, 1.0);
+    rb.add(now - 30, 2.0);
+    rb.add(now - 20, 3.0);
+    rb.add(now - 10, 4.0);
+    rb.add(now,      5.0);
+    Test.assertEqualMessage(rb.size(), 3, "capacity bounds size to 3");
+    // newest 3 kept = vals 3,4,5
+    Test.assertEqualMessage(rb.getAvgWindow(100), 4.0, "avg of last 3 = 4.0");
+    // 15s window -> entries at now and now-10 only = 5,4
+    Test.assertEqualMessage(rb.getAvgWindow(15), 4.5, "15s window avg = 4.5");
+    rb.setCapacity(2);
+    Test.assertEqualMessage(rb.size(), 2, "resize keeps newest 2");
+    Test.assertEqualMessage(rb.getAvgWindow(100), 4.5, "after resize avg = 4.5");
     return true;
 }
 
