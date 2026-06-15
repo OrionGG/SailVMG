@@ -1,0 +1,59 @@
+[ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Util.mc"; @line = 3; @symbol_moduledef = [Util,3,7,11]; ]
+module Util {
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Util.mc"; @line = 3; ]
+    <init> {
+    }
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Util.mc"; @line = 4; @symbol_functiondef = [max,4,13,16]; @symbol_param<0> = [a,4,17,18]; @symbol_param<1> = [b,4,20,21]; ]
+    function max(a, b) {
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_4_23_6_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Util.mc" 5 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_begin:
+        %tmp.1 = lgetv %a;
+        symbol [ a %tmp.1 5 16 17 ];
+        %tmp.2 = lgetv %b;
+        symbol [ b %tmp.2 5 20 21 ];
+        %tmp.3 = gt %tmp.1 %tmp.2;
+        bf %tmp.3 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_true:
+        %tmp.4 = lgetv %a;
+        symbol [ a %tmp.4 5 25 26 ];
+        push %tmp.4;
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_else_false:
+        %tmp.5 = lgetv %b;
+        symbol [ b %tmp.5 5 29 30 ];
+        push %tmp.5;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_end:
+        %tmp.6 = phi [%tmp.3 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_begin] [%tmp.4 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_true] [%tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_else_false] [%tmp.6 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_5_15_5_29_end];
+        ret %tmp.6;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_4_23_6_4_stop:
+    }
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Util.mc"; @line = 8; @symbol_functiondef = [min,8,13,16]; @symbol_param<0> = [a,8,17,18]; @symbol_param<1> = [b,8,20,21]; ]
+    function min(a, b) {
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_8_23_10_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Util.mc" 9 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_begin:
+        %tmp.1 = lgetv %a;
+        symbol [ a %tmp.1 9 16 17 ];
+        %tmp.2 = lgetv %b;
+        symbol [ b %tmp.2 9 20 21 ];
+        %tmp.3 = lt %tmp.1 %tmp.2;
+        bf %tmp.3 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_true:
+        %tmp.4 = lgetv %a;
+        symbol [ a %tmp.4 9 25 26 ];
+        push %tmp.4;
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_else_false:
+        %tmp.5 = lgetv %b;
+        symbol [ b %tmp.5 9 29 30 ];
+        push %tmp.5;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_end:
+        %tmp.6 = phi [%tmp.3 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_begin] [%tmp.4 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_true] [%tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_else_false] [%tmp.6 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_9_15_9_29_end];
+        ret %tmp.6;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Util_mc_8_23_10_4_stop:
+    }
+}
+[ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Util.mc"; @line = 3; ]
+<init> {
+}

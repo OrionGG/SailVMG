@@ -1,0 +1,7 @@
+# Minimal jungle to reference manifest and project paths
+# Refer to manifest and default source/resources
+project.manifest = manifest.xml
+
+# Set base paths
+base.sourcePath = source
+base.resourcePath = resources

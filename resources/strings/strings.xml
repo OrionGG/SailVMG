@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string id="app_name">SailVMG</string>
+  <string id="AppName">SailVMG</string>
+  <string id="press_start">Press START</string>
+  <string id="gps_wait">GPS...</string>
+  <string id="twd">TWD</string>
+  <string id="vmg">VMG</string>
+  <string id="minus_vmg">-VMG</string>
+  <string id="avg_vmg">AVG VMG</string>
+  <string id="avg_vmg_secs">AVG VMG Secs</string>
+  <string id="avg_vmg_mins">AVG VMG Mins</string>
+  <string id="hr">HR</string>
+  <string id="avg_hr">AVG HR</string>
+  <string id="resume">Resume</string>
+  <string id="save">Save</string>
+  <string id="exit">Exit</string>
+  <string id="set_twd">Set TWD</string>
+  <string id="set_min_abs_vmg">Set Min ABS VMG</string>
+  <string id="set_avg_minutes">Set AVG Last Minutes</string>
+  <string id="set_avg_seconds">Set AVG Last Seconds</string>
+</resources>
