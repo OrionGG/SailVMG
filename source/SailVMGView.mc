@@ -12,6 +12,8 @@ class SailVMGView extends WatchUi.View {
     var screenIndex = 0;
     var lastVmg = null;
     var lastHr = null;
+    var lastSog = null;   // current speed over ground (knots)
+    var lastCog = null;   // current course over ground (degrees)
     var lastSampleTs = null;
     var timer = null;
 
@@ -80,6 +82,8 @@ class SailVMGView extends WatchUi.View {
         }
 
         me.lastVmg = vmg;
+        me.lastSog = (sog != null) ? sog * 1.9438 : null;   // m/s -> knots
+        me.lastCog = cog;                                    // degrees (0..360 at draw)
         me.app.model.addSample(ts, vmg, me.app.twd, hr, me.app.minAbsVmg);
     }
 
@@ -201,6 +205,7 @@ class SailVMGView extends WatchUi.View {
 
         me.drawGrid(dc, "VMG", vmgText, frozen, "AVG VMG Secs", "AVG VMG Mins",
                     avgSecsText, avgMinsText, "TWD " + me.app.twd.format("%03d"));
+        me.drawTopSogCog(dc);
     }
 
     function drawScreen2(dc) {
@@ -224,6 +229,7 @@ class SailVMGView extends WatchUi.View {
 
         me.drawGrid(dc, "-VMG", vmgText, frozen, "-AVG VMG Secs", "-AVG VMG Mins",
                     negSecsText, negMinsText, "TWD " + me.app.twd.format("%03d"));
+        me.drawTopSogCog(dc);
     }
 
     function drawScreen3(dc) {
@@ -272,5 +278,27 @@ class SailVMGView extends WatchUi.View {
         if (footerText != null && !footerText.equals("")) {
             dc.drawText(midX, h * 86 / 100, Graphics.FONT_TINY, footerText, Graphics.TEXT_JUSTIFY_CENTER);
         }
+    }
+
+    // Current SOG (left) and COG (right) in the top band, above the upper line —
+    // where the reference app shows the time. VMG screens only.
+    function drawTopSogCog(dc) {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        var lx = w * 21 / 100;
+        var rx = w * 79 / 100;
+
+        var sogText = (me.lastSog == null) ? "--" : me.lastSog.format("%.1f");
+        var cogText = "--";
+        if (me.lastCog != null) {
+            var c = me.lastCog.toNumber() % 360;
+            if (c < 0) { c += 360; }
+            cogText = c.format("%d") + "°";
+        }
+
+        dc.drawText(lx, h * 28 / 100, Graphics.FONT_XTINY, "SOG", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(lx, h * 35 / 100, Graphics.FONT_TINY, sogText, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(rx, h * 28 / 100, Graphics.FONT_XTINY, "COG", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(rx, h * 35 / 100, Graphics.FONT_TINY, cogText, Graphics.TEXT_JUSTIFY_CENTER);
     }
 }
