@@ -233,102 +233,208 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_21_39_39_0_st
     ret %tmp.82;
 C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_21_39_39_0_stop:
 }
-[ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc"; @line = 43; test = true; @symbol_functiondef = [testNotifyNoCrash,43,9,26]; @symbol_param<0> = [logger,43,27,33]; ]
-function testNotifyNoCrash(logger) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_43_35_47_0_start:
+[ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc"; @line = 43; test = true; @symbol_functiondef = [testSaveResetsTimer,43,9,28]; @symbol_param<0> = [logger,43,29,35]; ]
+function testSaveResetsTimer(logger) {
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_43_37_54_0_start:
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 44 4 ]
-    symbol [ Notify %tmp.2 44 4 10 ];
+    [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_43_37_54_0_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_43_37_54_0_stop" ]
+    %model.1 = local;
+    symbol [ model %model.1 44 8 13 ];
+    symbol [ DataModel %tmp.4 44 20 29 ];
+    %tmp.4 = getv ? :DataModel;
+    %tmp.5 = newd 2;
+    %tmp.7 = const :avgLastSeconds;
+    symbol [ avgLastSeconds %tmp.7 44 32 46 const ];
+    %tmp.8 = 5;
+    %tmp.9 = dup %tmp.5;
+    %tmp.10 = aputv %tmp.9 %tmp.7 %tmp.8;
+    %tmp.12 = const :avgLastMinutes;
+    symbol [ avgLastMinutes %tmp.12 44 54 68 const ];
+    %tmp.13 = 1;
+    %tmp.14 = dup %tmp.10;
+    %tmp.15 = aputv %tmp.14 %tmp.12 %tmp.13;
+    %tmp.1 = newc %tmp.4 (%tmp.15);
+    lputv %model.1 %tmp.1;
+    symbol [ model %model.1 44 8 13 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 45 4 ]
+    %tmp.16 = lgetv %model.1;
+    symbol [ model %tmp.16 45 4 9 ];
+    symbol [ reset %tmp.17 45 10 15 ];
+    %tmp.17 = getv function %tmp.16 :reset;
+    invoke %tmp.16 %tmp.17();
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 46 4 ]
+    %tmp.18 = lgetv %model.1;
+    symbol [ model %tmp.18 46 4 9 ];
+    symbol [ addSample %tmp.19 46 10 19 ];
+    %tmp.19 = getv function %tmp.18 :addSample;
+    %tmp.20 = 1000;
+    %tmp.21 = 3.0;
+    %tmp.22 = 45;
+    %tmp.23 = 120;
+    %tmp.24 = 0.5;
+    invoke %tmp.18 %tmp.19(%tmp.20, %tmp.21, %tmp.22, %tmp.23, %tmp.24);
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 47 4 ]
+    symbol [ Test %tmp.25 47 4 8 ];
+    %tmp.25 = getm $.Toybox.Test;
+    symbol [ assertEqualMessage %tmp.26 47 9 27 ];
+    %tmp.26 = getv function %tmp.25 :assertEqualMessage;
+    %tmp.27 = lgetv %model.1;
+    symbol [ model %tmp.27 47 28 33 ];
+    symbol [ positiveCount %tmp.28 47 34 47 ];
+    %tmp.28 = getv %tmp.27 :positiveCount;
+    %tmp.29 = 1;
+    %tmp.30 = "logged a sample";
+    invoke %tmp.25 %tmp.26(%tmp.28, %tmp.29, %tmp.30);
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 48 4 ]
+    %tmp.31 = lgetv %model.1;
+    symbol [ model %tmp.31 48 4 9 ];
+    symbol [ pauseRecording %tmp.32 48 10 24 ];
+    %tmp.32 = getv function %tmp.31 :pauseRecording;
+    invoke %tmp.31 %tmp.32();
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 49 4 ]
+    %tmp.33 = lgetv %model.1;
+    symbol [ model %tmp.33 49 4 9 ];
+    symbol [ saveRecording %tmp.34 49 10 23 ];
+    %tmp.34 = getv function %tmp.33 :saveRecording;
+    invoke %tmp.33 %tmp.34();
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 50 4 ]
+    symbol [ Test %tmp.35 50 4 8 ];
+    %tmp.35 = getm $.Toybox.Test;
+    symbol [ assertEqualMessage %tmp.36 50 9 27 ];
+    %tmp.36 = getv function %tmp.35 :assertEqualMessage;
+    %tmp.37 = lgetv %model.1;
+    symbol [ model %tmp.37 50 28 33 ];
+    symbol [ elapsedSeconds %tmp.38 50 34 48 ];
+    %tmp.38 = getv function %tmp.37 :elapsedSeconds;
+    %tmp.39 = invoke %tmp.37 %tmp.38();
+    %tmp.40 = 0;
+    %tmp.41 = "timer is 0 after save";
+    invoke %tmp.35 %tmp.36(%tmp.39, %tmp.40, %tmp.41);
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 51 4 ]
+    symbol [ Test %tmp.42 51 4 8 ];
+    %tmp.42 = getm $.Toybox.Test;
+    symbol [ assertEqualMessage %tmp.43 51 9 27 ];
+    %tmp.43 = getv function %tmp.42 :assertEqualMessage;
+    %tmp.44 = lgetv %model.1;
+    symbol [ model %tmp.44 51 28 33 ];
+    symbol [ positiveCount %tmp.45 51 34 47 ];
+    %tmp.45 = getv %tmp.44 :positiveCount;
+    %tmp.46 = 0;
+    %tmp.47 = "stats cleared after save";
+    invoke %tmp.42 %tmp.43(%tmp.45, %tmp.46, %tmp.47);
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 52 4 ]
+    symbol [ Test %tmp.48 52 4 8 ];
+    %tmp.48 = getm $.Toybox.Test;
+    symbol [ assertEqualMessage %tmp.49 52 9 27 ];
+    %tmp.49 = getv function %tmp.48 :assertEqualMessage;
+    %tmp.50 = lgetv %model.1;
+    symbol [ model %tmp.50 52 28 33 ];
+    symbol [ running %tmp.51 52 34 41 ];
+    %tmp.51 = getv %tmp.50 :running;
+    %tmp.52 = false;
+    %tmp.53 = "not running after save";
+    invoke %tmp.48 %tmp.49(%tmp.51, %tmp.52, %tmp.53);
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 53 4 ]
+    %tmp.54 = true;
+    ret %tmp.54;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_43_37_54_0_stop:
+}
+[ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc"; @line = 58; test = true; @symbol_functiondef = [testNotifyNoCrash,58,9,26]; @symbol_param<0> = [logger,58,27,33]; ]
+function testNotifyNoCrash(logger) {
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_58_35_62_0_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 59 4 ]
+    symbol [ Notify %tmp.2 59 4 10 ];
     %tmp.2 = getv ? :Notify;
-    symbol [ start %tmp.3 44 11 16 ];
+    symbol [ start %tmp.3 59 11 16 ];
     %tmp.3 = getv function %tmp.2 :start;
     invoke %tmp.2 %tmp.3();
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 45 4 ]
-    symbol [ Notify %tmp.5 45 4 10 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 60 4 ]
+    symbol [ Notify %tmp.5 60 4 10 ];
     %tmp.5 = getv ? :Notify;
-    symbol [ stop %tmp.6 45 11 15 ];
+    symbol [ stop %tmp.6 60 11 15 ];
     %tmp.6 = getv function %tmp.5 :stop;
     invoke %tmp.5 %tmp.6();
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 46 4 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 61 4 ]
     %tmp.7 = true;
     ret %tmp.7;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_43_35_47_0_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_58_35_62_0_stop:
 }
-[ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc"; @line = 51; test = true; @symbol_functiondef = [testVmgCalc,51,9,20]; @symbol_param<0> = [logger,51,21,27]; ]
+[ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc"; @line = 66; test = true; @symbol_functiondef = [testVmgCalc,66,9,20]; @symbol_param<0> = [logger,66,21,27]; ]
 function testVmgCalc(logger) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_51_29_60_0_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 52 4 ]
-    [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_51_29_60_0_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_51_29_60_0_stop" ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_66_29_75_0_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 67 4 ]
+    [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_66_29_75_0_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_66_29_75_0_stop" ]
     %v.1 = local;
-    symbol [ v %v.1 52 8 9 ];
-    symbol [ VmgCalculator %tmp.2 52 12 25 ];
+    symbol [ v %v.1 67 8 9 ];
+    symbol [ VmgCalculator %tmp.2 67 12 25 ];
     %tmp.2 = getv ? :VmgCalculator;
-    symbol [ computeVmg %tmp.3 52 26 36 ];
+    symbol [ computeVmg %tmp.3 67 26 36 ];
     %tmp.3 = getv function %tmp.2 :computeVmg;
     %tmp.4 = 5.0;
     %tmp.5 = 45;
     %tmp.6 = 45;
     %tmp.7 = invoke %tmp.2 %tmp.3(%tmp.4, %tmp.5, %tmp.6);
     lputv %v.1 %tmp.7;
-    symbol [ v %v.1 52 8 9 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 53 4 ]
-    symbol [ Test %tmp.8 53 4 8 ];
+    symbol [ v %v.1 67 8 9 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 68 4 ]
+    symbol [ Test %tmp.8 68 4 8 ];
     %tmp.8 = getm $.Toybox.Test;
-    symbol [ assert %tmp.9 53 9 15 ];
+    symbol [ assert %tmp.9 68 9 15 ];
     %tmp.9 = getv function %tmp.8 :assert;
     %tmp.10 = lgetv %v.1;
-    symbol [ v %tmp.10 53 16 17 ];
+    symbol [ v %tmp.10 68 16 17 ];
     %tmp.11 = null;
     %tmp.12 = ne %tmp.10 %tmp.11;
     invoke %tmp.8 %tmp.9(%tmp.12);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 54 4 ]
-    symbol [ Test %tmp.13 54 4 8 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 69 4 ]
+    symbol [ Test %tmp.13 69 4 8 ];
     %tmp.13 = getm $.Toybox.Test;
-    symbol [ assertEqualMessage %tmp.14 54 9 27 ];
+    symbol [ assertEqualMessage %tmp.14 69 9 27 ];
     %tmp.14 = getv function %tmp.13 :assertEqualMessage;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_54_28_54_43_begin:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_69_28_69_43_begin:
     %tmp.15 = lgetv %v.1;
-    symbol [ v %tmp.15 54 28 29 ];
+    symbol [ v %tmp.15 69 28 29 ];
     %tmp.16 = 9.7;
     %tmp.17 = gt %tmp.15 %tmp.16;
     %tmp.18 = dup %tmp.17;
-    bf %tmp.18 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_54_39_54_43_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_54_39_54_43_true:
+    bf %tmp.18 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_69_39_69_43_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_69_39_69_43_true:
     %tmp.19 = lgetv %v.1;
-    symbol [ v %tmp.19 54 39 40 ];
+    symbol [ v %tmp.19 69 39 40 ];
     %tmp.20 = 9.8;
     %tmp.21 = lt %tmp.19 %tmp.20;
     %tmp.22 = and %tmp.17 %tmp.21;
     push %tmp.22;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_54_39_54_43_end:
-    %tmp.23 = phi [%tmp.18 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_54_28_54_43_begin] [%tmp.22 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_54_39_54_43_true] [%tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_54_39_54_43_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_69_39_69_43_end:
+    %tmp.23 = phi [%tmp.18 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_69_28_69_43_begin] [%tmp.22 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_69_39_69_43_true] [%tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_69_39_69_43_end];
     %tmp.24 = true;
     %tmp.25 = "expected ~9.72 kn, got ";
     %tmp.26 = lgetv %v.1;
-    symbol [ v %tmp.26 54 82 83 ];
+    symbol [ v %tmp.26 69 82 83 ];
     %tmp.27 = add %tmp.25 %tmp.26;
     invoke %tmp.13 %tmp.14(%tmp.23, %tmp.24, %tmp.27);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 57 4 ]
-    [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_51_29_60_0_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_51_29_60_0_stop" ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 72 4 ]
+    [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_66_29_75_0_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_66_29_75_0_stop" ]
     %beam.2 = local;
-    symbol [ beam %beam.2 57 8 12 ];
-    symbol [ VmgCalculator %tmp.29 57 15 28 ];
+    symbol [ beam %beam.2 72 8 12 ];
+    symbol [ VmgCalculator %tmp.29 72 15 28 ];
     %tmp.29 = getv ? :VmgCalculator;
-    symbol [ computeVmg %tmp.30 57 29 39 ];
+    symbol [ computeVmg %tmp.30 72 29 39 ];
     %tmp.30 = getv function %tmp.29 :computeVmg;
     %tmp.31 = 5.0;
     %tmp.32 = 135;
     %tmp.33 = 45;
     %tmp.34 = invoke %tmp.29 %tmp.30(%tmp.31, %tmp.32, %tmp.33);
     lputv %beam.2 %tmp.34;
-    symbol [ beam %beam.2 57 8 12 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 58 4 ]
-    symbol [ Test %tmp.35 58 4 8 ];
+    symbol [ beam %beam.2 72 8 12 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 73 4 ]
+    symbol [ Test %tmp.35 73 4 8 ];
     %tmp.35 = getm $.Toybox.Test;
-    symbol [ assertEqualMessage %tmp.36 58 9 27 ];
+    symbol [ assertEqualMessage %tmp.36 73 9 27 ];
     %tmp.36 = getv function %tmp.35 :assertEqualMessage;
     %tmp.37 = lgetv %beam.2;
-    symbol [ beam %tmp.37 58 28 32 ];
-    symbol [ abs %tmp.38 58 33 36 ];
+    symbol [ beam %tmp.37 73 28 32 ];
+    symbol [ abs %tmp.38 73 33 36 ];
     %tmp.38 = getv function %tmp.37 :abs;
     %tmp.39 = invoke %tmp.37 %tmp.38();
     %tmp.40 = 0.01;
@@ -336,116 +442,116 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_54_39_54_43_e
     %tmp.42 = true;
     %tmp.43 = "expected ~0 kn, got ";
     %tmp.44 = lgetv %beam.2;
-    symbol [ beam %tmp.44 58 78 82 ];
+    symbol [ beam %tmp.44 73 78 82 ];
     %tmp.45 = add %tmp.43 %tmp.44;
     invoke %tmp.35 %tmp.36(%tmp.41, %tmp.42, %tmp.45);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 59 4 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 74 4 ]
     %tmp.46 = true;
     ret %tmp.46;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_51_29_60_0_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_66_29_75_0_stop:
 }
-[ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc"; @line = 64; test = true; @symbol_functiondef = [testNearestSnapWrap,64,9,28]; @symbol_param<0> = [logger,64,29,35]; ]
+[ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc"; @line = 79; test = true; @symbol_functiondef = [testNearestSnapWrap,79,9,28]; @symbol_param<0> = [logger,79,29,35]; ]
 function testNearestSnapWrap(logger) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_64_37_73_0_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 65 4 ]
-    [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_64_37_73_0_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_64_37_73_0_stop" ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_79_37_88_0_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 80 4 ]
+    [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_79_37_88_0_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_79_37_88_0_stop" ]
     %view.1 = local;
-    symbol [ view %view.1 65 8 12 ];
-    symbol [ SettingsTWDView %tmp.4 65 19 34 ];
+    symbol [ view %view.1 80 8 12 ];
+    symbol [ SettingsTWDView %tmp.4 80 19 34 ];
     %tmp.4 = getv ? :SettingsTWDView;
     %tmp.5 = null;
     %tmp.6 = 0;
     %tmp.1 = newc %tmp.4 (%tmp.5, %tmp.6);
     lputv %view.1 %tmp.1;
-    symbol [ view %view.1 65 8 12 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 66 4 ]
-    symbol [ Test %tmp.7 66 4 8 ];
+    symbol [ view %view.1 80 8 12 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 81 4 ]
+    symbol [ Test %tmp.7 81 4 8 ];
     %tmp.7 = getm $.Toybox.Test;
-    symbol [ assertEqualMessage %tmp.8 66 9 27 ];
+    symbol [ assertEqualMessage %tmp.8 81 9 27 ];
     %tmp.8 = getv function %tmp.7 :assertEqualMessage;
     %tmp.9 = lgetv %view.1;
-    symbol [ view %tmp.9 66 28 32 ];
-    symbol [ findNearestSnap %tmp.10 66 33 48 ];
+    symbol [ view %tmp.9 81 28 32 ];
+    symbol [ findNearestSnap %tmp.10 81 33 48 ];
     %tmp.10 = getv function %tmp.9 :findNearestSnap;
     %tmp.11 = 350;
     %tmp.12 = invoke %tmp.9 %tmp.10(%tmp.11);
     %tmp.13 = "N";
     %tmp.14 = "350 -> N";
     invoke %tmp.7 %tmp.8(%tmp.12, %tmp.13, %tmp.14);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 67 4 ]
-    symbol [ Test %tmp.15 67 4 8 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 82 4 ]
+    symbol [ Test %tmp.15 82 4 8 ];
     %tmp.15 = getm $.Toybox.Test;
-    symbol [ assertEqualMessage %tmp.16 67 9 27 ];
+    symbol [ assertEqualMessage %tmp.16 82 9 27 ];
     %tmp.16 = getv function %tmp.15 :assertEqualMessage;
     %tmp.17 = lgetv %view.1;
-    symbol [ view %tmp.17 67 28 32 ];
-    symbol [ findNearestSnap %tmp.18 67 33 48 ];
+    symbol [ view %tmp.17 82 28 32 ];
+    symbol [ findNearestSnap %tmp.18 82 33 48 ];
     %tmp.18 = getv function %tmp.17 :findNearestSnap;
     %tmp.19 = 359;
     %tmp.20 = invoke %tmp.17 %tmp.18(%tmp.19);
     %tmp.21 = "N";
     %tmp.22 = "359 -> N";
     invoke %tmp.15 %tmp.16(%tmp.20, %tmp.21, %tmp.22);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 68 4 ]
-    symbol [ Test %tmp.23 68 4 8 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 83 4 ]
+    symbol [ Test %tmp.23 83 4 8 ];
     %tmp.23 = getm $.Toybox.Test;
-    symbol [ assertEqualMessage %tmp.24 68 9 27 ];
+    symbol [ assertEqualMessage %tmp.24 83 9 27 ];
     %tmp.24 = getv function %tmp.23 :assertEqualMessage;
     %tmp.25 = lgetv %view.1;
-    symbol [ view %tmp.25 68 28 32 ];
-    symbol [ findNearestSnap %tmp.26 68 33 48 ];
+    symbol [ view %tmp.25 83 28 32 ];
+    symbol [ findNearestSnap %tmp.26 83 33 48 ];
     %tmp.26 = getv function %tmp.25 :findNearestSnap;
     %tmp.27 = 338;
     %tmp.28 = invoke %tmp.25 %tmp.26(%tmp.27);
     %tmp.29 = "N";
     %tmp.30 = "338 -> N";
     invoke %tmp.23 %tmp.24(%tmp.28, %tmp.29, %tmp.30);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 69 4 ]
-    symbol [ Test %tmp.31 69 4 8 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 84 4 ]
+    symbol [ Test %tmp.31 84 4 8 ];
     %tmp.31 = getm $.Toybox.Test;
-    symbol [ assertEqualMessage %tmp.32 69 9 27 ];
+    symbol [ assertEqualMessage %tmp.32 84 9 27 ];
     %tmp.32 = getv function %tmp.31 :assertEqualMessage;
     %tmp.33 = lgetv %view.1;
-    symbol [ view %tmp.33 69 28 32 ];
-    symbol [ findNearestSnap %tmp.34 69 33 48 ];
+    symbol [ view %tmp.33 84 28 32 ];
+    symbol [ findNearestSnap %tmp.34 84 33 48 ];
     %tmp.34 = getv function %tmp.33 :findNearestSnap;
     %tmp.35 = 337;
     %tmp.36 = invoke %tmp.33 %tmp.34(%tmp.35);
     %tmp.37 = "NW";
     %tmp.38 = "337 -> NW";
     invoke %tmp.31 %tmp.32(%tmp.36, %tmp.37, %tmp.38);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 70 4 ]
-    symbol [ Test %tmp.39 70 4 8 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 85 4 ]
+    symbol [ Test %tmp.39 85 4 8 ];
     %tmp.39 = getm $.Toybox.Test;
-    symbol [ assertEqualMessage %tmp.40 70 9 27 ];
+    symbol [ assertEqualMessage %tmp.40 85 9 27 ];
     %tmp.40 = getv function %tmp.39 :assertEqualMessage;
     %tmp.41 = lgetv %view.1;
-    symbol [ view %tmp.41 70 28 32 ];
-    symbol [ findNearestSnap %tmp.42 70 33 48 ];
+    symbol [ view %tmp.41 85 28 32 ];
+    symbol [ findNearestSnap %tmp.42 85 33 48 ];
     %tmp.42 = getv function %tmp.41 :findNearestSnap;
     %tmp.43 = 45;
     %tmp.44 = invoke %tmp.41 %tmp.42(%tmp.43);
     %tmp.45 = "NE";
     %tmp.46 = "45 -> NE";
     invoke %tmp.39 %tmp.40(%tmp.44, %tmp.45, %tmp.46);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 71 4 ]
-    symbol [ Test %tmp.47 71 4 8 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 86 4 ]
+    symbol [ Test %tmp.47 86 4 8 ];
     %tmp.47 = getm $.Toybox.Test;
-    symbol [ assertEqualMessage %tmp.48 71 9 27 ];
+    symbol [ assertEqualMessage %tmp.48 86 9 27 ];
     %tmp.48 = getv function %tmp.47 :assertEqualMessage;
     %tmp.49 = lgetv %view.1;
-    symbol [ view %tmp.49 71 28 32 ];
-    symbol [ findNearestSnap %tmp.50 71 33 48 ];
+    symbol [ view %tmp.49 86 28 32 ];
+    symbol [ findNearestSnap %tmp.50 86 33 48 ];
     %tmp.50 = getv function %tmp.49 :findNearestSnap;
     %tmp.51 = 180;
     %tmp.52 = invoke %tmp.49 %tmp.50(%tmp.51);
     %tmp.53 = "S";
     %tmp.54 = "180 -> S";
     invoke %tmp.47 %tmp.48(%tmp.52, %tmp.53, %tmp.54);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 72 4 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc" 87 4 ]
     %tmp.55 = true;
     ret %tmp.55;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_64_37_73_0_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_Tests_mc_79_37_88_0_stop:
 }
 [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\Tests.mc"; @line = 1; ]
 <init> {

@@ -38,6 +38,21 @@ function testPauseStopsLogging(logger) {
     return true;
 }
 
+// Save (and discard) must clear the timer and stats back to zero.
+(:test)
+function testSaveResetsTimer(logger) {
+    var model = new DataModel({:avgLastSeconds => 5, :avgLastMinutes => 1});
+    model.reset();
+    model.addSample(1000, 3.0, 45, 120, 0.5);
+    Test.assertEqualMessage(model.positiveCount, 1, "logged a sample");
+    model.pauseRecording();
+    model.saveRecording();
+    Test.assertEqualMessage(model.elapsedSeconds(), 0, "timer is 0 after save");
+    Test.assertEqualMessage(model.positiveCount, 0, "stats cleared after save");
+    Test.assertEqualMessage(model.running, false, "not running after save");
+    return true;
+}
+
 // Start/stop feedback must never crash (guarded for no-tone devices).
 (:test)
 function testNotifyNoCrash(logger) {

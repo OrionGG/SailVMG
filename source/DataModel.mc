@@ -100,6 +100,7 @@ class DataModel {
             me.clearSession();
         }
         me.running = false;
+        me.zeroStats();   // back to a clean slate (timer 0:00, averages --)
     }
 
     function discardRecording() {
@@ -108,6 +109,7 @@ class DataModel {
             me.clearSession();
         }
         me.running = false;
+        me.zeroStats();
     }
 
     function clearSession() {
@@ -129,10 +131,10 @@ class DataModel {
         }
     }
 
-    function reset() {
-        me.startTime = Time.now().value();
+    // Zero all accumulators (timer, sums, buffers). Leaves running unchanged.
+    function zeroStats() {
+        me.startTime = null;
         me.accumulatedSeconds = 0;
-        me.running = true;
         me.positiveSum = 0.0;
         me.positiveCount = 0;
         me.negativeSum = 0.0;
@@ -143,6 +145,12 @@ class DataModel {
         if (me.negBuffer != null) { me.negBuffer.clear(); }
         me.lastPositive = null;
         me.lastNegative = null;
+    }
+
+    function reset() {
+        me.zeroStats();
+        me.startTime = Time.now().value();
+        me.running = true;
     }
 
     // Pause: bank elapsed time and stop logging to the FIT.

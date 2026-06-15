@@ -14,8 +14,8 @@ class RunNoEvil extends Test.Test {
     function initialize() {
         Test.Test.initialize();
         logger = new Test.Logger();
-        idToName = new [5];
-        populate_test_entries_0_to_5();
+        idToName = new [6];
+        populate_test_entries_0_to_6();
     }
 
     function getIndexOf(name as String) as Number {
@@ -41,25 +41,28 @@ class RunNoEvil extends Test.Test {
         return idToName.size();
     }
 
-    function populate_test_entries_0_to_5() as Void {
+    function populate_test_entries_0_to_6() as Void {
         idToName[0] = "testStartRecordingNoCrash";
         idToName[1] = "testPauseStopsLogging";
-        idToName[2] = "testNotifyNoCrash";
-        idToName[3] = "testVmgCalc";
-        idToName[4] = "testNearestSnapWrap";
+        idToName[2] = "testSaveResetsTimer";
+        idToName[3] = "testNotifyNoCrash";
+        idToName[4] = "testVmgCalc";
+        idToName[5] = "testNearestSnapWrap";
     }
 
-    function evaluate_test_entries_0_to_5(id as Number, logger as Logger) {
+    function evaluate_test_entries_0_to_6(id as Number, logger as Logger) {
         var result = false;
         if (id == 0) {
             result = $.testStartRecordingNoCrash(logger);
         } else if (id == 1) {
             result = $.testPauseStopsLogging(logger);
         } else if (id == 2) {
-            result = $.testNotifyNoCrash(logger);
+            result = $.testSaveResetsTimer(logger);
         } else if (id == 3) {
-            result = $.testVmgCalc(logger);
+            result = $.testNotifyNoCrash(logger);
         } else if (id == 4) {
+            result = $.testVmgCalc(logger);
+        } else if (id == 5) {
             result = $.testNearestSnapWrap(logger);
         }
 
@@ -74,8 +77,8 @@ class RunNoEvil extends Test.Test {
 
         assertMessage(id >= 0, "Could not find '" + test + "'");
         var result = false;
-        if (id < 5) {
-            result = self.evaluate_test_entries_0_to_5(id, logger);
+        if (id < 6) {
+            result = self.evaluate_test_entries_0_to_6(id, logger);
         }
 
         if (result instanceof Boolean) {
