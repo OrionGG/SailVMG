@@ -1944,7 +1944,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_
         symbol [ valueY %valueY.6 249 12 18 ];
         %tmp.20 = lgetv %h.2;
         symbol [ h %tmp.20 249 21 22 ];
-        %tmp.21 = 10;
+        %tmp.21 = 8;
         %tmp.22 = mul %tmp.20 %tmp.21;
         %tmp.23 = 100;
         %tmp.24 = div %tmp.22 %tmp.23;
@@ -1959,7 +1959,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_
         symbol [ midX %tmp.27 252 20 24 ];
         %tmp.28 = lgetv %h.2;
         symbol [ h %tmp.28 252 26 27 ];
-        %tmp.29 = 2;
+        %tmp.29 = 1;
         %tmp.30 = mul %tmp.28 %tmp.29;
         %tmp.31 = 100;
         %tmp.32 = div %tmp.30 %tmp.31;
@@ -1985,13 +1985,13 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_
         symbol [ valueY %tmp.41 253 26 32 ];
         symbol [ Graphics %tmp.42 253 34 42 ];
         %tmp.42 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_MEDIUM %tmp.43 253 43 61 ];
-        %tmp.43 = getv %tmp.42 :FONT_NUMBER_MEDIUM;
+        symbol [ FONT_NUMBER_HOT %tmp.43 253 43 58 ];
+        %tmp.43 = getv %tmp.42 :FONT_NUMBER_HOT;
         %tmp.44 = lgetv %valueText;
-        symbol [ valueText %tmp.44 253 63 72 ];
-        symbol [ Graphics %tmp.45 253 74 82 ];
+        symbol [ valueText %tmp.44 253 60 69 ];
+        symbol [ Graphics %tmp.45 253 71 79 ];
         %tmp.45 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.46 253 83 102 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.46 253 80 99 ];
         %tmp.46 = getv %tmp.45 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.38 %tmp.39(%tmp.40, %tmp.41, %tmp.43, %tmp.44, %tmp.46);
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 254 8 ]
@@ -2013,8 +2013,8 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_20_
         symbol [ valueText %tmp.50 256 47 56 ];
         symbol [ Graphics %tmp.51 256 58 66 ];
         %tmp.51 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_MEDIUM %tmp.52 256 67 85 ];
-        %tmp.52 = getv %tmp.51 :FONT_NUMBER_MEDIUM;
+        symbol [ FONT_NUMBER_HOT %tmp.52 256 67 82 ];
+        %tmp.52 = getv %tmp.51 :FONT_NUMBER_HOT;
         %tmp.53 = invoke %tmp.48 %tmp.49(%tmp.50, %tmp.52);
         %tmp.54 = 2;
         %tmp.55 = div %tmp.53 %tmp.54;
@@ -2060,7 +2060,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         %tmp.75 = div %tmp.73 %tmp.74;
         %tmp.76 = lgetv %h.2;
         symbol [ h %tmp.76 262 34 35 ];
-        %tmp.77 = 37;
+        %tmp.77 = 46;
         %tmp.78 = mul %tmp.76 %tmp.77;
         %tmp.79 = 100;
         %tmp.80 = div %tmp.78 %tmp.79;
@@ -2072,7 +2072,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         %tmp.85 = div %tmp.83 %tmp.84;
         %tmp.86 = lgetv %h.2;
         symbol [ h %tmp.86 262 62 63 ];
-        %tmp.87 = 37;
+        %tmp.87 = 46;
         %tmp.88 = mul %tmp.86 %tmp.87;
         %tmp.89 = 100;
         %tmp.90 = div %tmp.88 %tmp.89;
@@ -2086,7 +2086,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         symbol [ midX %tmp.93 263 20 24 ];
         %tmp.94 = lgetv %h.2;
         symbol [ h %tmp.94 263 26 27 ];
-        %tmp.95 = 37;
+        %tmp.95 = 46;
         %tmp.96 = mul %tmp.94 %tmp.95;
         %tmp.97 = 100;
         %tmp.98 = div %tmp.96 %tmp.97;
@@ -2094,7 +2094,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         symbol [ midX %tmp.99 263 40 44 ];
         %tmp.100 = lgetv %h.2;
         symbol [ h %tmp.100 263 46 47 ];
-        %tmp.101 = 73;
+        %tmp.101 = 78;
         %tmp.102 = mul %tmp.100 %tmp.101;
         %tmp.103 = 100;
         %tmp.104 = div %tmp.102 %tmp.103;
@@ -2112,7 +2112,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         %tmp.111 = div %tmp.109 %tmp.110;
         %tmp.112 = lgetv %h.2;
         symbol [ h %tmp.112 264 34 35 ];
-        %tmp.113 = 73;
+        %tmp.113 = 78;
         %tmp.114 = mul %tmp.112 %tmp.113;
         %tmp.115 = 100;
         %tmp.116 = div %tmp.114 %tmp.115;
@@ -2124,7 +2124,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         %tmp.121 = div %tmp.119 %tmp.120;
         %tmp.122 = lgetv %h.2;
         symbol [ h %tmp.122 264 62 63 ];
-        %tmp.123 = 73;
+        %tmp.123 = 78;
         %tmp.124 = mul %tmp.122 %tmp.123;
         %tmp.125 = 100;
         %tmp.126 = div %tmp.124 %tmp.125;
@@ -2138,7 +2138,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         symbol [ leftX %tmp.129 266 20 25 ];
         %tmp.130 = lgetv %h.2;
         symbol [ h %tmp.130 266 27 28 ];
-        %tmp.131 = 39;
+        %tmp.131 = 49;
         %tmp.132 = mul %tmp.130 %tmp.131;
         %tmp.133 = 100;
         %tmp.134 = div %tmp.132 %tmp.133;
@@ -2162,7 +2162,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         symbol [ rightX %tmp.142 267 20 26 ];
         %tmp.143 = lgetv %h.2;
         symbol [ h %tmp.143 267 28 29 ];
-        %tmp.144 = 39;
+        %tmp.144 = 49;
         %tmp.145 = mul %tmp.143 %tmp.144;
         %tmp.146 = 100;
         %tmp.147 = div %tmp.145 %tmp.146;
@@ -2186,19 +2186,19 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         symbol [ leftX %tmp.155 268 20 25 ];
         %tmp.156 = lgetv %h.2;
         symbol [ h %tmp.156 268 27 28 ];
-        %tmp.157 = 47;
+        %tmp.157 = 57;
         %tmp.158 = mul %tmp.156 %tmp.157;
         %tmp.159 = 100;
         %tmp.160 = div %tmp.158 %tmp.159;
         symbol [ Graphics %tmp.161 268 41 49 ];
         %tmp.161 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_MEDIUM %tmp.162 268 50 68 ];
-        %tmp.162 = getv %tmp.161 :FONT_NUMBER_MEDIUM;
+        symbol [ FONT_NUMBER_MILD %tmp.162 268 50 66 ];
+        %tmp.162 = getv %tmp.161 :FONT_NUMBER_MILD;
         %tmp.163 = lgetv %colV1;
-        symbol [ colV1 %tmp.163 268 70 75 ];
-        symbol [ Graphics %tmp.164 268 77 85 ];
+        symbol [ colV1 %tmp.163 268 68 73 ];
+        symbol [ Graphics %tmp.164 268 75 83 ];
         %tmp.164 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.165 268 86 105 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.165 268 84 103 ];
         %tmp.165 = getv %tmp.164 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.153 %tmp.154(%tmp.155, %tmp.160, %tmp.162, %tmp.163, %tmp.165);
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 269 8 ]
@@ -2210,19 +2210,19 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_2
         symbol [ rightX %tmp.168 269 20 26 ];
         %tmp.169 = lgetv %h.2;
         symbol [ h %tmp.169 269 28 29 ];
-        %tmp.170 = 47;
+        %tmp.170 = 57;
         %tmp.171 = mul %tmp.169 %tmp.170;
         %tmp.172 = 100;
         %tmp.173 = div %tmp.171 %tmp.172;
         symbol [ Graphics %tmp.174 269 42 50 ];
         %tmp.174 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_MEDIUM %tmp.175 269 51 69 ];
-        %tmp.175 = getv %tmp.174 :FONT_NUMBER_MEDIUM;
+        symbol [ FONT_NUMBER_MILD %tmp.175 269 51 67 ];
+        %tmp.175 = getv %tmp.174 :FONT_NUMBER_MILD;
         %tmp.176 = lgetv %colV2;
-        symbol [ colV2 %tmp.176 269 71 76 ];
-        symbol [ Graphics %tmp.177 269 78 86 ];
+        symbol [ colV2 %tmp.176 269 69 74 ];
+        symbol [ Graphics %tmp.177 269 76 84 ];
         %tmp.177 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.178 269 87 106 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.178 269 85 104 ];
         %tmp.178 = getv %tmp.177 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.166 %tmp.167(%tmp.168, %tmp.173, %tmp.175, %tmp.176, %tmp.178);
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 272 8 ]
@@ -2257,7 +2257,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_58_
         symbol [ midX %tmp.191 273 24 28 ];
         %tmp.192 = lgetv %h.2;
         symbol [ h %tmp.192 273 30 31 ];
-        %tmp.193 = 84;
+        %tmp.193 = 86;
         %tmp.194 = mul %tmp.192 %tmp.193;
         %tmp.195 = 100;
         %tmp.196 = div %tmp.194 %tmp.195;
