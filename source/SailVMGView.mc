@@ -271,8 +271,8 @@ class SailVMGView extends WatchUi.View {
         // Split lines: one horizontal above the columns, one vertical between
         // them, one horizontal below.
         dc.drawLine(w * 12 / 100, h * 46 / 100, w * 88 / 100, h * 46 / 100);
-        dc.drawLine(midX, h * 46 / 100, midX, h * 81 / 100);
-        dc.drawLine(w * 12 / 100, h * 81 / 100, w * 88 / 100, h * 81 / 100);
+        dc.drawLine(midX, h * 46 / 100, midX, h * 86 / 100);
+        dc.drawLine(w * 12 / 100, h * 86 / 100, w * 88 / 100, h * 86 / 100);
 
         dc.drawText(leftX, h * 48 / 100, Graphics.FONT_XTINY, colT1, Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(rightX, h * 48 / 100, Graphics.FONT_XTINY, colT2, Graphics.TEXT_JUSTIFY_CENTER);

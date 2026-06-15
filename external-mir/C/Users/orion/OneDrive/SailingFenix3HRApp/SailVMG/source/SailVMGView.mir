@@ -2153,7 +2153,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_264_8_2
         symbol [ midX %tmp.105 274 40 44 ];
         %tmp.106 = lgetv %h.2;
         symbol [ h %tmp.106 274 46 47 ];
-        %tmp.107 = 81;
+        %tmp.107 = 86;
         %tmp.108 = mul %tmp.106 %tmp.107;
         %tmp.109 = 100;
         %tmp.110 = div %tmp.108 %tmp.109;
@@ -2171,7 +2171,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_264_8_2
         %tmp.117 = div %tmp.115 %tmp.116;
         %tmp.118 = lgetv %h.2;
         symbol [ h %tmp.118 275 34 35 ];
-        %tmp.119 = 81;
+        %tmp.119 = 86;
         %tmp.120 = mul %tmp.118 %tmp.119;
         %tmp.121 = 100;
         %tmp.122 = div %tmp.120 %tmp.121;
@@ -2183,7 +2183,7 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_264_8_2
         %tmp.127 = div %tmp.125 %tmp.126;
         %tmp.128 = lgetv %h.2;
         symbol [ h %tmp.128 275 62 63 ];
-        %tmp.129 = 81;
+        %tmp.129 = 86;
         %tmp.130 = mul %tmp.128 %tmp.129;
         %tmp.131 = 100;
         %tmp.132 = div %tmp.130 %tmp.131;
