@@ -5,8 +5,9 @@ using Toybox.System as System;
 using Toybox.Math as Math;
 
 class DataModel {
-    var startTime = null;
-    var running = false;
+    var startTime = null;          // start of the current running segment
+    var accumulatedSeconds = 0;    // elapsed time banked from prior segments
+    var running = false;           // currently recording (false while paused)
 
     var positiveSum = 0.0;
     var positiveCount = 0;
@@ -130,6 +131,7 @@ class DataModel {
 
     function reset() {
         me.startTime = Time.now().value();
+        me.accumulatedSeconds = 0;
         me.running = true;
         me.positiveSum = 0.0;
         me.positiveCount = 0;
@@ -143,8 +145,33 @@ class DataModel {
         me.lastNegative = null;
     }
 
+    // Pause: bank elapsed time and stop logging to the FIT.
+    function pauseRecording() {
+        if (me.running) {
+            if (me.startTime != null) {
+                me.accumulatedSeconds += Time.now().value() - me.startTime;
+            }
+            me.running = false;
+            if (me.session != null) {
+                try { me.session.stop(); } catch (e) { }
+            }
+        }
+    }
+
+    // Resume: restart the segment clock and the FIT recording.
+    function resumeRecording() {
+        me.startTime = Time.now().value();
+        me.running = true;
+        if (me.session != null) {
+            try { me.session.start(); } catch (e) { }
+        }
+    }
+
     // Add a sample once per second. ts is integer epoch seconds.
+    // No-op while paused so the activity stops accumulating data.
     function addSample(ts, vmg, twd, hr, minAbs) {
+        if (!me.running) { return; }
+
         if (hr != null && hr > 0) {
             me.hrSum += hr;
             me.hrCount++;
@@ -214,12 +241,14 @@ class DataModel {
         return me.negBuffer.getAvgWindow(windowMins * 60);
     }
 
-    // Elapsed activity time in seconds since the activity was started.
+    // Elapsed activity time in seconds (banked segments + current running one).
+    // Frozen while paused.
     function elapsedSeconds() {
+        var total = me.accumulatedSeconds;
         if (me.running && me.startTime != null) {
-            return Time.now().value() - me.startTime;
+            total += Time.now().value() - me.startTime;
         }
-        return null;
+        return total;
     }
 
     function getLastPositive() { return me.lastPositive; }

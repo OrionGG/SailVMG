@@ -550,9 +550,9 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_91_26_9
     }
     [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 96; @symbol_functiondef = [handleStart,96,13,24]; ]
     function handleStart() {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_96_27_109_4_start:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_96_27_111_4_start:
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 97 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_108_8_if_stmt:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_110_8_if_stmt:
         %tmp.1 = self;
         symbol [ me %tmp.1 97 13 15 ];
         symbol [ app %tmp.2 97 16 19 ];
@@ -562,8 +562,8 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_10
         symbol [ running %tmp.4 97 26 33 ];
         %tmp.4 = getv %tmp.3 :running;
         %tmp.5 = not %tmp.4;
-        bf %tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_108_8_if_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_108_8_if_true:
+        bf %tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_110_8_if_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_110_8_if_true:
 C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_35_102_8_start:
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 98 12 ]
         %tmp.6 = self;
@@ -601,496 +601,506 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_35_1
         %tmp.21 = 1500;
         invoke %tmp.17 %tmp.18(%tmp.20, %tmp.21);
 C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_35_102_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_108_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_108_8_if_else_false:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_102_15_108_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 105 12 ]
-        symbol [ Notify %tmp.23 105 12 18 ];
-        %tmp.23 = getv ? :Notify;
-        symbol [ stop %tmp.24 105 19 23 ];
-        %tmp.24 = getv function %tmp.23 :stop;
-        invoke %tmp.23 %tmp.24();
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_110_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_110_8_if_else_false:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_102_15_110_8_start:
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 106 12 ]
-        symbol [ self %self 106 12 14 ];
-        %tmp.25 = true;
-        symbol [ afterFlashMenu ? 106 15 29 ];
-        putv self :afterFlashMenu %tmp.25;
+        %tmp.22 = self;
+        symbol [ me %tmp.22 106 12 14 ];
+        symbol [ app %tmp.23 106 15 18 ];
+        %tmp.23 = getv %tmp.22 :app;
+        symbol [ model %tmp.24 106 19 24 ];
+        %tmp.24 = getv %tmp.23 :model;
+        symbol [ pauseRecording %tmp.25 106 25 39 ];
+        %tmp.25 = getv function %tmp.24 :pauseRecording;
+        invoke %tmp.24 %tmp.25();
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 107 12 ]
-        %tmp.26 = self;
-        symbol [ me %tmp.26 107 12 14 ];
-        symbol [ showFlash %tmp.27 107 15 24 ];
-        %tmp.27 = getv function %tmp.26 :showFlash;
-        %tmp.29 = const :stop;
-        symbol [ stop %tmp.29 107 26 30 const ];
-        %tmp.30 = 2000;
-        invoke %tmp.26 %tmp.27(%tmp.29, %tmp.30);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_102_15_108_8_stop:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_108_8_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_96_27_109_4_stop:
+        symbol [ Notify %tmp.27 107 12 18 ];
+        %tmp.27 = getv ? :Notify;
+        symbol [ stop %tmp.28 107 19 23 ];
+        %tmp.28 = getv function %tmp.27 :stop;
+        invoke %tmp.27 %tmp.28();
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 108 12 ]
+        symbol [ self %self 108 12 14 ];
+        %tmp.29 = true;
+        symbol [ afterFlashMenu ? 108 15 29 ];
+        putv self :afterFlashMenu %tmp.29;
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 109 12 ]
+        %tmp.30 = self;
+        symbol [ me %tmp.30 109 12 14 ];
+        symbol [ showFlash %tmp.31 109 15 24 ];
+        %tmp.31 = getv function %tmp.30 :showFlash;
+        %tmp.33 = const :stop;
+        symbol [ stop %tmp.33 109 26 30 const ];
+        %tmp.34 = 2000;
+        invoke %tmp.30 %tmp.31(%tmp.33, %tmp.34);
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_102_15_110_8_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_97_8_110_8_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_96_27_111_4_stop:
     }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 111; @symbol_functiondef = [showSettings,111,13,25]; ]
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 113; @symbol_functiondef = [showSettings,113,13,25]; ]
     function showSettings() {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_111_28_113_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 112 8 ]
-        symbol [ WatchUi %tmp.1 112 8 15 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_113_28_115_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 114 8 ]
+        symbol [ WatchUi %tmp.1 114 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.2 112 16 24 ];
+        symbol [ pushView %tmp.2 114 16 24 ];
         %tmp.2 = getv function %tmp.1 :pushView;
-        symbol [ SettingsMenu %tmp.6 112 29 41 ];
+        symbol [ SettingsMenu %tmp.6 114 29 41 ];
         %tmp.6 = getv ? :SettingsMenu;
         %tmp.3 = newc %tmp.6 ();
-        symbol [ SettingsMenuDelegate %tmp.10 112 49 69 ];
+        symbol [ SettingsMenuDelegate %tmp.10 114 49 69 ];
         %tmp.10 = getv ? :SettingsMenuDelegate;
         %tmp.11 = self;
-        symbol [ me %tmp.11 112 70 72 ];
-        symbol [ app %tmp.12 112 73 76 ];
+        symbol [ me %tmp.11 114 70 72 ];
+        symbol [ app %tmp.12 114 73 76 ];
         %tmp.12 = getv %tmp.11 :app;
         %tmp.7 = newc %tmp.10 (%tmp.12);
-        symbol [ WatchUi %tmp.13 112 79 86 ];
+        symbol [ WatchUi %tmp.13 114 79 86 ];
         %tmp.13 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_UP %tmp.14 112 87 95 ];
+        symbol [ SLIDE_UP %tmp.14 114 87 95 ];
         %tmp.14 = getv %tmp.13 :SLIDE_UP;
         invoke %tmp.1 %tmp.2(%tmp.3, %tmp.7, %tmp.14);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_111_28_113_4_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_113_28_115_4_stop:
     }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 116; @symbol_functiondef = [showFlash,116,13,22]; @symbol_param<0> = [kind,116,23,27]; @symbol_param<1> = [durationMs,116,29,39]; ]
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 118; @symbol_functiondef = [showFlash,118,13,22]; @symbol_param<0> = [kind,118,23,27]; @symbol_param<1> = [durationMs,118,29,39]; ]
     function showFlash(kind, durationMs) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_116_41_122_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 117 8 ]
-        symbol [ self %self 117 8 10 ];
-        %tmp.1 = lgetv %kind;
-        symbol [ kind %tmp.1 117 25 29 ];
-        symbol [ statusFlash ? 117 11 22 ];
-        putv self :statusFlash %tmp.1;
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 118 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_118_8_118_59_if_stmt:
-        %tmp.2 = self;
-        symbol [ me %tmp.2 118 12 14 ];
-        symbol [ flashTimer %tmp.3 118 15 25 ];
-        %tmp.3 = getv %tmp.2 :flashTimer;
-        %tmp.4 = null;
-        %tmp.5 = ne %tmp.3 %tmp.4;
-        bf %tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_118_8_118_59_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_118_8_118_59_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_118_35_118_59_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 118 37 ]
-        %tmp.6 = self;
-        symbol [ me %tmp.6 118 37 39 ];
-        symbol [ flashTimer %tmp.7 118 40 50 ];
-        %tmp.7 = getv %tmp.6 :flashTimer;
-        %tmp.8 = as %tmp.7 { (!Null) };
-        symbol [ stop %tmp.9 118 51 55 ];
-        %tmp.9 = getv function %tmp.8 :stop;
-        invoke %tmp.8 %tmp.9();
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_118_35_118_59_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_118_8_118_59_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_118_8_118_59_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_118_41_124_4_start:
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 119 8 ]
         symbol [ self %self 119 8 10 ];
-        symbol [ Timer %tmp.12 119 28 33 ];
-        %tmp.12 = getm $.Toybox.Timer;
-        symbol [ Timer %tmp.13 119 34 39 ];
-        %tmp.13 = getv function ? %tmp.12 :Timer;
-        %tmp.10 = newc %tmp.13 ();
-        symbol [ flashTimer ? 119 11 21 ];
-        putv self :flashTimer %tmp.10;
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 120 8 ]
-        %tmp.14 = self;
-        symbol [ me %tmp.14 120 8 10 ];
-        symbol [ flashTimer %tmp.15 120 11 21 ];
-        %tmp.15 = getv %tmp.14 :flashTimer;
-        symbol [ start %tmp.16 120 22 27 ];
-        %tmp.16 = getv function %tmp.15 :start;
-        %tmp.17 = self;
-        symbol [ method %tmp.18 120 28 34 ];
-        %tmp.18 = getv function %tmp.17 :method;
-        %tmp.20 = const :clearFlash;
-        symbol [ clearFlash %tmp.20 120 36 46 const ];
-        %tmp.21 = invoke %tmp.17 %tmp.18(%tmp.20);
-        %tmp.22 = lgetv %durationMs;
-        symbol [ durationMs %tmp.22 120 49 59 ];
-        %tmp.23 = false;
-        invoke %tmp.15 %tmp.16(%tmp.21, %tmp.22, %tmp.23);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 121 8 ]
-        symbol [ WatchUi %tmp.24 121 8 15 ];
-        %tmp.24 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.25 121 16 29 ];
-        %tmp.25 = getv function %tmp.24 :requestUpdate;
-        invoke %tmp.24 %tmp.25();
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_116_41_122_4_stop:
-    }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 124; @symbol_functiondef = [clearFlash,124,13,23]; ]
-    function clearFlash() as Void {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_124_34_134_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 125 8 ]
-        symbol [ self %self 125 8 10 ];
-        %tmp.1 = null;
-        symbol [ statusFlash ? 125 11 22 ];
+        %tmp.1 = lgetv %kind;
+        symbol [ kind %tmp.1 119 25 29 ];
+        symbol [ statusFlash ? 119 11 22 ];
         putv self :statusFlash %tmp.1;
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 126 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_126_8_126_81_if_stmt:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 120 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_120_8_120_59_if_stmt:
         %tmp.2 = self;
-        symbol [ me %tmp.2 126 12 14 ];
-        symbol [ flashTimer %tmp.3 126 15 25 ];
+        symbol [ me %tmp.2 120 12 14 ];
+        symbol [ flashTimer %tmp.3 120 15 25 ];
         %tmp.3 = getv %tmp.2 :flashTimer;
         %tmp.4 = null;
         %tmp.5 = ne %tmp.3 %tmp.4;
-        bf %tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_126_8_126_81_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_126_8_126_81_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_126_35_126_81_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 126 37 ]
+        bf %tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_120_8_120_59_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_120_8_120_59_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_120_35_120_59_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 120 37 ]
         %tmp.6 = self;
-        symbol [ me %tmp.6 126 37 39 ];
-        symbol [ flashTimer %tmp.7 126 40 50 ];
+        symbol [ me %tmp.6 120 37 39 ];
+        symbol [ flashTimer %tmp.7 120 40 50 ];
         %tmp.7 = getv %tmp.6 :flashTimer;
         %tmp.8 = as %tmp.7 { (!Null) };
-        symbol [ stop %tmp.9 126 51 55 ];
+        symbol [ stop %tmp.9 120 51 55 ];
         %tmp.9 = getv function %tmp.8 :stop;
         invoke %tmp.8 %tmp.9();
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 126 59 ]
-        symbol [ self %self 126 59 61 ];
-        %tmp.10 = null;
-        symbol [ flashTimer ? 126 62 72 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_120_35_120_59_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_120_8_120_59_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_120_8_120_59_if_end:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 121 8 ]
+        symbol [ self %self 121 8 10 ];
+        symbol [ Timer %tmp.12 121 28 33 ];
+        %tmp.12 = getm $.Toybox.Timer;
+        symbol [ Timer %tmp.13 121 34 39 ];
+        %tmp.13 = getv function ? %tmp.12 :Timer;
+        %tmp.10 = newc %tmp.13 ();
+        symbol [ flashTimer ? 121 11 21 ];
         putv self :flashTimer %tmp.10;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_126_35_126_81_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_126_8_126_81_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_126_8_126_81_if_end:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 122 8 ]
+        %tmp.14 = self;
+        symbol [ me %tmp.14 122 8 10 ];
+        symbol [ flashTimer %tmp.15 122 11 21 ];
+        %tmp.15 = getv %tmp.14 :flashTimer;
+        symbol [ start %tmp.16 122 22 27 ];
+        %tmp.16 = getv function %tmp.15 :start;
+        %tmp.17 = self;
+        symbol [ method %tmp.18 122 28 34 ];
+        %tmp.18 = getv function %tmp.17 :method;
+        %tmp.20 = const :clearFlash;
+        symbol [ clearFlash %tmp.20 122 36 46 const ];
+        %tmp.21 = invoke %tmp.17 %tmp.18(%tmp.20);
+        %tmp.22 = lgetv %durationMs;
+        symbol [ durationMs %tmp.22 122 49 59 ];
+        %tmp.23 = false;
+        invoke %tmp.15 %tmp.16(%tmp.21, %tmp.22, %tmp.23);
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 123 8 ]
+        symbol [ WatchUi %tmp.24 123 8 15 ];
+        %tmp.24 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.25 123 16 29 ];
+        %tmp.25 = getv function %tmp.24 :requestUpdate;
+        invoke %tmp.24 %tmp.25();
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_118_41_124_4_stop:
+    }
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 126; @symbol_functiondef = [clearFlash,126,13,23]; ]
+    function clearFlash() as Void {
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_126_34_136_4_start:
 [ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 127 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_127_8_132_8_if_stmt:
+        symbol [ self %self 127 8 10 ];
+        %tmp.1 = null;
+        symbol [ statusFlash ? 127 11 22 ];
+        putv self :statusFlash %tmp.1;
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 128 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_128_8_128_81_if_stmt:
+        %tmp.2 = self;
+        symbol [ me %tmp.2 128 12 14 ];
+        symbol [ flashTimer %tmp.3 128 15 25 ];
+        %tmp.3 = getv %tmp.2 :flashTimer;
+        %tmp.4 = null;
+        %tmp.5 = ne %tmp.3 %tmp.4;
+        bf %tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_128_8_128_81_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_128_8_128_81_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_128_35_128_81_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 128 37 ]
+        %tmp.6 = self;
+        symbol [ me %tmp.6 128 37 39 ];
+        symbol [ flashTimer %tmp.7 128 40 50 ];
+        %tmp.7 = getv %tmp.6 :flashTimer;
+        %tmp.8 = as %tmp.7 { (!Null) };
+        symbol [ stop %tmp.9 128 51 55 ];
+        %tmp.9 = getv function %tmp.8 :stop;
+        invoke %tmp.8 %tmp.9();
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 128 59 ]
+        symbol [ self %self 128 59 61 ];
+        %tmp.10 = null;
+        symbol [ flashTimer ? 128 62 72 ];
+        putv self :flashTimer %tmp.10;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_128_35_128_81_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_128_8_128_81_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_128_8_128_81_if_end:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 129 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_129_8_134_8_if_stmt:
         %tmp.11 = self;
-        symbol [ me %tmp.11 127 12 14 ];
-        symbol [ afterFlashMenu %tmp.12 127 15 29 ];
+        symbol [ me %tmp.11 129 12 14 ];
+        symbol [ afterFlashMenu %tmp.12 129 15 29 ];
         %tmp.12 = getv %tmp.11 :afterFlashMenu;
-        bf %tmp.12 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_127_8_132_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_127_8_132_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_127_31_132_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 130 12 ]
-        symbol [ self %self 130 12 14 ];
+        bf %tmp.12 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_129_8_134_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_129_8_134_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_129_31_134_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 132 12 ]
+        symbol [ self %self 132 12 14 ];
         %tmp.13 = false;
-        symbol [ afterFlashMenu ? 130 15 29 ];
+        symbol [ afterFlashMenu ? 132 15 29 ];
         putv self :afterFlashMenu %tmp.13;
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 131 12 ]
-        symbol [ WatchUi %tmp.14 131 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 133 12 ]
+        symbol [ WatchUi %tmp.14 133 12 19 ];
         %tmp.14 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.15 131 20 28 ];
+        symbol [ pushView %tmp.15 133 20 28 ];
         %tmp.15 = getv function %tmp.14 :pushView;
-        symbol [ PauseMenu %tmp.19 131 33 42 ];
+        symbol [ PauseMenu %tmp.19 133 33 42 ];
         %tmp.19 = getv ? :PauseMenu;
         %tmp.16 = newc %tmp.19 ();
-        symbol [ PauseMenuDelegate %tmp.23 131 50 67 ];
+        symbol [ PauseMenuDelegate %tmp.23 133 50 67 ];
         %tmp.23 = getv ? :PauseMenuDelegate;
         %tmp.24 = self;
-        symbol [ me %tmp.24 131 68 70 ];
-        symbol [ app %tmp.25 131 71 74 ];
+        symbol [ me %tmp.24 133 68 70 ];
+        symbol [ app %tmp.25 133 71 74 ];
         %tmp.25 = getv %tmp.24 :app;
         %tmp.26 = self;
-        symbol [ me %tmp.26 131 76 78 ];
+        symbol [ me %tmp.26 133 76 78 ];
         %tmp.20 = newc %tmp.23 (%tmp.25, %tmp.26);
-        symbol [ WatchUi %tmp.27 131 81 88 ];
+        symbol [ WatchUi %tmp.27 133 81 88 ];
         %tmp.27 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_UP %tmp.28 131 89 97 ];
+        symbol [ SLIDE_UP %tmp.28 133 89 97 ];
         %tmp.28 = getv %tmp.27 :SLIDE_UP;
         invoke %tmp.14 %tmp.15(%tmp.16, %tmp.20, %tmp.28);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_127_31_132_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_127_8_132_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_127_8_132_8_if_end:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 133 8 ]
-        symbol [ WatchUi %tmp.29 133 8 15 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_129_31_134_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_129_8_134_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_129_8_134_8_if_end:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 135 8 ]
+        symbol [ WatchUi %tmp.29 135 8 15 ];
         %tmp.29 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.30 133 16 29 ];
+        symbol [ requestUpdate %tmp.30 135 16 29 ];
         %tmp.30 = getv function %tmp.29 :requestUpdate;
         invoke %tmp.29 %tmp.30();
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_124_34_134_4_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_126_34_136_4_stop:
     }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 136; @symbol_functiondef = [onUpdate,136,13,21]; @symbol_param<0> = [dc,136,22,24]; ]
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 138; @symbol_functiondef = [onUpdate,138,13,21]; @symbol_param<0> = [dc,138,22,24]; ]
     function onUpdate(dc) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_136_26_150_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 137 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_137_8_140_8_if_stmt:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_138_26_152_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 139 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_139_8_142_8_if_stmt:
         %tmp.1 = self;
-        symbol [ me %tmp.1 137 12 14 ];
-        symbol [ statusFlash %tmp.2 137 15 26 ];
+        symbol [ me %tmp.1 139 12 14 ];
+        symbol [ statusFlash %tmp.2 139 15 26 ];
         %tmp.2 = getv %tmp.1 :statusFlash;
         %tmp.3 = null;
         %tmp.4 = ne %tmp.2 %tmp.3;
-        bf %tmp.4 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_137_8_140_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_137_8_140_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_137_36_140_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 138 12 ]
+        bf %tmp.4 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_139_8_142_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_139_8_142_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_139_36_142_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 140 12 ]
         %tmp.5 = self;
-        symbol [ me %tmp.5 138 12 14 ];
-        symbol [ drawStatusFlash %tmp.6 138 15 30 ];
+        symbol [ me %tmp.5 140 12 14 ];
+        symbol [ drawStatusFlash %tmp.6 140 15 30 ];
         %tmp.6 = getv function %tmp.5 :drawStatusFlash;
         %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 138 31 33 ];
+        symbol [ dc %tmp.7 140 31 33 ];
         invoke %tmp.5 %tmp.6(%tmp.7);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 139 12 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 141 12 ]
         ret ?;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_137_36_140_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_137_8_140_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_137_8_140_8_if_end:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 141 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_139_36_142_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_139_8_142_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_139_8_142_8_if_end:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 143 8 ]
         %tmp.8 = lgetv %dc;
-        symbol [ dc %tmp.8 141 8 10 ];
-        symbol [ setColor %tmp.9 141 11 19 ];
+        symbol [ dc %tmp.8 143 8 10 ];
+        symbol [ setColor %tmp.9 143 11 19 ];
         %tmp.9 = getv function %tmp.8 :setColor;
-        symbol [ Graphics %tmp.10 141 20 28 ];
+        symbol [ Graphics %tmp.10 143 20 28 ];
         %tmp.10 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.11 141 29 40 ];
+        symbol [ COLOR_BLACK %tmp.11 143 29 40 ];
         %tmp.11 = getv %tmp.10 :COLOR_BLACK;
-        symbol [ Graphics %tmp.12 141 42 50 ];
+        symbol [ Graphics %tmp.12 143 42 50 ];
         %tmp.12 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.13 141 51 62 ];
+        symbol [ COLOR_WHITE %tmp.13 143 51 62 ];
         %tmp.13 = getv %tmp.12 :COLOR_WHITE;
         invoke %tmp.8 %tmp.9(%tmp.11, %tmp.13);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 142 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 144 8 ]
         %tmp.14 = lgetv %dc;
-        symbol [ dc %tmp.14 142 8 10 ];
-        symbol [ clear %tmp.15 142 11 16 ];
+        symbol [ dc %tmp.14 144 8 10 ];
+        symbol [ clear %tmp.15 144 11 16 ];
         %tmp.15 = getv function %tmp.14 :clear;
         invoke %tmp.14 %tmp.15();
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 143 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_143_8_149_8_if_stmt:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 145 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_8_151_8_if_stmt:
         %tmp.16 = self;
-        symbol [ me %tmp.16 143 12 14 ];
-        symbol [ screenIndex %tmp.17 143 15 26 ];
+        symbol [ me %tmp.16 145 12 14 ];
+        symbol [ screenIndex %tmp.17 145 15 26 ];
         %tmp.17 = getv %tmp.16 :screenIndex;
         %tmp.18 = 0;
         %tmp.19 = eq %tmp.17 %tmp.18;
-        bf %tmp.19 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_143_8_149_8_if_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_143_8_149_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_143_33_145_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 144 12 ]
+        bf %tmp.19 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_8_151_8_if_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_8_151_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_33_147_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 146 12 ]
         %tmp.20 = self;
-        symbol [ me %tmp.20 144 12 14 ];
-        symbol [ drawScreen1 %tmp.21 144 15 26 ];
+        symbol [ me %tmp.20 146 12 14 ];
+        symbol [ drawScreen1 %tmp.21 146 15 26 ];
         %tmp.21 = getv function %tmp.20 :drawScreen1;
         %tmp.22 = lgetv %dc;
-        symbol [ dc %tmp.22 144 27 29 ];
+        symbol [ dc %tmp.22 146 27 29 ];
         invoke %tmp.20 %tmp.21(%tmp.22);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_143_33_145_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_143_8_149_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_143_8_149_8_if_false:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 145 15 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_15_149_8_if_stmt:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_33_147_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_8_151_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_8_151_8_if_false:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 147 15 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_15_151_8_if_stmt:
         %tmp.23 = self;
-        symbol [ me %tmp.23 145 19 21 ];
-        symbol [ screenIndex %tmp.24 145 22 33 ];
+        symbol [ me %tmp.23 147 19 21 ];
+        symbol [ screenIndex %tmp.24 147 22 33 ];
         %tmp.24 = getv %tmp.23 :screenIndex;
         %tmp.25 = 1;
         %tmp.26 = eq %tmp.24 %tmp.25;
-        bf %tmp.26 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_15_149_8_if_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_15_149_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_40_147_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 146 12 ]
+        bf %tmp.26 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_15_151_8_if_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_15_151_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_40_149_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 148 12 ]
         %tmp.27 = self;
-        symbol [ me %tmp.27 146 12 14 ];
-        symbol [ drawScreen2 %tmp.28 146 15 26 ];
+        symbol [ me %tmp.27 148 12 14 ];
+        symbol [ drawScreen2 %tmp.28 148 15 26 ];
         %tmp.28 = getv function %tmp.27 :drawScreen2;
         %tmp.29 = lgetv %dc;
-        symbol [ dc %tmp.29 146 27 29 ];
+        symbol [ dc %tmp.29 148 27 29 ];
         invoke %tmp.27 %tmp.28(%tmp.29);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_40_147_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_15_149_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_15_149_8_if_else_false:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_15_149_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 148 12 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_40_149_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_15_151_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_15_151_8_if_else_false:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_149_15_151_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 150 12 ]
         %tmp.30 = self;
-        symbol [ me %tmp.30 148 12 14 ];
-        symbol [ drawScreen3 %tmp.31 148 15 26 ];
+        symbol [ me %tmp.30 150 12 14 ];
+        symbol [ drawScreen3 %tmp.31 150 15 26 ];
         %tmp.31 = getv function %tmp.30 :drawScreen3;
         %tmp.32 = lgetv %dc;
-        symbol [ dc %tmp.32 148 27 29 ];
+        symbol [ dc %tmp.32 150 27 29 ];
         invoke %tmp.30 %tmp.31(%tmp.32);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_15_149_8_stop:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_15_149_8_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_143_8_149_8_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_136_26_150_4_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_149_15_151_8_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_147_15_151_8_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_145_8_151_8_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_138_26_152_4_stop:
     }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 154; @symbol_functiondef = [drawStatusFlash,154,13,28]; @symbol_param<0> = [dc,154,29,31]; ]
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 156; @symbol_functiondef = [drawStatusFlash,156,13,28]; @symbol_param<0> = [dc,156,29,31]; ]
     function drawStatusFlash(dc) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 155 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_stop" ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 157 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_stop" ]
         %w.1 = local;
-        symbol [ w %w.1 155 12 13 ];
+        symbol [ w %w.1 157 12 13 ];
         %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 155 16 18 ];
-        symbol [ getWidth %tmp.2 155 19 27 ];
+        symbol [ dc %tmp.1 157 16 18 ];
+        symbol [ getWidth %tmp.2 157 19 27 ];
         %tmp.2 = getv function %tmp.1 :getWidth;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %w.1 %tmp.3;
-        symbol [ w %w.1 155 12 13 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 156 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_stop" ]
+        symbol [ w %w.1 157 12 13 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 158 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_stop" ]
         %h.2 = local;
-        symbol [ h %h.2 156 12 13 ];
+        symbol [ h %h.2 158 12 13 ];
         %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 156 16 18 ];
-        symbol [ getHeight %tmp.5 156 19 28 ];
+        symbol [ dc %tmp.4 158 16 18 ];
+        symbol [ getHeight %tmp.5 158 19 28 ];
         %tmp.5 = getv function %tmp.4 :getHeight;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         lputv %h.2 %tmp.6;
-        symbol [ h %h.2 156 12 13 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 157 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_stop" ]
+        symbol [ h %h.2 158 12 13 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 159 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_stop" ]
         %cx.3 = local;
-        symbol [ cx %cx.3 157 12 14 ];
+        symbol [ cx %cx.3 159 12 14 ];
         %tmp.7 = lgetv %w.1;
-        symbol [ w %tmp.7 157 17 18 ];
+        symbol [ w %tmp.7 159 17 18 ];
         %tmp.8 = 2;
         %tmp.9 = div %tmp.7 %tmp.8;
         lputv %cx.3 %tmp.9;
-        symbol [ cx %cx.3 157 12 14 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 158 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_stop" ]
+        symbol [ cx %cx.3 159 12 14 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 160 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_stop" ]
         %cy.4 = local;
-        symbol [ cy %cy.4 158 12 14 ];
+        symbol [ cy %cy.4 160 12 14 ];
         %tmp.10 = lgetv %h.2;
-        symbol [ h %tmp.10 158 17 18 ];
+        symbol [ h %tmp.10 160 17 18 ];
         %tmp.11 = 2;
         %tmp.12 = div %tmp.10 %tmp.11;
         lputv %cy.4 %tmp.12;
-        symbol [ cy %cy.4 158 12 14 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 159 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_stop" ]
+        symbol [ cy %cy.4 160 12 14 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 161 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_stop" ]
         %isStart.5 = local;
-        symbol [ isStart %isStart.5 159 12 19 ];
+        symbol [ isStart %isStart.5 161 12 19 ];
         %tmp.13 = self;
-        symbol [ me %tmp.13 159 23 25 ];
-        symbol [ statusFlash %tmp.14 159 26 37 ];
+        symbol [ me %tmp.13 161 23 25 ];
+        symbol [ statusFlash %tmp.14 161 26 37 ];
         %tmp.14 = getv %tmp.13 :statusFlash;
         %tmp.16 = const :start;
-        symbol [ start %tmp.16 159 42 47 const ];
+        symbol [ start %tmp.16 161 42 47 const ];
         %tmp.17 = eq %tmp.14 %tmp.16;
         lputv %isStart.5 %tmp.17;
-        symbol [ isStart %isStart.5 159 12 19 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 160 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_stop" ]
+        symbol [ isStart %isStart.5 161 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 162 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_stop" ]
         %color.6 = local;
-        symbol [ color %color.6 160 12 17 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_begin:
+        symbol [ color %color.6 162 12 17 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_begin:
         %tmp.18 = lgetv %isStart.5;
-        symbol [ isStart %tmp.18 160 20 27 ];
-        bf %tmp.18 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_true:
-        symbol [ Graphics %tmp.19 160 30 38 ];
+        symbol [ isStart %tmp.18 162 20 27 ];
+        bf %tmp.18 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_true:
+        symbol [ Graphics %tmp.19 162 30 38 ];
         %tmp.19 = getm $.Toybox.Graphics;
-        symbol [ COLOR_GREEN %tmp.20 160 39 50 ];
+        symbol [ COLOR_GREEN %tmp.20 162 39 50 ];
         %tmp.20 = getv %tmp.19 :COLOR_GREEN;
         push %tmp.20;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_else_false:
-        symbol [ Graphics %tmp.21 160 53 61 ];
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_else_false:
+        symbol [ Graphics %tmp.21 162 53 61 ];
         %tmp.21 = getm $.Toybox.Graphics;
-        symbol [ COLOR_RED %tmp.22 160 62 71 ];
+        symbol [ COLOR_RED %tmp.22 162 62 71 ];
         %tmp.22 = getv %tmp.21 :COLOR_RED;
         push %tmp.22;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_end:
-        %tmp.23 = phi [%tmp.18 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_begin] [%tmp.20 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_true] [%tmp.22 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_else_false] [%tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_160_20_160_62_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_end:
+        %tmp.23 = phi [%tmp.18 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_begin] [%tmp.20 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_true] [%tmp.22 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_else_false] [%tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_162_20_162_62_end];
         lputv %color.6 %tmp.23;
-        symbol [ color %color.6 160 12 17 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 162 8 ]
+        symbol [ color %color.6 162 12 17 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 164 8 ]
         %tmp.24 = lgetv %dc;
-        symbol [ dc %tmp.24 162 8 10 ];
-        symbol [ setColor %tmp.25 162 11 19 ];
+        symbol [ dc %tmp.24 164 8 10 ];
+        symbol [ setColor %tmp.25 164 11 19 ];
         %tmp.25 = getv function %tmp.24 :setColor;
-        symbol [ Graphics %tmp.26 162 20 28 ];
+        symbol [ Graphics %tmp.26 164 20 28 ];
         %tmp.26 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.27 162 29 40 ];
+        symbol [ COLOR_BLACK %tmp.27 164 29 40 ];
         %tmp.27 = getv %tmp.26 :COLOR_BLACK;
-        symbol [ Graphics %tmp.28 162 42 50 ];
+        symbol [ Graphics %tmp.28 164 42 50 ];
         %tmp.28 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.29 162 51 62 ];
+        symbol [ COLOR_BLACK %tmp.29 164 51 62 ];
         %tmp.29 = getv %tmp.28 :COLOR_BLACK;
         invoke %tmp.24 %tmp.25(%tmp.27, %tmp.29);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 163 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 165 8 ]
         %tmp.30 = lgetv %dc;
-        symbol [ dc %tmp.30 163 8 10 ];
-        symbol [ clear %tmp.31 163 11 16 ];
+        symbol [ dc %tmp.30 165 8 10 ];
+        symbol [ clear %tmp.31 165 11 16 ];
         %tmp.31 = getv function %tmp.30 :clear;
         invoke %tmp.30 %tmp.31();
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 166 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 168 8 ]
         %tmp.32 = lgetv %dc;
-        symbol [ dc %tmp.32 166 8 10 ];
-        symbol [ setColor %tmp.33 166 11 19 ];
+        symbol [ dc %tmp.32 168 8 10 ];
+        symbol [ setColor %tmp.33 168 11 19 ];
         %tmp.33 = getv function %tmp.32 :setColor;
         %tmp.34 = lgetv %color.6;
-        symbol [ color %tmp.34 166 20 25 ];
-        symbol [ Graphics %tmp.35 166 27 35 ];
+        symbol [ color %tmp.34 168 20 25 ];
+        symbol [ Graphics %tmp.35 168 27 35 ];
         %tmp.35 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.36 166 36 47 ];
+        symbol [ COLOR_BLACK %tmp.36 168 36 47 ];
         %tmp.36 = getv %tmp.35 :COLOR_BLACK;
         invoke %tmp.32 %tmp.33(%tmp.34, %tmp.36);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 167 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 169 8 ]
         %tmp.37 = lgetv %dc;
-        symbol [ dc %tmp.37 167 8 10 ];
-        symbol [ setPenWidth %tmp.38 167 11 22 ];
+        symbol [ dc %tmp.37 169 8 10 ];
+        symbol [ setPenWidth %tmp.38 169 11 22 ];
         %tmp.38 = getv function %tmp.37 :setPenWidth;
         %tmp.39 = 9;
         invoke %tmp.37 %tmp.38(%tmp.39);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 168 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 170 8 ]
         %tmp.40 = lgetv %dc;
-        symbol [ dc %tmp.40 168 8 10 ];
-        symbol [ drawCircle %tmp.41 168 11 21 ];
+        symbol [ dc %tmp.40 170 8 10 ];
+        symbol [ drawCircle %tmp.41 170 11 21 ];
         %tmp.41 = getv function %tmp.40 :drawCircle;
         %tmp.42 = lgetv %cx.3;
-        symbol [ cx %tmp.42 168 22 24 ];
+        symbol [ cx %tmp.42 170 22 24 ];
         %tmp.43 = lgetv %cy.4;
-        symbol [ cy %tmp.43 168 26 28 ];
+        symbol [ cy %tmp.43 170 26 28 ];
         %tmp.44 = lgetv %w.1;
-        symbol [ w %tmp.44 168 31 32 ];
+        symbol [ w %tmp.44 170 31 32 ];
         %tmp.45 = 2;
         %tmp.46 = div %tmp.44 %tmp.45;
         %tmp.47 = 6;
         %tmp.48 = sub %tmp.46 %tmp.47;
         invoke %tmp.40 %tmp.41(%tmp.42, %tmp.43, %tmp.48);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 169 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 171 8 ]
         %tmp.49 = lgetv %dc;
-        symbol [ dc %tmp.49 169 8 10 ];
-        symbol [ setPenWidth %tmp.50 169 11 22 ];
+        symbol [ dc %tmp.49 171 8 10 ];
+        symbol [ setPenWidth %tmp.50 171 11 22 ];
         %tmp.50 = getv function %tmp.49 :setPenWidth;
         %tmp.51 = 1;
         invoke %tmp.49 %tmp.50(%tmp.51);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 172 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_8_178_8_if_stmt:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 174 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_8_180_8_if_stmt:
         %tmp.52 = lgetv %isStart.5;
-        symbol [ isStart %tmp.52 172 12 19 ];
-        bf %tmp.52 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_8_178_8_if_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_8_178_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_21_175_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 173 12 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_21_175_8_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_21_175_8_stop" ]
+        symbol [ isStart %tmp.52 174 12 19 ];
+        bf %tmp.52 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_8_180_8_if_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_8_180_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_21_177_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 175 12 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_21_177_8_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_21_177_8_stop" ]
         %t.7 = local;
-        symbol [ t %t.7 173 16 17 ];
+        symbol [ t %t.7 175 16 17 ];
         %tmp.53 = lgetv %h.2;
-        symbol [ h %tmp.53 173 20 21 ];
+        symbol [ h %tmp.53 175 20 21 ];
         %tmp.54 = 14;
         %tmp.55 = mul %tmp.53 %tmp.54;
         %tmp.56 = 100;
         %tmp.57 = div %tmp.55 %tmp.56;
         lputv %t.7 %tmp.57;
-        symbol [ t %t.7 173 16 17 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 174 12 ]
+        symbol [ t %t.7 175 16 17 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 176 12 ]
         %tmp.58 = lgetv %dc;
-        symbol [ dc %tmp.58 174 12 14 ];
-        symbol [ fillPolygon %tmp.59 174 15 26 ];
+        symbol [ dc %tmp.58 176 12 14 ];
+        symbol [ fillPolygon %tmp.59 176 15 26 ];
         %tmp.59 = getv function %tmp.58 :fillPolygon;
         %tmp.60 = newa 3;
         %tmp.61 = newa 2;
         %tmp.62 = lgetv %cx.3;
-        symbol [ cx %tmp.62 174 29 31 ];
+        symbol [ cx %tmp.62 176 29 31 ];
         %tmp.63 = lgetv %t.7;
-        symbol [ t %tmp.63 174 34 35 ];
+        symbol [ t %tmp.63 176 34 35 ];
         %tmp.64 = 2;
         %tmp.65 = div %tmp.63 %tmp.64;
         %tmp.66 = sub %tmp.62 %tmp.65;
         %tmp.67 = dup %tmp.61;
         %tmp.68 = aputv %tmp.67 0 %tmp.66;
         %tmp.69 = lgetv %cy.4;
-        symbol [ cy %tmp.69 174 41 43 ];
+        symbol [ cy %tmp.69 176 41 43 ];
         %tmp.70 = lgetv %t.7;
-        symbol [ t %tmp.70 174 46 47 ];
+        symbol [ t %tmp.70 176 46 47 ];
         %tmp.71 = sub %tmp.69 %tmp.70;
         %tmp.72 = dup %tmp.68;
         %tmp.73 = aputv %tmp.72 1 %tmp.71;
@@ -1098,18 +1108,18 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_21_
         %tmp.75 = aputv %tmp.74 0 %tmp.73;
         %tmp.76 = newa 2;
         %tmp.77 = lgetv %cx.3;
-        symbol [ cx %tmp.77 174 51 53 ];
+        symbol [ cx %tmp.77 176 51 53 ];
         %tmp.78 = lgetv %t.7;
-        symbol [ t %tmp.78 174 56 57 ];
+        symbol [ t %tmp.78 176 56 57 ];
         %tmp.79 = 2;
         %tmp.80 = div %tmp.78 %tmp.79;
         %tmp.81 = sub %tmp.77 %tmp.80;
         %tmp.82 = dup %tmp.76;
         %tmp.83 = aputv %tmp.82 0 %tmp.81;
         %tmp.84 = lgetv %cy.4;
-        symbol [ cy %tmp.84 174 63 65 ];
+        symbol [ cy %tmp.84 176 63 65 ];
         %tmp.85 = lgetv %t.7;
-        symbol [ t %tmp.85 174 68 69 ];
+        symbol [ t %tmp.85 176 68 69 ];
         %tmp.86 = add %tmp.84 %tmp.85;
         %tmp.87 = dup %tmp.83;
         %tmp.88 = aputv %tmp.87 1 %tmp.86;
@@ -1117,1156 +1127,1156 @@ C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_21_
         %tmp.90 = aputv %tmp.89 1 %tmp.88;
         %tmp.91 = newa 2;
         %tmp.92 = lgetv %cx.3;
-        symbol [ cx %tmp.92 174 73 75 ];
+        symbol [ cx %tmp.92 176 73 75 ];
         %tmp.93 = lgetv %t.7;
-        symbol [ t %tmp.93 174 78 79 ];
+        symbol [ t %tmp.93 176 78 79 ];
         %tmp.94 = add %tmp.92 %tmp.93;
         %tmp.95 = dup %tmp.91;
         %tmp.96 = aputv %tmp.95 0 %tmp.94;
         %tmp.97 = lgetv %cy.4;
-        symbol [ cy %tmp.97 174 81 83 ];
+        symbol [ cy %tmp.97 176 81 83 ];
         %tmp.98 = dup %tmp.96;
         %tmp.99 = aputv %tmp.98 1 %tmp.97;
         %tmp.100 = dup %tmp.90;
         %tmp.101 = aputv %tmp.100 2 %tmp.99;
         invoke %tmp.58 %tmp.59(%tmp.101);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_21_175_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_8_178_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_8_178_8_if_else_false:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_175_15_178_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 176 12 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_175_15_178_8_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_175_15_178_8_stop" ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_21_177_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_8_180_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_8_180_8_if_else_false:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_177_15_180_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 178 12 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_177_15_180_8_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_177_15_180_8_stop" ]
         %s.8 = local;
-        symbol [ s %s.8 176 16 17 ];
+        symbol [ s %s.8 178 16 17 ];
         %tmp.102 = lgetv %h.2;
-        symbol [ h %tmp.102 176 20 21 ];
+        symbol [ h %tmp.102 178 20 21 ];
         %tmp.103 = 13;
         %tmp.104 = mul %tmp.102 %tmp.103;
         %tmp.105 = 100;
         %tmp.106 = div %tmp.104 %tmp.105;
         lputv %s.8 %tmp.106;
-        symbol [ s %s.8 176 16 17 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 177 12 ]
+        symbol [ s %s.8 178 16 17 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 179 12 ]
         %tmp.107 = lgetv %dc;
-        symbol [ dc %tmp.107 177 12 14 ];
-        symbol [ fillRectangle %tmp.108 177 15 28 ];
+        symbol [ dc %tmp.107 179 12 14 ];
+        symbol [ fillRectangle %tmp.108 179 15 28 ];
         %tmp.108 = getv function %tmp.107 :fillRectangle;
         %tmp.109 = lgetv %cx.3;
-        symbol [ cx %tmp.109 177 29 31 ];
+        symbol [ cx %tmp.109 179 29 31 ];
         %tmp.110 = lgetv %s.8;
-        symbol [ s %tmp.110 177 34 35 ];
+        symbol [ s %tmp.110 179 34 35 ];
         %tmp.111 = sub %tmp.109 %tmp.110;
         %tmp.112 = lgetv %cy.4;
-        symbol [ cy %tmp.112 177 37 39 ];
+        symbol [ cy %tmp.112 179 37 39 ];
         %tmp.113 = lgetv %s.8;
-        symbol [ s %tmp.113 177 42 43 ];
+        symbol [ s %tmp.113 179 42 43 ];
         %tmp.114 = sub %tmp.112 %tmp.113;
         %tmp.115 = 2;
         %tmp.116 = lgetv %s.8;
-        symbol [ s %tmp.116 177 49 50 ];
+        symbol [ s %tmp.116 179 49 50 ];
         %tmp.117 = mul %tmp.115 %tmp.116;
         %tmp.118 = 2;
         %tmp.119 = lgetv %s.8;
-        symbol [ s %tmp.119 177 56 57 ];
+        symbol [ s %tmp.119 179 56 57 ];
         %tmp.120 = mul %tmp.118 %tmp.119;
         invoke %tmp.107 %tmp.108(%tmp.111, %tmp.114, %tmp.117, %tmp.120);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_175_15_178_8_stop:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_172_8_178_8_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_154_33_179_4_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_177_15_180_8_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_174_8_180_8_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_156_33_181_4_stop:
     }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 181; @symbol_functiondef = [drawScreen1,181,13,24]; @symbol_param<0> = [dc,181,25,27]; ]
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 183; @symbol_functiondef = [drawScreen1,183,13,24]; @symbol_param<0> = [dc,183,25,27]; ]
     function drawScreen1(dc) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 182 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_stop" ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 184 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_stop" ]
         %minAbs.1 = local;
-        symbol [ minAbs %minAbs.1 182 12 18 ];
+        symbol [ minAbs %minAbs.1 184 12 18 ];
         %tmp.1 = self;
-        symbol [ me %tmp.1 182 21 23 ];
-        symbol [ app %tmp.2 182 24 27 ];
+        symbol [ me %tmp.1 184 21 23 ];
+        symbol [ app %tmp.2 184 24 27 ];
         %tmp.2 = getv %tmp.1 :app;
-        symbol [ minAbsVmg %tmp.3 182 28 37 ];
+        symbol [ minAbsVmg %tmp.3 184 28 37 ];
         %tmp.3 = getv %tmp.2 :minAbsVmg;
         lputv %minAbs.1 %tmp.3;
-        symbol [ minAbs %minAbs.1 182 12 18 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 183 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_stop" ]
+        symbol [ minAbs %minAbs.1 184 12 18 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 185 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_stop" ]
         %displayV.2 = local;
-        symbol [ displayV %displayV.2 183 12 20 ];
+        symbol [ displayV %displayV.2 185 12 20 ];
         %tmp.4 = null;
         lputv %displayV.2 %tmp.4;
-        symbol [ displayV %displayV.2 183 12 20 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 184 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_stop" ]
+        symbol [ displayV %displayV.2 185 12 20 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 186 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_stop" ]
         %frozen.3 = local;
-        symbol [ frozen %frozen.3 184 12 18 ];
+        symbol [ frozen %frozen.3 186 12 18 ];
         %tmp.5 = false;
         lputv %frozen.3 %tmp.5;
-        symbol [ frozen %frozen.3 184 12 18 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 186 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_8_191_8_if_stmt:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_12_186_72_begin:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_12_186_47_begin:
+        symbol [ frozen %frozen.3 186 12 18 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 188 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_8_193_8_if_stmt:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_12_188_72_begin:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_12_188_47_begin:
         %tmp.6 = self;
-        symbol [ me %tmp.6 186 12 14 ];
-        symbol [ lastVmg %tmp.7 186 15 22 ];
+        symbol [ me %tmp.6 188 12 14 ];
+        symbol [ lastVmg %tmp.7 188 15 22 ];
         %tmp.7 = getv %tmp.6 :lastVmg;
         %tmp.8 = null;
         %tmp.9 = ne %tmp.7 %tmp.8;
-        bf %tmp.9 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_8_191_8_if_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_34_186_47_true:
+        bf %tmp.9 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_8_193_8_if_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_34_188_47_true:
         %tmp.10 = self;
-        symbol [ me %tmp.10 186 34 36 ];
-        symbol [ lastVmg %tmp.11 186 37 44 ];
+        symbol [ me %tmp.10 188 34 36 ];
+        symbol [ lastVmg %tmp.11 188 37 44 ];
         %tmp.11 = getv %tmp.10 :lastVmg;
         %tmp.12 = as %tmp.11 { (!Null) };
         %tmp.13 = 0;
         %tmp.14 = gt %tmp.12 %tmp.13;
         push %tmp.14;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_34_186_47_end:
-        %tmp.15 = phi [%tmp.9 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_12_186_47_begin] [%tmp.14 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_34_186_47_true] [%tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_34_186_47_end];
-        bf %tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_8_191_8_if_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_52_186_72_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_34_188_47_end:
+        %tmp.15 = phi [%tmp.9 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_12_188_47_begin] [%tmp.14 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_34_188_47_true] [%tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_34_188_47_end];
+        bf %tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_8_193_8_if_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_52_188_72_true:
         %tmp.16 = self;
-        symbol [ me %tmp.16 186 52 54 ];
-        symbol [ lastVmg %tmp.17 186 55 62 ];
+        symbol [ me %tmp.16 188 52 54 ];
+        symbol [ lastVmg %tmp.17 188 55 62 ];
         %tmp.17 = getv %tmp.16 :lastVmg;
         %tmp.18 = as %tmp.17 { (!Null) };
-        symbol [ abs %tmp.19 186 63 66 ];
+        symbol [ abs %tmp.19 188 63 66 ];
         %tmp.19 = getv function %tmp.18 :abs;
         %tmp.20 = invoke %tmp.18 %tmp.19();
         %tmp.21 = lgetv %minAbs.1;
-        symbol [ minAbs %tmp.21 186 72 78 ];
+        symbol [ minAbs %tmp.21 188 72 78 ];
         %tmp.22 = gte %tmp.20 %tmp.21;
         push %tmp.22;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_52_186_72_end:
-        %tmp.23 = phi [%tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_12_186_72_begin] [%tmp.22 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_52_186_72_true] [%tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_52_186_72_end];
-        bf %tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_8_191_8_if_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_8_191_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_80_188_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 187 12 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_52_188_72_end:
+        %tmp.23 = phi [%tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_12_188_72_begin] [%tmp.22 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_52_188_72_true] [%tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_52_188_72_end];
+        bf %tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_8_193_8_if_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_8_193_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_80_190_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 189 12 ]
         %tmp.24 = self;
-        symbol [ me %tmp.24 187 23 25 ];
-        symbol [ lastVmg %tmp.25 187 26 33 ];
+        symbol [ me %tmp.24 189 23 25 ];
+        symbol [ lastVmg %tmp.25 189 26 33 ];
         %tmp.25 = getv %tmp.24 :lastVmg;
         lputv %displayV.2 %tmp.25;
-        symbol [ displayV %displayV.2 187 12 20 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_80_188_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_8_191_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_8_191_8_if_else_false:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_15_191_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 189 12 ]
+        symbol [ displayV %displayV.2 189 12 20 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_80_190_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_8_193_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_8_193_8_if_else_false:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_190_15_193_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 191 12 ]
         %tmp.26 = self;
-        symbol [ me %tmp.26 189 23 25 ];
-        symbol [ app %tmp.27 189 26 29 ];
+        symbol [ me %tmp.26 191 23 25 ];
+        symbol [ app %tmp.27 191 26 29 ];
         %tmp.27 = getv %tmp.26 :app;
-        symbol [ model %tmp.28 189 30 35 ];
+        symbol [ model %tmp.28 191 30 35 ];
         %tmp.28 = getv %tmp.27 :model;
-        symbol [ getLastPositive %tmp.29 189 36 51 ];
+        symbol [ getLastPositive %tmp.29 191 36 51 ];
         %tmp.29 = getv function %tmp.28 :getLastPositive;
         %tmp.30 = invoke %tmp.28 %tmp.29();
         lputv %displayV.2 %tmp.30;
-        symbol [ displayV %displayV.2 189 12 20 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 190 12 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_190_12_190_51_if_stmt:
+        symbol [ displayV %displayV.2 191 12 20 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 192 12 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_192_12_192_51_if_stmt:
         %tmp.31 = lgetv %displayV.2;
-        symbol [ displayV %tmp.31 190 16 24 ];
+        symbol [ displayV %tmp.31 192 16 24 ];
         %tmp.32 = null;
         %tmp.33 = ne %tmp.31 %tmp.32;
-        bf %tmp.33 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_190_12_190_51_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_190_12_190_51_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_190_34_190_51_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 190 36 ]
+        bf %tmp.33 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_192_12_192_51_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_192_12_192_51_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_192_34_192_51_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 192 36 ]
         %tmp.34 = true;
         lputv %frozen.3 %tmp.34;
-        symbol [ frozen %frozen.3 190 36 42 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_190_34_190_51_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_190_12_190_51_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_190_12_190_51_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_15_191_8_stop:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_186_8_191_8_if_end:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 193 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_stop" ]
+        symbol [ frozen %frozen.3 192 36 42 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_192_34_192_51_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_192_12_192_51_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_192_12_192_51_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_190_15_193_8_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_188_8_193_8_if_end:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 195 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_stop" ]
         %vmgText.4 = local;
-        symbol [ vmgText %vmgText.4 193 12 19 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_begin:
+        symbol [ vmgText %vmgText.4 195 12 19 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_begin:
         %tmp.35 = lgetv %displayV.2;
-        symbol [ displayV %tmp.35 193 23 31 ];
+        symbol [ displayV %tmp.35 195 23 31 ];
         %tmp.36 = null;
         %tmp.37 = eq %tmp.35 %tmp.36;
-        bf %tmp.37 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_true:
+        bf %tmp.37 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_true:
         %tmp.38 = "--";
         push %tmp.38;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_else_false:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_else_false:
         %tmp.39 = lgetv %displayV.2;
-        symbol [ displayV %tmp.39 193 50 58 ];
+        symbol [ displayV %tmp.39 195 50 58 ];
         %tmp.40 = as %tmp.39 { (!Null) };
-        symbol [ format %tmp.41 193 59 65 ];
+        symbol [ format %tmp.41 195 59 65 ];
         %tmp.41 = getv function %tmp.40 :format;
         %tmp.42 = "%.2f";
         %tmp.43 = invoke %tmp.40 %tmp.41(%tmp.42);
         push %tmp.43;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_end:
-        %tmp.44 = phi [%tmp.37 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_begin] [%tmp.38 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_true] [%tmp.43 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_else_false] [%tmp.44 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_193_22_193_72_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_end:
+        %tmp.44 = phi [%tmp.37 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_begin] [%tmp.38 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_true] [%tmp.43 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_else_false] [%tmp.44 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_195_22_195_72_end];
         lputv %vmgText.4 %tmp.44;
-        symbol [ vmgText %vmgText.4 193 12 19 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 195 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_stop" ]
+        symbol [ vmgText %vmgText.4 195 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 197 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_stop" ]
         %avgSecs.5 = local;
-        symbol [ avgSecs %avgSecs.5 195 12 19 ];
+        symbol [ avgSecs %avgSecs.5 197 12 19 ];
         %tmp.45 = self;
-        symbol [ me %tmp.45 195 22 24 ];
-        symbol [ app %tmp.46 195 25 28 ];
+        symbol [ me %tmp.45 197 22 24 ];
+        symbol [ app %tmp.46 197 25 28 ];
         %tmp.46 = getv %tmp.45 :app;
-        symbol [ model %tmp.47 195 29 34 ];
+        symbol [ model %tmp.47 197 29 34 ];
         %tmp.47 = getv %tmp.46 :model;
-        symbol [ avgPositiveSecs %tmp.48 195 35 50 ];
+        symbol [ avgPositiveSecs %tmp.48 197 35 50 ];
         %tmp.48 = getv function %tmp.47 :avgPositiveSecs;
         %tmp.49 = self;
-        symbol [ me %tmp.49 195 51 53 ];
-        symbol [ app %tmp.50 195 54 57 ];
+        symbol [ me %tmp.49 197 51 53 ];
+        symbol [ app %tmp.50 197 54 57 ];
         %tmp.50 = getv %tmp.49 :app;
-        symbol [ avgLastSeconds %tmp.51 195 58 72 ];
+        symbol [ avgLastSeconds %tmp.51 197 58 72 ];
         %tmp.51 = getv %tmp.50 :avgLastSeconds;
         %tmp.52 = invoke %tmp.47 %tmp.48(%tmp.51);
         lputv %avgSecs.5 %tmp.52;
-        symbol [ avgSecs %avgSecs.5 195 12 19 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 196 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_stop" ]
+        symbol [ avgSecs %avgSecs.5 197 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 198 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_stop" ]
         %avgMins.6 = local;
-        symbol [ avgMins %avgMins.6 196 12 19 ];
+        symbol [ avgMins %avgMins.6 198 12 19 ];
         %tmp.53 = self;
-        symbol [ me %tmp.53 196 22 24 ];
-        symbol [ app %tmp.54 196 25 28 ];
+        symbol [ me %tmp.53 198 22 24 ];
+        symbol [ app %tmp.54 198 25 28 ];
         %tmp.54 = getv %tmp.53 :app;
-        symbol [ model %tmp.55 196 29 34 ];
+        symbol [ model %tmp.55 198 29 34 ];
         %tmp.55 = getv %tmp.54 :model;
-        symbol [ avgPositiveMins %tmp.56 196 35 50 ];
+        symbol [ avgPositiveMins %tmp.56 198 35 50 ];
         %tmp.56 = getv function %tmp.55 :avgPositiveMins;
         %tmp.57 = self;
-        symbol [ me %tmp.57 196 51 53 ];
-        symbol [ app %tmp.58 196 54 57 ];
+        symbol [ me %tmp.57 198 51 53 ];
+        symbol [ app %tmp.58 198 54 57 ];
         %tmp.58 = getv %tmp.57 :app;
-        symbol [ avgLastMinutes %tmp.59 196 58 72 ];
+        symbol [ avgLastMinutes %tmp.59 198 58 72 ];
         %tmp.59 = getv %tmp.58 :avgLastMinutes;
         %tmp.60 = invoke %tmp.55 %tmp.56(%tmp.59);
         lputv %avgMins.6 %tmp.60;
-        symbol [ avgMins %avgMins.6 196 12 19 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 197 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_stop" ]
+        symbol [ avgMins %avgMins.6 198 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 199 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_stop" ]
         %avgSecsText.7 = local;
-        symbol [ avgSecsText %avgSecsText.7 197 12 23 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_begin:
+        symbol [ avgSecsText %avgSecsText.7 199 12 23 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_begin:
         %tmp.61 = lgetv %avgSecs.5;
-        symbol [ avgSecs %tmp.61 197 27 34 ];
+        symbol [ avgSecs %tmp.61 199 27 34 ];
         %tmp.62 = null;
         %tmp.63 = eq %tmp.61 %tmp.62;
-        bf %tmp.63 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_true:
+        bf %tmp.63 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_true:
         %tmp.64 = "--";
         push %tmp.64;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_else_false:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_else_false:
         %tmp.65 = lgetv %avgSecs.5;
-        symbol [ avgSecs %tmp.65 197 53 60 ];
+        symbol [ avgSecs %tmp.65 199 53 60 ];
         %tmp.66 = as %tmp.65 { (!Null) };
-        symbol [ format %tmp.67 197 61 67 ];
+        symbol [ format %tmp.67 199 61 67 ];
         %tmp.67 = getv function %tmp.66 :format;
         %tmp.68 = "%.2f";
         %tmp.69 = invoke %tmp.66 %tmp.67(%tmp.68);
         push %tmp.69;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_end:
-        %tmp.70 = phi [%tmp.63 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_begin] [%tmp.64 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_true] [%tmp.69 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_else_false] [%tmp.70 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_197_26_197_74_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_end:
+        %tmp.70 = phi [%tmp.63 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_begin] [%tmp.64 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_true] [%tmp.69 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_else_false] [%tmp.70 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_199_26_199_74_end];
         lputv %avgSecsText.7 %tmp.70;
-        symbol [ avgSecsText %avgSecsText.7 197 12 23 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 198 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_stop" ]
+        symbol [ avgSecsText %avgSecsText.7 199 12 23 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 200 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_stop" ]
         %avgMinsText.8 = local;
-        symbol [ avgMinsText %avgMinsText.8 198 12 23 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_begin:
+        symbol [ avgMinsText %avgMinsText.8 200 12 23 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_begin:
         %tmp.71 = lgetv %avgMins.6;
-        symbol [ avgMins %tmp.71 198 27 34 ];
+        symbol [ avgMins %tmp.71 200 27 34 ];
         %tmp.72 = null;
         %tmp.73 = eq %tmp.71 %tmp.72;
-        bf %tmp.73 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_true:
+        bf %tmp.73 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_true:
         %tmp.74 = "--";
         push %tmp.74;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_else_false:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_else_false:
         %tmp.75 = lgetv %avgMins.6;
-        symbol [ avgMins %tmp.75 198 53 60 ];
+        symbol [ avgMins %tmp.75 200 53 60 ];
         %tmp.76 = as %tmp.75 { (!Null) };
-        symbol [ format %tmp.77 198 61 67 ];
+        symbol [ format %tmp.77 200 61 67 ];
         %tmp.77 = getv function %tmp.76 :format;
         %tmp.78 = "%.2f";
         %tmp.79 = invoke %tmp.76 %tmp.77(%tmp.78);
         push %tmp.79;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_end:
-        %tmp.80 = phi [%tmp.73 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_begin] [%tmp.74 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_true] [%tmp.79 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_else_false] [%tmp.80 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_198_26_198_74_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_end:
+        %tmp.80 = phi [%tmp.73 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_begin] [%tmp.74 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_true] [%tmp.79 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_else_false] [%tmp.80 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_200_26_200_74_end];
         lputv %avgMinsText.8 %tmp.80;
-        symbol [ avgMinsText %avgMinsText.8 198 12 23 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 200 8 ]
+        symbol [ avgMinsText %avgMinsText.8 200 12 23 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 202 8 ]
         %tmp.81 = self;
-        symbol [ me %tmp.81 200 8 10 ];
-        symbol [ drawGrid %tmp.82 200 11 19 ];
+        symbol [ me %tmp.81 202 8 10 ];
+        symbol [ drawGrid %tmp.82 202 11 19 ];
         %tmp.82 = getv function %tmp.81 :drawGrid;
         %tmp.83 = lgetv %dc;
-        symbol [ dc %tmp.83 200 20 22 ];
+        symbol [ dc %tmp.83 202 20 22 ];
         %tmp.84 = "VMG";
         %tmp.85 = lgetv %vmgText.4;
-        symbol [ vmgText %tmp.85 200 31 38 ];
+        symbol [ vmgText %tmp.85 202 31 38 ];
         %tmp.86 = lgetv %frozen.3;
-        symbol [ frozen %tmp.86 200 40 46 ];
+        symbol [ frozen %tmp.86 202 40 46 ];
         %tmp.87 = "AVG VMG Secs";
         %tmp.88 = "AVG VMG Mins";
         %tmp.89 = lgetv %avgSecsText.7;
-        symbol [ avgSecsText %tmp.89 201 20 31 ];
+        symbol [ avgSecsText %tmp.89 203 20 31 ];
         %tmp.90 = lgetv %avgMinsText.8;
-        symbol [ avgMinsText %tmp.90 201 33 44 ];
+        symbol [ avgMinsText %tmp.90 203 33 44 ];
         %tmp.91 = "TWD ";
         %tmp.92 = self;
-        symbol [ me %tmp.92 201 55 57 ];
-        symbol [ app %tmp.93 201 58 61 ];
+        symbol [ me %tmp.92 203 55 57 ];
+        symbol [ app %tmp.93 203 58 61 ];
         %tmp.93 = getv %tmp.92 :app;
-        symbol [ twd %tmp.94 201 62 65 ];
+        symbol [ twd %tmp.94 203 62 65 ];
         %tmp.94 = getv %tmp.93 :twd;
-        symbol [ format %tmp.95 201 66 72 ];
+        symbol [ format %tmp.95 203 66 72 ];
         %tmp.95 = getv function %tmp.94 :format;
         %tmp.96 = "%03d";
         %tmp.97 = invoke %tmp.94 %tmp.95(%tmp.96);
         %tmp.98 = add %tmp.91 %tmp.97;
         invoke %tmp.81 %tmp.82(%tmp.83, %tmp.84, %tmp.85, %tmp.86, %tmp.87, %tmp.88, %tmp.89, %tmp.90, %tmp.98);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_181_29_202_4_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_183_29_204_4_stop:
     }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 204; @symbol_functiondef = [drawScreen2,204,13,24]; @symbol_param<0> = [dc,204,25,27]; ]
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 206; @symbol_functiondef = [drawScreen2,206,13,24]; @symbol_param<0> = [dc,206,25,27]; ]
     function drawScreen2(dc) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 205 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_stop" ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 207 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_stop" ]
         %minAbs.1 = local;
-        symbol [ minAbs %minAbs.1 205 12 18 ];
+        symbol [ minAbs %minAbs.1 207 12 18 ];
         %tmp.1 = self;
-        symbol [ me %tmp.1 205 21 23 ];
-        symbol [ app %tmp.2 205 24 27 ];
+        symbol [ me %tmp.1 207 21 23 ];
+        symbol [ app %tmp.2 207 24 27 ];
         %tmp.2 = getv %tmp.1 :app;
-        symbol [ minAbsVmg %tmp.3 205 28 37 ];
+        symbol [ minAbsVmg %tmp.3 207 28 37 ];
         %tmp.3 = getv %tmp.2 :minAbsVmg;
         lputv %minAbs.1 %tmp.3;
-        symbol [ minAbs %minAbs.1 205 12 18 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 206 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_stop" ]
+        symbol [ minAbs %minAbs.1 207 12 18 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 208 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_stop" ]
         %displayV.2 = local;
-        symbol [ displayV %displayV.2 206 12 20 ];
+        symbol [ displayV %displayV.2 208 12 20 ];
         %tmp.4 = null;
         lputv %displayV.2 %tmp.4;
-        symbol [ displayV %displayV.2 206 12 20 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 207 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_stop" ]
+        symbol [ displayV %displayV.2 208 12 20 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 209 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_stop" ]
         %frozen.3 = local;
-        symbol [ frozen %frozen.3 207 12 18 ];
+        symbol [ frozen %frozen.3 209 12 18 ];
         %tmp.5 = false;
         lputv %frozen.3 %tmp.5;
-        symbol [ frozen %frozen.3 207 12 18 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 209 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_8_214_8_if_stmt:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_12_209_72_begin:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_12_209_47_begin:
+        symbol [ frozen %frozen.3 209 12 18 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 211 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_8_216_8_if_stmt:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_12_211_72_begin:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_12_211_47_begin:
         %tmp.6 = self;
-        symbol [ me %tmp.6 209 12 14 ];
-        symbol [ lastVmg %tmp.7 209 15 22 ];
+        symbol [ me %tmp.6 211 12 14 ];
+        symbol [ lastVmg %tmp.7 211 15 22 ];
         %tmp.7 = getv %tmp.6 :lastVmg;
         %tmp.8 = null;
         %tmp.9 = ne %tmp.7 %tmp.8;
-        bf %tmp.9 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_8_214_8_if_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_34_209_47_true:
+        bf %tmp.9 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_8_216_8_if_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_34_211_47_true:
         %tmp.10 = self;
-        symbol [ me %tmp.10 209 34 36 ];
-        symbol [ lastVmg %tmp.11 209 37 44 ];
+        symbol [ me %tmp.10 211 34 36 ];
+        symbol [ lastVmg %tmp.11 211 37 44 ];
         %tmp.11 = getv %tmp.10 :lastVmg;
         %tmp.12 = as %tmp.11 { (!Null) };
         %tmp.13 = 0;
         %tmp.14 = lt %tmp.12 %tmp.13;
         push %tmp.14;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_34_209_47_end:
-        %tmp.15 = phi [%tmp.9 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_12_209_47_begin] [%tmp.14 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_34_209_47_true] [%tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_34_209_47_end];
-        bf %tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_8_214_8_if_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_52_209_72_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_34_211_47_end:
+        %tmp.15 = phi [%tmp.9 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_12_211_47_begin] [%tmp.14 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_34_211_47_true] [%tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_34_211_47_end];
+        bf %tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_8_216_8_if_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_52_211_72_true:
         %tmp.16 = self;
-        symbol [ me %tmp.16 209 52 54 ];
-        symbol [ lastVmg %tmp.17 209 55 62 ];
+        symbol [ me %tmp.16 211 52 54 ];
+        symbol [ lastVmg %tmp.17 211 55 62 ];
         %tmp.17 = getv %tmp.16 :lastVmg;
         %tmp.18 = as %tmp.17 { (!Null) };
-        symbol [ abs %tmp.19 209 63 66 ];
+        symbol [ abs %tmp.19 211 63 66 ];
         %tmp.19 = getv function %tmp.18 :abs;
         %tmp.20 = invoke %tmp.18 %tmp.19();
         %tmp.21 = lgetv %minAbs.1;
-        symbol [ minAbs %tmp.21 209 72 78 ];
+        symbol [ minAbs %tmp.21 211 72 78 ];
         %tmp.22 = gte %tmp.20 %tmp.21;
         push %tmp.22;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_52_209_72_end:
-        %tmp.23 = phi [%tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_12_209_72_begin] [%tmp.22 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_52_209_72_true] [%tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_52_209_72_end];
-        bf %tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_8_214_8_if_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_8_214_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_80_211_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 210 12 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_52_211_72_end:
+        %tmp.23 = phi [%tmp.15 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_12_211_72_begin] [%tmp.22 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_52_211_72_true] [%tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_52_211_72_end];
+        bf %tmp.23 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_8_216_8_if_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_8_216_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_80_213_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 212 12 ]
         %tmp.24 = self;
-        symbol [ me %tmp.24 210 23 25 ];
-        symbol [ lastVmg %tmp.25 210 26 33 ];
+        symbol [ me %tmp.24 212 23 25 ];
+        symbol [ lastVmg %tmp.25 212 26 33 ];
         %tmp.25 = getv %tmp.24 :lastVmg;
         lputv %displayV.2 %tmp.25;
-        symbol [ displayV %displayV.2 210 12 20 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_80_211_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_8_214_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_8_214_8_if_else_false:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_15_214_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 212 12 ]
+        symbol [ displayV %displayV.2 212 12 20 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_80_213_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_8_216_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_8_216_8_if_else_false:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_213_15_216_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 214 12 ]
         %tmp.26 = self;
-        symbol [ me %tmp.26 212 23 25 ];
-        symbol [ app %tmp.27 212 26 29 ];
+        symbol [ me %tmp.26 214 23 25 ];
+        symbol [ app %tmp.27 214 26 29 ];
         %tmp.27 = getv %tmp.26 :app;
-        symbol [ model %tmp.28 212 30 35 ];
+        symbol [ model %tmp.28 214 30 35 ];
         %tmp.28 = getv %tmp.27 :model;
-        symbol [ getLastNegative %tmp.29 212 36 51 ];
+        symbol [ getLastNegative %tmp.29 214 36 51 ];
         %tmp.29 = getv function %tmp.28 :getLastNegative;
         %tmp.30 = invoke %tmp.28 %tmp.29();
         lputv %displayV.2 %tmp.30;
-        symbol [ displayV %displayV.2 212 12 20 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 213 12 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_213_12_213_51_if_stmt:
+        symbol [ displayV %displayV.2 214 12 20 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 215 12 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_215_12_215_51_if_stmt:
         %tmp.31 = lgetv %displayV.2;
-        symbol [ displayV %tmp.31 213 16 24 ];
+        symbol [ displayV %tmp.31 215 16 24 ];
         %tmp.32 = null;
         %tmp.33 = ne %tmp.31 %tmp.32;
-        bf %tmp.33 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_213_12_213_51_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_213_12_213_51_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_213_34_213_51_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 213 36 ]
+        bf %tmp.33 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_215_12_215_51_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_215_12_215_51_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_215_34_215_51_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 215 36 ]
         %tmp.34 = true;
         lputv %frozen.3 %tmp.34;
-        symbol [ frozen %frozen.3 213 36 42 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_213_34_213_51_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_213_12_213_51_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_213_12_213_51_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_15_214_8_stop:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_209_8_214_8_if_end:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 216 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_stop" ]
+        symbol [ frozen %frozen.3 215 36 42 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_215_34_215_51_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_215_12_215_51_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_215_12_215_51_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_213_15_216_8_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_211_8_216_8_if_end:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 218 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_stop" ]
         %vmgText.4 = local;
-        symbol [ vmgText %vmgText.4 216 12 19 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_begin:
+        symbol [ vmgText %vmgText.4 218 12 19 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_begin:
         %tmp.35 = lgetv %displayV.2;
-        symbol [ displayV %tmp.35 216 23 31 ];
+        symbol [ displayV %tmp.35 218 23 31 ];
         %tmp.36 = null;
         %tmp.37 = eq %tmp.35 %tmp.36;
-        bf %tmp.37 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_true:
+        bf %tmp.37 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_true:
         %tmp.38 = "--";
         push %tmp.38;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_else_false:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_else_false:
         %tmp.39 = "-";
         %tmp.40 = lgetv %displayV.2;
-        symbol [ displayV %tmp.40 216 56 64 ];
+        symbol [ displayV %tmp.40 218 56 64 ];
         %tmp.41 = as %tmp.40 { (!Null) };
-        symbol [ abs %tmp.42 216 65 68 ];
+        symbol [ abs %tmp.42 218 65 68 ];
         %tmp.42 = getv function %tmp.41 :abs;
         %tmp.43 = invoke %tmp.41 %tmp.42();
-        symbol [ format %tmp.44 216 71 77 ];
+        symbol [ format %tmp.44 218 71 77 ];
         %tmp.44 = getv function %tmp.43 :format;
         %tmp.45 = "%.2f";
         %tmp.46 = invoke %tmp.43 %tmp.44(%tmp.45);
         %tmp.47 = add %tmp.39 %tmp.46;
         push %tmp.47;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_end:
-        %tmp.48 = phi [%tmp.37 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_begin] [%tmp.38 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_true] [%tmp.47 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_else_false] [%tmp.48 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_216_22_216_84_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_end:
+        %tmp.48 = phi [%tmp.37 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_begin] [%tmp.38 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_true] [%tmp.47 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_else_false] [%tmp.48 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_218_22_218_84_end];
         lputv %vmgText.4 %tmp.48;
-        symbol [ vmgText %vmgText.4 216 12 19 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 218 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_stop" ]
+        symbol [ vmgText %vmgText.4 218 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 220 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_stop" ]
         %negSecs.5 = local;
-        symbol [ negSecs %negSecs.5 218 12 19 ];
+        symbol [ negSecs %negSecs.5 220 12 19 ];
         %tmp.49 = self;
-        symbol [ me %tmp.49 218 22 24 ];
-        symbol [ app %tmp.50 218 25 28 ];
+        symbol [ me %tmp.49 220 22 24 ];
+        symbol [ app %tmp.50 220 25 28 ];
         %tmp.50 = getv %tmp.49 :app;
-        symbol [ model %tmp.51 218 29 34 ];
+        symbol [ model %tmp.51 220 29 34 ];
         %tmp.51 = getv %tmp.50 :model;
-        symbol [ avgNegativeSecs %tmp.52 218 35 50 ];
+        symbol [ avgNegativeSecs %tmp.52 220 35 50 ];
         %tmp.52 = getv function %tmp.51 :avgNegativeSecs;
         %tmp.53 = self;
-        symbol [ me %tmp.53 218 51 53 ];
-        symbol [ app %tmp.54 218 54 57 ];
+        symbol [ me %tmp.53 220 51 53 ];
+        symbol [ app %tmp.54 220 54 57 ];
         %tmp.54 = getv %tmp.53 :app;
-        symbol [ avgLastSeconds %tmp.55 218 58 72 ];
+        symbol [ avgLastSeconds %tmp.55 220 58 72 ];
         %tmp.55 = getv %tmp.54 :avgLastSeconds;
         %tmp.56 = invoke %tmp.51 %tmp.52(%tmp.55);
         lputv %negSecs.5 %tmp.56;
-        symbol [ negSecs %negSecs.5 218 12 19 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 219 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_stop" ]
+        symbol [ negSecs %negSecs.5 220 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 221 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_stop" ]
         %negMins.6 = local;
-        symbol [ negMins %negMins.6 219 12 19 ];
+        symbol [ negMins %negMins.6 221 12 19 ];
         %tmp.57 = self;
-        symbol [ me %tmp.57 219 22 24 ];
-        symbol [ app %tmp.58 219 25 28 ];
+        symbol [ me %tmp.57 221 22 24 ];
+        symbol [ app %tmp.58 221 25 28 ];
         %tmp.58 = getv %tmp.57 :app;
-        symbol [ model %tmp.59 219 29 34 ];
+        symbol [ model %tmp.59 221 29 34 ];
         %tmp.59 = getv %tmp.58 :model;
-        symbol [ avgNegativeMins %tmp.60 219 35 50 ];
+        symbol [ avgNegativeMins %tmp.60 221 35 50 ];
         %tmp.60 = getv function %tmp.59 :avgNegativeMins;
         %tmp.61 = self;
-        symbol [ me %tmp.61 219 51 53 ];
-        symbol [ app %tmp.62 219 54 57 ];
+        symbol [ me %tmp.61 221 51 53 ];
+        symbol [ app %tmp.62 221 54 57 ];
         %tmp.62 = getv %tmp.61 :app;
-        symbol [ avgLastMinutes %tmp.63 219 58 72 ];
+        symbol [ avgLastMinutes %tmp.63 221 58 72 ];
         %tmp.63 = getv %tmp.62 :avgLastMinutes;
         %tmp.64 = invoke %tmp.59 %tmp.60(%tmp.63);
         lputv %negMins.6 %tmp.64;
-        symbol [ negMins %negMins.6 219 12 19 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 220 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_stop" ]
+        symbol [ negMins %negMins.6 221 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 222 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_stop" ]
         %negSecsText.7 = local;
-        symbol [ negSecsText %negSecsText.7 220 12 23 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_begin:
+        symbol [ negSecsText %negSecsText.7 222 12 23 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_begin:
         %tmp.65 = lgetv %negSecs.5;
-        symbol [ negSecs %tmp.65 220 27 34 ];
+        symbol [ negSecs %tmp.65 222 27 34 ];
         %tmp.66 = null;
         %tmp.67 = eq %tmp.65 %tmp.66;
-        bf %tmp.67 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_true:
+        bf %tmp.67 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_true:
         %tmp.68 = "--";
         push %tmp.68;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_else_false:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_else_false:
         %tmp.69 = "-";
         %tmp.70 = lgetv %negSecs.5;
-        symbol [ negSecs %tmp.70 220 59 66 ];
+        symbol [ negSecs %tmp.70 222 59 66 ];
         %tmp.71 = as %tmp.70 { (!Null) };
-        symbol [ abs %tmp.72 220 67 70 ];
+        symbol [ abs %tmp.72 222 67 70 ];
         %tmp.72 = getv function %tmp.71 :abs;
         %tmp.73 = invoke %tmp.71 %tmp.72();
-        symbol [ format %tmp.74 220 73 79 ];
+        symbol [ format %tmp.74 222 73 79 ];
         %tmp.74 = getv function %tmp.73 :format;
         %tmp.75 = "%.2f";
         %tmp.76 = invoke %tmp.73 %tmp.74(%tmp.75);
         %tmp.77 = add %tmp.69 %tmp.76;
         push %tmp.77;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_end:
-        %tmp.78 = phi [%tmp.67 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_begin] [%tmp.68 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_true] [%tmp.77 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_else_false] [%tmp.78 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_220_26_220_86_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_end:
+        %tmp.78 = phi [%tmp.67 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_begin] [%tmp.68 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_true] [%tmp.77 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_else_false] [%tmp.78 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_222_26_222_86_end];
         lputv %negSecsText.7 %tmp.78;
-        symbol [ negSecsText %negSecsText.7 220 12 23 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 221 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_stop" ]
+        symbol [ negSecsText %negSecsText.7 222 12 23 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 223 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_stop" ]
         %negMinsText.8 = local;
-        symbol [ negMinsText %negMinsText.8 221 12 23 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_begin:
+        symbol [ negMinsText %negMinsText.8 223 12 23 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_begin:
         %tmp.79 = lgetv %negMins.6;
-        symbol [ negMins %tmp.79 221 27 34 ];
+        symbol [ negMins %tmp.79 223 27 34 ];
         %tmp.80 = null;
         %tmp.81 = eq %tmp.79 %tmp.80;
-        bf %tmp.81 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_true:
+        bf %tmp.81 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_true:
         %tmp.82 = "--";
         push %tmp.82;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_else_false:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_else_false:
         %tmp.83 = "-";
         %tmp.84 = lgetv %negMins.6;
-        symbol [ negMins %tmp.84 221 59 66 ];
+        symbol [ negMins %tmp.84 223 59 66 ];
         %tmp.85 = as %tmp.84 { (!Null) };
-        symbol [ abs %tmp.86 221 67 70 ];
+        symbol [ abs %tmp.86 223 67 70 ];
         %tmp.86 = getv function %tmp.85 :abs;
         %tmp.87 = invoke %tmp.85 %tmp.86();
-        symbol [ format %tmp.88 221 73 79 ];
+        symbol [ format %tmp.88 223 73 79 ];
         %tmp.88 = getv function %tmp.87 :format;
         %tmp.89 = "%.2f";
         %tmp.90 = invoke %tmp.87 %tmp.88(%tmp.89);
         %tmp.91 = add %tmp.83 %tmp.90;
         push %tmp.91;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_end:
-        %tmp.92 = phi [%tmp.81 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_begin] [%tmp.82 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_true] [%tmp.91 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_else_false] [%tmp.92 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_221_26_221_86_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_end:
+        %tmp.92 = phi [%tmp.81 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_begin] [%tmp.82 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_true] [%tmp.91 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_else_false] [%tmp.92 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_223_26_223_86_end];
         lputv %negMinsText.8 %tmp.92;
-        symbol [ negMinsText %negMinsText.8 221 12 23 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 223 8 ]
+        symbol [ negMinsText %negMinsText.8 223 12 23 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 225 8 ]
         %tmp.93 = self;
-        symbol [ me %tmp.93 223 8 10 ];
-        symbol [ drawGrid %tmp.94 223 11 19 ];
+        symbol [ me %tmp.93 225 8 10 ];
+        symbol [ drawGrid %tmp.94 225 11 19 ];
         %tmp.94 = getv function %tmp.93 :drawGrid;
         %tmp.95 = lgetv %dc;
-        symbol [ dc %tmp.95 223 20 22 ];
+        symbol [ dc %tmp.95 225 20 22 ];
         %tmp.96 = "-VMG";
         %tmp.97 = lgetv %vmgText.4;
-        symbol [ vmgText %tmp.97 223 32 39 ];
+        symbol [ vmgText %tmp.97 225 32 39 ];
         %tmp.98 = lgetv %frozen.3;
-        symbol [ frozen %tmp.98 223 41 47 ];
+        symbol [ frozen %tmp.98 225 41 47 ];
         %tmp.99 = "-AVG VMG Secs";
         %tmp.100 = "-AVG VMG Mins";
         %tmp.101 = lgetv %negSecsText.7;
-        symbol [ negSecsText %tmp.101 224 20 31 ];
+        symbol [ negSecsText %tmp.101 226 20 31 ];
         %tmp.102 = lgetv %negMinsText.8;
-        symbol [ negMinsText %tmp.102 224 33 44 ];
+        symbol [ negMinsText %tmp.102 226 33 44 ];
         %tmp.103 = "TWD ";
         %tmp.104 = self;
-        symbol [ me %tmp.104 224 55 57 ];
-        symbol [ app %tmp.105 224 58 61 ];
+        symbol [ me %tmp.104 226 55 57 ];
+        symbol [ app %tmp.105 226 58 61 ];
         %tmp.105 = getv %tmp.104 :app;
-        symbol [ twd %tmp.106 224 62 65 ];
+        symbol [ twd %tmp.106 226 62 65 ];
         %tmp.106 = getv %tmp.105 :twd;
-        symbol [ format %tmp.107 224 66 72 ];
+        symbol [ format %tmp.107 226 66 72 ];
         %tmp.107 = getv function %tmp.106 :format;
         %tmp.108 = "%03d";
         %tmp.109 = invoke %tmp.106 %tmp.107(%tmp.108);
         %tmp.110 = add %tmp.103 %tmp.109;
         invoke %tmp.93 %tmp.94(%tmp.95, %tmp.96, %tmp.97, %tmp.98, %tmp.99, %tmp.100, %tmp.101, %tmp.102, %tmp.110);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_204_29_225_4_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_206_29_227_4_stop:
     }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 227; @symbol_functiondef = [drawScreen3,227,13,24]; @symbol_param<0> = [dc,227,25,27]; ]
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 229; @symbol_functiondef = [drawScreen3,229,13,24]; @symbol_param<0> = [dc,229,25,27]; ]
     function drawScreen3(dc) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 228 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_stop" ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 230 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_stop" ]
         %hr.1 = local;
-        symbol [ hr %hr.1 228 12 14 ];
+        symbol [ hr %hr.1 230 12 14 ];
         %tmp.1 = self;
-        symbol [ me %tmp.1 228 17 19 ];
-        symbol [ lastHr %tmp.2 228 20 26 ];
+        symbol [ me %tmp.1 230 17 19 ];
+        symbol [ lastHr %tmp.2 230 20 26 ];
         %tmp.2 = getv %tmp.1 :lastHr;
         lputv %hr.1 %tmp.2;
-        symbol [ hr %hr.1 228 12 14 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 229 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_stop" ]
+        symbol [ hr %hr.1 230 12 14 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 231 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_stop" ]
         %hrText.2 = local;
-        symbol [ hrText %hrText.2 229 12 18 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_begin:
+        symbol [ hrText %hrText.2 231 12 18 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_begin:
         %tmp.3 = lgetv %hr.1;
-        symbol [ hr %tmp.3 229 22 24 ];
+        symbol [ hr %tmp.3 231 22 24 ];
         %tmp.4 = null;
         %tmp.5 = eq %tmp.3 %tmp.4;
-        bf %tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_true:
+        bf %tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_true:
         %tmp.6 = "--";
         push %tmp.6;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_else_false:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_else_false:
         %tmp.7 = lgetv %hr.1;
-        symbol [ hr %tmp.7 229 43 45 ];
+        symbol [ hr %tmp.7 231 43 45 ];
         %tmp.8 = as %tmp.7 { (!Null) };
-        symbol [ format %tmp.9 229 46 52 ];
+        symbol [ format %tmp.9 231 46 52 ];
         %tmp.9 = getv function %tmp.8 :format;
         %tmp.10 = "%d";
         %tmp.11 = invoke %tmp.8 %tmp.9(%tmp.10);
         push %tmp.11;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_end:
-        %tmp.12 = phi [%tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_begin] [%tmp.6 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_true] [%tmp.11 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_else_false] [%tmp.12 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_21_229_57_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_end:
+        %tmp.12 = phi [%tmp.5 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_begin] [%tmp.6 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_true] [%tmp.11 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_else_false] [%tmp.12 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_21_231_57_end];
         lputv %hrText.2 %tmp.12;
-        symbol [ hrText %hrText.2 229 12 18 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 230 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_stop" ]
+        symbol [ hrText %hrText.2 231 12 18 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 232 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_stop" ]
         %avg.3 = local;
-        symbol [ avg %avg.3 230 12 15 ];
+        symbol [ avg %avg.3 232 12 15 ];
         %tmp.13 = self;
-        symbol [ me %tmp.13 230 18 20 ];
-        symbol [ app %tmp.14 230 21 24 ];
+        symbol [ me %tmp.13 232 18 20 ];
+        symbol [ app %tmp.14 232 21 24 ];
         %tmp.14 = getv %tmp.13 :app;
-        symbol [ model %tmp.15 230 25 30 ];
+        symbol [ model %tmp.15 232 25 30 ];
         %tmp.15 = getv %tmp.14 :model;
-        symbol [ avgHr %tmp.16 230 31 36 ];
+        symbol [ avgHr %tmp.16 232 31 36 ];
         %tmp.16 = getv function %tmp.15 :avgHr;
         %tmp.17 = invoke %tmp.15 %tmp.16();
         lputv %avg.3 %tmp.17;
-        symbol [ avg %avg.3 230 12 15 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 231 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_stop" ]
+        symbol [ avg %avg.3 232 12 15 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 233 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_stop" ]
         %avgText.4 = local;
-        symbol [ avgText %avgText.4 231 12 19 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_begin:
+        symbol [ avgText %avgText.4 233 12 19 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_begin:
         %tmp.18 = lgetv %avg.3;
-        symbol [ avg %tmp.18 231 23 26 ];
+        symbol [ avg %tmp.18 233 23 26 ];
         %tmp.19 = null;
         %tmp.20 = eq %tmp.18 %tmp.19;
-        bf %tmp.20 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_true:
+        bf %tmp.20 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_true:
         %tmp.21 = "--";
         push %tmp.21;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_else_false:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_else_false:
         %tmp.22 = lgetv %avg.3;
-        symbol [ avg %tmp.22 231 45 48 ];
+        symbol [ avg %tmp.22 233 45 48 ];
         %tmp.23 = as %tmp.22 { (!Null) };
-        symbol [ format %tmp.24 231 49 55 ];
+        symbol [ format %tmp.24 233 49 55 ];
         %tmp.24 = getv function %tmp.23 :format;
         %tmp.25 = "%d";
         %tmp.26 = invoke %tmp.23 %tmp.24(%tmp.25);
         push %tmp.26;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_end:
-        %tmp.27 = phi [%tmp.20 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_begin] [%tmp.21 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_true] [%tmp.26 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_else_false] [%tmp.27 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_231_22_231_60_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_end:
+        %tmp.27 = phi [%tmp.20 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_begin] [%tmp.21 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_true] [%tmp.26 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_else_false] [%tmp.27 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_22_233_60_end];
         lputv %avgText.4 %tmp.27;
-        symbol [ avgText %avgText.4 231 12 19 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 232 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_stop" ]
+        symbol [ avgText %avgText.4 233 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 234 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_stop" ]
         %elapsed.5 = local;
-        symbol [ elapsed %elapsed.5 232 12 19 ];
+        symbol [ elapsed %elapsed.5 234 12 19 ];
         %tmp.28 = self;
-        symbol [ me %tmp.28 232 22 24 ];
-        symbol [ app %tmp.29 232 25 28 ];
+        symbol [ me %tmp.28 234 22 24 ];
+        symbol [ app %tmp.29 234 25 28 ];
         %tmp.29 = getv %tmp.28 :app;
-        symbol [ model %tmp.30 232 29 34 ];
+        symbol [ model %tmp.30 234 29 34 ];
         %tmp.30 = getv %tmp.29 :model;
-        symbol [ elapsedSeconds %tmp.31 232 35 49 ];
+        symbol [ elapsedSeconds %tmp.31 234 35 49 ];
         %tmp.31 = getv function %tmp.30 :elapsedSeconds;
         %tmp.32 = invoke %tmp.30 %tmp.31();
         lputv %elapsed.5 %tmp.32;
-        symbol [ elapsed %elapsed.5 232 12 19 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 233 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_stop" ]
+        symbol [ elapsed %elapsed.5 234 12 19 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 235 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_stop" ]
         %timeText.6 = local;
-        symbol [ timeText %timeText.6 233 12 20 ];
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_begin:
+        symbol [ timeText %timeText.6 235 12 20 ];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_begin:
         %tmp.33 = lgetv %elapsed.5;
-        symbol [ elapsed %tmp.33 233 24 31 ];
+        symbol [ elapsed %tmp.33 235 24 31 ];
         %tmp.34 = null;
         %tmp.35 = eq %tmp.33 %tmp.34;
-        bf %tmp.35 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_else_false;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_true:
+        bf %tmp.35 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_else_false;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_true:
         %tmp.36 = "0:00";
         push %tmp.36;
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_else_false:
-        symbol [ Util %tmp.38 233 52 56 ];
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_else_false:
+        symbol [ Util %tmp.38 235 52 56 ];
         %tmp.38 = getv ? :Util;
-        symbol [ fmtDuration %tmp.39 233 57 68 ];
+        symbol [ fmtDuration %tmp.39 235 57 68 ];
         %tmp.39 = getv function %tmp.38 :fmtDuration;
         %tmp.40 = lgetv %elapsed.5;
-        symbol [ elapsed %tmp.40 233 69 76 ];
+        symbol [ elapsed %tmp.40 235 69 76 ];
         %tmp.41 = as %tmp.40 { (!Null) };
         %tmp.42 = invoke %tmp.38 %tmp.39(%tmp.41);
         push %tmp.42;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_end:
-        %tmp.43 = phi [%tmp.35 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_begin] [%tmp.36 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_true] [%tmp.42 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_else_false] [%tmp.43 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_233_23_233_76_end];
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_end:
+        %tmp.43 = phi [%tmp.35 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_begin] [%tmp.36 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_true] [%tmp.42 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_else_false] [%tmp.43 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_235_23_235_76_end];
         lputv %timeText.6 %tmp.43;
-        symbol [ timeText %timeText.6 233 12 20 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 235 8 ]
+        symbol [ timeText %timeText.6 235 12 20 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 237 8 ]
         %tmp.44 = self;
-        symbol [ me %tmp.44 235 8 10 ];
-        symbol [ drawGrid %tmp.45 235 11 19 ];
+        symbol [ me %tmp.44 237 8 10 ];
+        symbol [ drawGrid %tmp.45 237 11 19 ];
         %tmp.45 = getv function %tmp.44 :drawGrid;
         %tmp.46 = lgetv %dc;
-        symbol [ dc %tmp.46 235 20 22 ];
+        symbol [ dc %tmp.46 237 20 22 ];
         %tmp.47 = "HR";
         %tmp.48 = lgetv %hrText.2;
-        symbol [ hrText %tmp.48 235 30 36 ];
+        symbol [ hrText %tmp.48 237 30 36 ];
         %tmp.49 = false;
         %tmp.50 = "AVG HR";
         %tmp.51 = "TIMER";
         %tmp.52 = lgetv %avgText.4;
-        symbol [ avgText %tmp.52 236 20 27 ];
+        symbol [ avgText %tmp.52 238 20 27 ];
         %tmp.53 = lgetv %timeText.6;
-        symbol [ timeText %tmp.53 236 29 37 ];
+        symbol [ timeText %tmp.53 238 29 37 ];
         %tmp.54 = "";
         invoke %tmp.44 %tmp.45(%tmp.46, %tmp.47, %tmp.48, %tmp.49, %tmp.50, %tmp.51, %tmp.52, %tmp.53, %tmp.54);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_227_29_237_4_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_229_29_239_4_stop:
     }
-    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 241; @symbol_functiondef = [drawGrid,241,13,21]; @symbol_param<0> = [dc,241,22,24]; @symbol_param<1> = [title,241,26,31]; @symbol_param<2> = [valueText,241,33,42]; @symbol_param<3> = [frozen,241,44,50]; @symbol_param<4> = [colT1,241,52,57]; @symbol_param<5> = [colT2,241,59,64]; @symbol_param<6> = [colV1,241,66,71]; @symbol_param<7> = [colV2,241,73,78]; @symbol_param<8> = [footerText,241,80,90]; ]
+    [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 243; @symbol_functiondef = [drawGrid,243,13,21]; @symbol_param<0> = [dc,243,22,24]; @symbol_param<1> = [title,243,26,31]; @symbol_param<2> = [valueText,243,33,42]; @symbol_param<3> = [frozen,243,44,50]; @symbol_param<4> = [colT1,243,52,57]; @symbol_param<5> = [colT2,243,59,64]; @symbol_param<6> = [colV1,243,66,71]; @symbol_param<7> = [colV2,243,73,78]; @symbol_param<8> = [footerText,243,80,90]; ]
     function drawGrid(dc, title, valueText, frozen, colT1, colT2, colV1, colV2, footerText) {
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 242 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_stop" ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 244 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_stop" ]
         %w.1 = local;
-        symbol [ w %w.1 242 12 13 ];
+        symbol [ w %w.1 244 12 13 ];
         %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 242 16 18 ];
-        symbol [ getWidth %tmp.2 242 19 27 ];
+        symbol [ dc %tmp.1 244 16 18 ];
+        symbol [ getWidth %tmp.2 244 19 27 ];
         %tmp.2 = getv function %tmp.1 :getWidth;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %w.1 %tmp.3;
-        symbol [ w %w.1 242 12 13 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 243 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_stop" ]
+        symbol [ w %w.1 244 12 13 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 245 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_stop" ]
         %h.2 = local;
-        symbol [ h %h.2 243 12 13 ];
+        symbol [ h %h.2 245 12 13 ];
         %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 243 16 18 ];
-        symbol [ getHeight %tmp.5 243 19 28 ];
+        symbol [ dc %tmp.4 245 16 18 ];
+        symbol [ getHeight %tmp.5 245 19 28 ];
         %tmp.5 = getv function %tmp.4 :getHeight;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         lputv %h.2 %tmp.6;
-        symbol [ h %h.2 243 12 13 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 244 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_stop" ]
+        symbol [ h %h.2 245 12 13 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 246 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_stop" ]
         %midX.3 = local;
-        symbol [ midX %midX.3 244 12 16 ];
+        symbol [ midX %midX.3 246 12 16 ];
         %tmp.7 = lgetv %w.1;
-        symbol [ w %tmp.7 244 19 20 ];
+        symbol [ w %tmp.7 246 19 20 ];
         %tmp.8 = 2;
         %tmp.9 = div %tmp.7 %tmp.8;
         lputv %midX.3 %tmp.9;
-        symbol [ midX %midX.3 244 12 16 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 245 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_stop" ]
+        symbol [ midX %midX.3 246 12 16 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 247 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_stop" ]
         %leftX.4 = local;
-        symbol [ leftX %leftX.4 245 12 17 ];
+        symbol [ leftX %leftX.4 247 12 17 ];
         %tmp.10 = lgetv %w.1;
-        symbol [ w %tmp.10 245 20 21 ];
+        symbol [ w %tmp.10 247 20 21 ];
         %tmp.11 = 26;
         %tmp.12 = mul %tmp.10 %tmp.11;
         %tmp.13 = 100;
         %tmp.14 = div %tmp.12 %tmp.13;
         lputv %leftX.4 %tmp.14;
-        symbol [ leftX %leftX.4 245 12 17 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 246 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_stop" ]
+        symbol [ leftX %leftX.4 247 12 17 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 248 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_stop" ]
         %rightX.5 = local;
-        symbol [ rightX %rightX.5 246 12 18 ];
+        symbol [ rightX %rightX.5 248 12 18 ];
         %tmp.15 = lgetv %w.1;
-        symbol [ w %tmp.15 246 21 22 ];
+        symbol [ w %tmp.15 248 21 22 ];
         %tmp.16 = 74;
         %tmp.17 = mul %tmp.15 %tmp.16;
         %tmp.18 = 100;
         %tmp.19 = div %tmp.17 %tmp.18;
         lputv %rightX.5 %tmp.19;
-        symbol [ rightX %rightX.5 246 12 18 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 247 8 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_stop" ]
+        symbol [ rightX %rightX.5 248 12 18 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 249 8 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_stop" ]
         %valueY.6 = local;
-        symbol [ valueY %valueY.6 247 12 18 ];
+        symbol [ valueY %valueY.6 249 12 18 ];
         %tmp.20 = lgetv %h.2;
-        symbol [ h %tmp.20 247 21 22 ];
+        symbol [ h %tmp.20 249 21 22 ];
         %tmp.21 = 10;
         %tmp.22 = mul %tmp.20 %tmp.21;
         %tmp.23 = 100;
         %tmp.24 = div %tmp.22 %tmp.23;
         lputv %valueY.6 %tmp.24;
-        symbol [ valueY %valueY.6 247 12 18 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 250 8 ]
+        symbol [ valueY %valueY.6 249 12 18 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 252 8 ]
         %tmp.25 = lgetv %dc;
-        symbol [ dc %tmp.25 250 8 10 ];
-        symbol [ drawText %tmp.26 250 11 19 ];
+        symbol [ dc %tmp.25 252 8 10 ];
+        symbol [ drawText %tmp.26 252 11 19 ];
         %tmp.26 = getv function %tmp.25 :drawText;
         %tmp.27 = lgetv %midX.3;
-        symbol [ midX %tmp.27 250 20 24 ];
+        symbol [ midX %tmp.27 252 20 24 ];
         %tmp.28 = lgetv %h.2;
-        symbol [ h %tmp.28 250 26 27 ];
+        symbol [ h %tmp.28 252 26 27 ];
         %tmp.29 = 2;
         %tmp.30 = mul %tmp.28 %tmp.29;
         %tmp.31 = 100;
         %tmp.32 = div %tmp.30 %tmp.31;
-        symbol [ Graphics %tmp.33 250 39 47 ];
+        symbol [ Graphics %tmp.33 252 39 47 ];
         %tmp.33 = getm $.Toybox.Graphics;
-        symbol [ FONT_XTINY %tmp.34 250 48 58 ];
+        symbol [ FONT_XTINY %tmp.34 252 48 58 ];
         %tmp.34 = getv %tmp.33 :FONT_XTINY;
         %tmp.35 = lgetv %title;
-        symbol [ title %tmp.35 250 60 65 ];
-        symbol [ Graphics %tmp.36 250 67 75 ];
+        symbol [ title %tmp.35 252 60 65 ];
+        symbol [ Graphics %tmp.36 252 67 75 ];
         %tmp.36 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.37 250 76 95 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.37 252 76 95 ];
         %tmp.37 = getv %tmp.36 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.25 %tmp.26(%tmp.27, %tmp.32, %tmp.34, %tmp.35, %tmp.37);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 251 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 253 8 ]
         %tmp.38 = lgetv %dc;
-        symbol [ dc %tmp.38 251 8 10 ];
-        symbol [ drawText %tmp.39 251 11 19 ];
+        symbol [ dc %tmp.38 253 8 10 ];
+        symbol [ drawText %tmp.39 253 11 19 ];
         %tmp.39 = getv function %tmp.38 :drawText;
         %tmp.40 = lgetv %midX.3;
-        symbol [ midX %tmp.40 251 20 24 ];
+        symbol [ midX %tmp.40 253 20 24 ];
         %tmp.41 = lgetv %valueY.6;
-        symbol [ valueY %tmp.41 251 26 32 ];
-        symbol [ Graphics %tmp.42 251 34 42 ];
+        symbol [ valueY %tmp.41 253 26 32 ];
+        symbol [ Graphics %tmp.42 253 34 42 ];
         %tmp.42 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_MEDIUM %tmp.43 251 43 61 ];
+        symbol [ FONT_NUMBER_MEDIUM %tmp.43 253 43 61 ];
         %tmp.43 = getv %tmp.42 :FONT_NUMBER_MEDIUM;
         %tmp.44 = lgetv %valueText;
-        symbol [ valueText %tmp.44 251 63 72 ];
-        symbol [ Graphics %tmp.45 251 74 82 ];
+        symbol [ valueText %tmp.44 253 63 72 ];
+        symbol [ Graphics %tmp.45 253 74 82 ];
         %tmp.45 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.46 251 83 102 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.46 253 83 102 ];
         %tmp.46 = getv %tmp.45 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.38 %tmp.39(%tmp.40, %tmp.41, %tmp.43, %tmp.44, %tmp.46);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 252 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_252_8_256_8_if_stmt:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 254 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_258_8_if_stmt:
         %tmp.47 = lgetv %frozen;
-        symbol [ frozen %tmp.47 252 12 18 ];
-        bf %tmp.47 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_252_8_256_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_252_8_256_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_252_20_256_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 254 12 ]
-        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_252_20_256_8_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_252_20_256_8_stop" ]
+        symbol [ frozen %tmp.47 254 12 18 ];
+        bf %tmp.47 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_258_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_258_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_20_258_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 256 12 ]
+        [ "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_20_258_8_start" "C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_20_258_8_stop" ]
         %half.7 = local;
-        symbol [ half %half.7 254 16 20 ];
+        symbol [ half %half.7 256 16 20 ];
         %tmp.48 = lgetv %dc;
-        symbol [ dc %tmp.48 254 23 25 ];
-        symbol [ getTextWidthInPixels %tmp.49 254 26 46 ];
+        symbol [ dc %tmp.48 256 23 25 ];
+        symbol [ getTextWidthInPixels %tmp.49 256 26 46 ];
         %tmp.49 = getv function %tmp.48 :getTextWidthInPixels;
         %tmp.50 = lgetv %valueText;
-        symbol [ valueText %tmp.50 254 47 56 ];
-        symbol [ Graphics %tmp.51 254 58 66 ];
+        symbol [ valueText %tmp.50 256 47 56 ];
+        symbol [ Graphics %tmp.51 256 58 66 ];
         %tmp.51 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_MEDIUM %tmp.52 254 67 85 ];
+        symbol [ FONT_NUMBER_MEDIUM %tmp.52 256 67 85 ];
         %tmp.52 = getv %tmp.51 :FONT_NUMBER_MEDIUM;
         %tmp.53 = invoke %tmp.48 %tmp.49(%tmp.50, %tmp.52);
         %tmp.54 = 2;
         %tmp.55 = div %tmp.53 %tmp.54;
         lputv %half.7 %tmp.55;
-        symbol [ half %half.7 254 16 20 ];
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 255 12 ]
+        symbol [ half %half.7 256 16 20 ];
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 257 12 ]
         %tmp.56 = lgetv %dc;
-        symbol [ dc %tmp.56 255 12 14 ];
-        symbol [ drawText %tmp.57 255 15 23 ];
+        symbol [ dc %tmp.56 257 12 14 ];
+        symbol [ drawText %tmp.57 257 15 23 ];
         %tmp.57 = getv function %tmp.56 :drawText;
         %tmp.58 = lgetv %midX.3;
-        symbol [ midX %tmp.58 255 24 28 ];
+        symbol [ midX %tmp.58 257 24 28 ];
         %tmp.59 = lgetv %half.7;
-        symbol [ half %tmp.59 255 31 35 ];
+        symbol [ half %tmp.59 257 31 35 ];
         %tmp.60 = add %tmp.58 %tmp.59;
         %tmp.61 = 3;
         %tmp.62 = add %tmp.60 %tmp.61;
         %tmp.63 = lgetv %valueY.6;
-        symbol [ valueY %tmp.63 255 41 47 ];
-        symbol [ Graphics %tmp.64 255 49 57 ];
+        symbol [ valueY %tmp.63 257 41 47 ];
+        symbol [ Graphics %tmp.64 257 49 57 ];
         %tmp.64 = getm $.Toybox.Graphics;
-        symbol [ FONT_XTINY %tmp.65 255 58 68 ];
+        symbol [ FONT_XTINY %tmp.65 257 58 68 ];
         %tmp.65 = getv %tmp.64 :FONT_XTINY;
         %tmp.66 = "*";
-        symbol [ Graphics %tmp.67 255 75 83 ];
+        symbol [ Graphics %tmp.67 257 75 83 ];
         %tmp.67 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_LEFT %tmp.68 255 84 101 ];
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.68 257 84 101 ];
         %tmp.68 = getv %tmp.67 :TEXT_JUSTIFY_LEFT;
         invoke %tmp.56 %tmp.57(%tmp.62, %tmp.63, %tmp.65, %tmp.66, %tmp.68);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_252_20_256_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_252_8_256_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_252_8_256_8_if_end:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 260 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_20_258_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_258_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_254_8_258_8_if_end:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 262 8 ]
         %tmp.69 = lgetv %dc;
-        symbol [ dc %tmp.69 260 8 10 ];
-        symbol [ drawLine %tmp.70 260 11 19 ];
+        symbol [ dc %tmp.69 262 8 10 ];
+        symbol [ drawLine %tmp.70 262 11 19 ];
         %tmp.70 = getv function %tmp.69 :drawLine;
         %tmp.71 = lgetv %w.1;
-        symbol [ w %tmp.71 260 20 21 ];
+        symbol [ w %tmp.71 262 20 21 ];
         %tmp.72 = 12;
         %tmp.73 = mul %tmp.71 %tmp.72;
         %tmp.74 = 100;
         %tmp.75 = div %tmp.73 %tmp.74;
         %tmp.76 = lgetv %h.2;
-        symbol [ h %tmp.76 260 34 35 ];
+        symbol [ h %tmp.76 262 34 35 ];
         %tmp.77 = 37;
         %tmp.78 = mul %tmp.76 %tmp.77;
         %tmp.79 = 100;
         %tmp.80 = div %tmp.78 %tmp.79;
         %tmp.81 = lgetv %w.1;
-        symbol [ w %tmp.81 260 48 49 ];
+        symbol [ w %tmp.81 262 48 49 ];
         %tmp.82 = 88;
         %tmp.83 = mul %tmp.81 %tmp.82;
         %tmp.84 = 100;
         %tmp.85 = div %tmp.83 %tmp.84;
         %tmp.86 = lgetv %h.2;
-        symbol [ h %tmp.86 260 62 63 ];
+        symbol [ h %tmp.86 262 62 63 ];
         %tmp.87 = 37;
         %tmp.88 = mul %tmp.86 %tmp.87;
         %tmp.89 = 100;
         %tmp.90 = div %tmp.88 %tmp.89;
         invoke %tmp.69 %tmp.70(%tmp.75, %tmp.80, %tmp.85, %tmp.90);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 261 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 263 8 ]
         %tmp.91 = lgetv %dc;
-        symbol [ dc %tmp.91 261 8 10 ];
-        symbol [ drawLine %tmp.92 261 11 19 ];
+        symbol [ dc %tmp.91 263 8 10 ];
+        symbol [ drawLine %tmp.92 263 11 19 ];
         %tmp.92 = getv function %tmp.91 :drawLine;
         %tmp.93 = lgetv %midX.3;
-        symbol [ midX %tmp.93 261 20 24 ];
+        symbol [ midX %tmp.93 263 20 24 ];
         %tmp.94 = lgetv %h.2;
-        symbol [ h %tmp.94 261 26 27 ];
+        symbol [ h %tmp.94 263 26 27 ];
         %tmp.95 = 37;
         %tmp.96 = mul %tmp.94 %tmp.95;
         %tmp.97 = 100;
         %tmp.98 = div %tmp.96 %tmp.97;
         %tmp.99 = lgetv %midX.3;
-        symbol [ midX %tmp.99 261 40 44 ];
+        symbol [ midX %tmp.99 263 40 44 ];
         %tmp.100 = lgetv %h.2;
-        symbol [ h %tmp.100 261 46 47 ];
+        symbol [ h %tmp.100 263 46 47 ];
         %tmp.101 = 73;
         %tmp.102 = mul %tmp.100 %tmp.101;
         %tmp.103 = 100;
         %tmp.104 = div %tmp.102 %tmp.103;
         invoke %tmp.91 %tmp.92(%tmp.93, %tmp.98, %tmp.99, %tmp.104);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 262 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 264 8 ]
         %tmp.105 = lgetv %dc;
-        symbol [ dc %tmp.105 262 8 10 ];
-        symbol [ drawLine %tmp.106 262 11 19 ];
+        symbol [ dc %tmp.105 264 8 10 ];
+        symbol [ drawLine %tmp.106 264 11 19 ];
         %tmp.106 = getv function %tmp.105 :drawLine;
         %tmp.107 = lgetv %w.1;
-        symbol [ w %tmp.107 262 20 21 ];
+        symbol [ w %tmp.107 264 20 21 ];
         %tmp.108 = 12;
         %tmp.109 = mul %tmp.107 %tmp.108;
         %tmp.110 = 100;
         %tmp.111 = div %tmp.109 %tmp.110;
         %tmp.112 = lgetv %h.2;
-        symbol [ h %tmp.112 262 34 35 ];
+        symbol [ h %tmp.112 264 34 35 ];
         %tmp.113 = 73;
         %tmp.114 = mul %tmp.112 %tmp.113;
         %tmp.115 = 100;
         %tmp.116 = div %tmp.114 %tmp.115;
         %tmp.117 = lgetv %w.1;
-        symbol [ w %tmp.117 262 48 49 ];
+        symbol [ w %tmp.117 264 48 49 ];
         %tmp.118 = 88;
         %tmp.119 = mul %tmp.117 %tmp.118;
         %tmp.120 = 100;
         %tmp.121 = div %tmp.119 %tmp.120;
         %tmp.122 = lgetv %h.2;
-        symbol [ h %tmp.122 262 62 63 ];
+        symbol [ h %tmp.122 264 62 63 ];
         %tmp.123 = 73;
         %tmp.124 = mul %tmp.122 %tmp.123;
         %tmp.125 = 100;
         %tmp.126 = div %tmp.124 %tmp.125;
         invoke %tmp.105 %tmp.106(%tmp.111, %tmp.116, %tmp.121, %tmp.126);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 264 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 266 8 ]
         %tmp.127 = lgetv %dc;
-        symbol [ dc %tmp.127 264 8 10 ];
-        symbol [ drawText %tmp.128 264 11 19 ];
+        symbol [ dc %tmp.127 266 8 10 ];
+        symbol [ drawText %tmp.128 266 11 19 ];
         %tmp.128 = getv function %tmp.127 :drawText;
         %tmp.129 = lgetv %leftX.4;
-        symbol [ leftX %tmp.129 264 20 25 ];
+        symbol [ leftX %tmp.129 266 20 25 ];
         %tmp.130 = lgetv %h.2;
-        symbol [ h %tmp.130 264 27 28 ];
+        symbol [ h %tmp.130 266 27 28 ];
         %tmp.131 = 39;
         %tmp.132 = mul %tmp.130 %tmp.131;
         %tmp.133 = 100;
         %tmp.134 = div %tmp.132 %tmp.133;
-        symbol [ Graphics %tmp.135 264 41 49 ];
+        symbol [ Graphics %tmp.135 266 41 49 ];
         %tmp.135 = getm $.Toybox.Graphics;
-        symbol [ FONT_XTINY %tmp.136 264 50 60 ];
+        symbol [ FONT_XTINY %tmp.136 266 50 60 ];
         %tmp.136 = getv %tmp.135 :FONT_XTINY;
         %tmp.137 = lgetv %colT1;
-        symbol [ colT1 %tmp.137 264 62 67 ];
-        symbol [ Graphics %tmp.138 264 69 77 ];
+        symbol [ colT1 %tmp.137 266 62 67 ];
+        symbol [ Graphics %tmp.138 266 69 77 ];
         %tmp.138 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.139 264 78 97 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.139 266 78 97 ];
         %tmp.139 = getv %tmp.138 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.127 %tmp.128(%tmp.129, %tmp.134, %tmp.136, %tmp.137, %tmp.139);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 265 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 267 8 ]
         %tmp.140 = lgetv %dc;
-        symbol [ dc %tmp.140 265 8 10 ];
-        symbol [ drawText %tmp.141 265 11 19 ];
+        symbol [ dc %tmp.140 267 8 10 ];
+        symbol [ drawText %tmp.141 267 11 19 ];
         %tmp.141 = getv function %tmp.140 :drawText;
         %tmp.142 = lgetv %rightX.5;
-        symbol [ rightX %tmp.142 265 20 26 ];
+        symbol [ rightX %tmp.142 267 20 26 ];
         %tmp.143 = lgetv %h.2;
-        symbol [ h %tmp.143 265 28 29 ];
+        symbol [ h %tmp.143 267 28 29 ];
         %tmp.144 = 39;
         %tmp.145 = mul %tmp.143 %tmp.144;
         %tmp.146 = 100;
         %tmp.147 = div %tmp.145 %tmp.146;
-        symbol [ Graphics %tmp.148 265 42 50 ];
+        symbol [ Graphics %tmp.148 267 42 50 ];
         %tmp.148 = getm $.Toybox.Graphics;
-        symbol [ FONT_XTINY %tmp.149 265 51 61 ];
+        symbol [ FONT_XTINY %tmp.149 267 51 61 ];
         %tmp.149 = getv %tmp.148 :FONT_XTINY;
         %tmp.150 = lgetv %colT2;
-        symbol [ colT2 %tmp.150 265 63 68 ];
-        symbol [ Graphics %tmp.151 265 70 78 ];
+        symbol [ colT2 %tmp.150 267 63 68 ];
+        symbol [ Graphics %tmp.151 267 70 78 ];
         %tmp.151 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.152 265 79 98 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.152 267 79 98 ];
         %tmp.152 = getv %tmp.151 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.140 %tmp.141(%tmp.142, %tmp.147, %tmp.149, %tmp.150, %tmp.152);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 266 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 268 8 ]
         %tmp.153 = lgetv %dc;
-        symbol [ dc %tmp.153 266 8 10 ];
-        symbol [ drawText %tmp.154 266 11 19 ];
+        symbol [ dc %tmp.153 268 8 10 ];
+        symbol [ drawText %tmp.154 268 11 19 ];
         %tmp.154 = getv function %tmp.153 :drawText;
         %tmp.155 = lgetv %leftX.4;
-        symbol [ leftX %tmp.155 266 20 25 ];
+        symbol [ leftX %tmp.155 268 20 25 ];
         %tmp.156 = lgetv %h.2;
-        symbol [ h %tmp.156 266 27 28 ];
+        symbol [ h %tmp.156 268 27 28 ];
         %tmp.157 = 47;
         %tmp.158 = mul %tmp.156 %tmp.157;
         %tmp.159 = 100;
         %tmp.160 = div %tmp.158 %tmp.159;
-        symbol [ Graphics %tmp.161 266 41 49 ];
+        symbol [ Graphics %tmp.161 268 41 49 ];
         %tmp.161 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_MEDIUM %tmp.162 266 50 68 ];
+        symbol [ FONT_NUMBER_MEDIUM %tmp.162 268 50 68 ];
         %tmp.162 = getv %tmp.161 :FONT_NUMBER_MEDIUM;
         %tmp.163 = lgetv %colV1;
-        symbol [ colV1 %tmp.163 266 70 75 ];
-        symbol [ Graphics %tmp.164 266 77 85 ];
+        symbol [ colV1 %tmp.163 268 70 75 ];
+        symbol [ Graphics %tmp.164 268 77 85 ];
         %tmp.164 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.165 266 86 105 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.165 268 86 105 ];
         %tmp.165 = getv %tmp.164 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.153 %tmp.154(%tmp.155, %tmp.160, %tmp.162, %tmp.163, %tmp.165);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 267 8 ]
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 269 8 ]
         %tmp.166 = lgetv %dc;
-        symbol [ dc %tmp.166 267 8 10 ];
-        symbol [ drawText %tmp.167 267 11 19 ];
+        symbol [ dc %tmp.166 269 8 10 ];
+        symbol [ drawText %tmp.167 269 11 19 ];
         %tmp.167 = getv function %tmp.166 :drawText;
         %tmp.168 = lgetv %rightX.5;
-        symbol [ rightX %tmp.168 267 20 26 ];
+        symbol [ rightX %tmp.168 269 20 26 ];
         %tmp.169 = lgetv %h.2;
-        symbol [ h %tmp.169 267 28 29 ];
+        symbol [ h %tmp.169 269 28 29 ];
         %tmp.170 = 47;
         %tmp.171 = mul %tmp.169 %tmp.170;
         %tmp.172 = 100;
         %tmp.173 = div %tmp.171 %tmp.172;
-        symbol [ Graphics %tmp.174 267 42 50 ];
+        symbol [ Graphics %tmp.174 269 42 50 ];
         %tmp.174 = getm $.Toybox.Graphics;
-        symbol [ FONT_NUMBER_MEDIUM %tmp.175 267 51 69 ];
+        symbol [ FONT_NUMBER_MEDIUM %tmp.175 269 51 69 ];
         %tmp.175 = getv %tmp.174 :FONT_NUMBER_MEDIUM;
         %tmp.176 = lgetv %colV2;
-        symbol [ colV2 %tmp.176 267 71 76 ];
-        symbol [ Graphics %tmp.177 267 78 86 ];
+        symbol [ colV2 %tmp.176 269 71 76 ];
+        symbol [ Graphics %tmp.177 269 78 86 ];
         %tmp.177 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.178 267 87 106 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.178 269 87 106 ];
         %tmp.178 = getv %tmp.177 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.166 %tmp.167(%tmp.168, %tmp.173, %tmp.175, %tmp.176, %tmp.178);
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 270 8 ]
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_8_272_8_if_stmt:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_12_270_55_begin:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 272 8 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_8_274_8_if_stmt:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_12_272_55_begin:
         %tmp.179 = lgetv %footerText;
-        symbol [ footerText %tmp.179 270 12 22 ];
+        symbol [ footerText %tmp.179 272 12 22 ];
         %tmp.180 = null;
         %tmp.181 = ne %tmp.179 %tmp.180;
-        bf %tmp.181 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_8_272_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_34_270_55_true:
+        bf %tmp.181 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_8_274_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_34_272_55_true:
         %tmp.182 = lgetv %footerText;
-        symbol [ footerText %tmp.182 270 35 45 ];
+        symbol [ footerText %tmp.182 272 35 45 ];
         %tmp.183 = as %tmp.182 { (!Null) };
-        symbol [ equals %tmp.184 270 46 52 ];
+        symbol [ equals %tmp.184 272 46 52 ];
         %tmp.184 = getv function %tmp.183 :equals;
         %tmp.185 = "";
         %tmp.186 = invoke %tmp.183 %tmp.184(%tmp.185);
         %tmp.187 = not %tmp.186;
         push %tmp.187;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_34_270_55_end:
-        %tmp.188 = phi [%tmp.181 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_12_270_55_begin] [%tmp.187 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_34_270_55_true] [%tmp.188 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_34_270_55_end];
-        bf %tmp.188 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_8_272_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_8_272_8_if_true:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_58_272_8_start:
-[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 271 12 ]
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_34_272_55_end:
+        %tmp.188 = phi [%tmp.181 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_12_272_55_begin] [%tmp.187 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_34_272_55_true] [%tmp.188 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_34_272_55_end];
+        bf %tmp.188 @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_8_274_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_8_274_8_if_true:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_58_274_8_start:
+[ "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc" 273 12 ]
         %tmp.189 = lgetv %dc;
-        symbol [ dc %tmp.189 271 12 14 ];
-        symbol [ drawText %tmp.190 271 15 23 ];
+        symbol [ dc %tmp.189 273 12 14 ];
+        symbol [ drawText %tmp.190 273 15 23 ];
         %tmp.190 = getv function %tmp.189 :drawText;
         %tmp.191 = lgetv %midX.3;
-        symbol [ midX %tmp.191 271 24 28 ];
+        symbol [ midX %tmp.191 273 24 28 ];
         %tmp.192 = lgetv %h.2;
-        symbol [ h %tmp.192 271 30 31 ];
+        symbol [ h %tmp.192 273 30 31 ];
         %tmp.193 = 84;
         %tmp.194 = mul %tmp.192 %tmp.193;
         %tmp.195 = 100;
         %tmp.196 = div %tmp.194 %tmp.195;
-        symbol [ Graphics %tmp.197 271 44 52 ];
+        symbol [ Graphics %tmp.197 273 44 52 ];
         %tmp.197 = getm $.Toybox.Graphics;
-        symbol [ FONT_TINY %tmp.198 271 53 62 ];
+        symbol [ FONT_TINY %tmp.198 273 53 62 ];
         %tmp.198 = getv %tmp.197 :FONT_TINY;
         %tmp.199 = lgetv %footerText;
-        symbol [ footerText %tmp.199 271 64 74 ];
+        symbol [ footerText %tmp.199 273 64 74 ];
         %tmp.200 = as %tmp.199 { (!Null) };
-        symbol [ Graphics %tmp.201 271 76 84 ];
+        symbol [ Graphics %tmp.201 273 76 84 ];
         %tmp.201 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.202 271 85 104 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.202 273 85 104 ];
         %tmp.202 = getv %tmp.201 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.189 %tmp.190(%tmp.191, %tmp.196, %tmp.198, %tmp.200, %tmp.202);
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_58_272_8_stop:
-        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_8_272_8_if_end;
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_270_8_272_8_if_end:
-C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_241_92_273_4_stop:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_58_274_8_stop:
+        goto @C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_8_274_8_if_end;
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_272_8_274_8_if_end:
+C__Users_orion_OneDrive_SailingFenix3HRApp_SailVMG_source_SailVMGView_mc_243_92_275_4_stop:
     }
 }
 [ @file = "C:\Users\orion\OneDrive\SailingFenix3HRApp\SailVMG\source\SailVMGView.mc"; @line = 1; ]

@@ -25,8 +25,9 @@ class PauseMenuDelegate extends WatchUi.MenuInputDelegate {
         // we must NOT call popView here (that would pop the data view too and
         // exit the app). Just perform the action; the menu closes on its own.
         if (item == :resume) {
-            // Resume feels like a start: vibrate + green ring/play, then the
-            // menu closes back to the last data screen (recording continues).
+            // Resume feels like a start: un-pause the activity, vibrate + green
+            // ring/play, then the menu closes back to the last data screen.
+            me.app.model.resumeRecording();
             Notify.start();
             me.view.showFlash(:start, 1500);
         } else if (item == :save) {

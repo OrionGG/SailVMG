@@ -16,6 +16,28 @@ function testStartRecordingNoCrash(logger) {
     return true;
 }
 
+// Pause must stop logging and freeze the timer; resume continues both.
+(:test)
+function testPauseStopsLogging(logger) {
+    var model = new DataModel({:avgLastSeconds => 5, :avgLastMinutes => 1});
+    model.reset();
+    model.addSample(1000, 3.0, 45, 120, 0.5);
+    Test.assertEqualMessage(model.positiveCount, 1, "logs while running");
+
+    model.pauseRecording();
+    Test.assertEqualMessage(model.running, false, "paused -> running=false");
+    // Timer frozen: two reads while paused are equal.
+    Test.assertEqualMessage(model.elapsedSeconds(), model.elapsedSeconds(), "timer frozen when paused");
+    model.addSample(1001, 9.0, 45, 121, 0.5);
+    Test.assertEqualMessage(model.positiveCount, 1, "no logging while paused");
+
+    model.resumeRecording();
+    Test.assertEqualMessage(model.running, true, "resumed -> running=true");
+    model.addSample(1002, 4.0, 45, 122, 0.5);
+    Test.assertEqualMessage(model.positiveCount, 2, "logging resumes");
+    return true;
+}
+
 // Start/stop feedback must never crash (guarded for no-tone devices).
 (:test)
 function testNotifyNoCrash(logger) {

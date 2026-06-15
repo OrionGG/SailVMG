@@ -100,8 +100,10 @@ class SailVMGView extends WatchUi.View {
             Notify.start();
             me.showFlash(:start, 1500);
         } else {
-            // Stop (like the stock apps): vibrate + red ring/square for ~2s,
-            // then open the Resume / Save / Exit menu.
+            // Stop (like the stock apps): pause the activity (timer freezes,
+            // logging stops), vibrate + red ring/square for ~2s, then open the
+            // Resume / Save / Exit menu.
+            me.app.model.pauseRecording();
             Notify.stop();
             me.afterFlashMenu = true;
             me.showFlash(:stop, 2000);
