@@ -206,6 +206,9 @@ class SailVMGView extends WatchUi.View {
         me.drawGrid(dc, "VMG", vmgText, frozen, "AVG VMG Secs", "AVG VMG Mins",
                     avgSecsText, avgMinsText, "TWD " + me.app.twd.format("%03d"));
         me.drawTopSogCog(dc);
+        var cur = frozen ? null : displayV;
+        me.drawColsTrend(dc, avgSecsText, avgMinsText,
+                         me.trendOf(cur, avgSecs), me.trendOf(cur, avgMins));
     }
 
     function drawScreen2(dc) {
@@ -230,6 +233,9 @@ class SailVMGView extends WatchUi.View {
         me.drawGrid(dc, "-VMG", vmgText, frozen, "-AVG VMG Secs", "-AVG VMG Mins",
                     negSecsText, negMinsText, "TWD " + me.app.twd.format("%03d"));
         me.drawTopSogCog(dc);
+        var cur = frozen ? null : displayV;
+        me.drawColsTrend(dc, negSecsText, negMinsText,
+                         me.trendOf(cur, negSecs), me.trendOf(cur, negMins));
     }
 
     function drawScreen3(dc) {
@@ -242,6 +248,7 @@ class SailVMGView extends WatchUi.View {
 
         me.drawGrid(dc, "HR", hrText, false, "AVG HR", "TIMER",
                     avgText, timeText, "");
+        me.drawColsPlain(dc, avgText, timeText);
     }
 
     // Shared grid layout: small title + LARGE value (centre-top), two titled
@@ -276,8 +283,8 @@ class SailVMGView extends WatchUi.View {
 
         dc.drawText(leftX, h * 48 / 100, Graphics.FONT_XTINY, colT1, Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(rightX, h * 48 / 100, Graphics.FONT_XTINY, colT2, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(leftX, h * 56 / 100, Graphics.FONT_NUMBER_MEDIUM, colV1, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(rightX, h * 56 / 100, Graphics.FONT_NUMBER_MEDIUM, colV2, Graphics.TEXT_JUSTIFY_CENTER);
+        // Column values are drawn per-screen: drawColsPlain (HR) or
+        // drawColsTrend (VMG screens, small value + better/worse colour square).
 
         // Small footer (centre-bottom)
         if (footerText != null && !footerText.equals("")) {
@@ -305,5 +312,39 @@ class SailVMGView extends WatchUi.View {
         dc.drawText(lx, h * 35 / 100, Graphics.FONT_TINY, sogText, Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(rx, h * 28 / 100, Graphics.FONT_XTINY, "COG", Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(rx, h * 35 / 100, Graphics.FONT_TINY, cogText, Graphics.TEXT_JUSTIFY_CENTER);
+    }
+
+    // :up if the live value beats this average (by magnitude, so "better" works
+    // both upwind and downwind), :down if worse, :none with no live value/average.
+    function trendOf(cur, avg) {
+        if (cur == null || avg == null) { return :none; }
+        return (cur.abs() >= avg.abs()) ? :up : :down;
+    }
+
+    // HR screen: plain large column values, no trend square.
+    function drawColsPlain(dc, v1, v2) {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        dc.drawText(w * 26 / 100, h * 56 / 100, Graphics.FONT_NUMBER_MEDIUM, v1, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w * 74 / 100, h * 56 / 100, Graphics.FONT_NUMBER_MEDIUM, v2, Graphics.TEXT_JUSTIFY_CENTER);
+    }
+
+    // VMG screens: small column value + a green/red square (live vs this average).
+    function drawColsTrend(dc, v1, v2, t1, t2) {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        me.drawColTrend(dc, w * 26 / 100, h, v1, t1);
+        me.drawColTrend(dc, w * 74 / 100, h, v2, t2);
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);   // restore default
+    }
+
+    function drawColTrend(dc, cx, h, text, trend) {
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
+        dc.drawText(cx, h * 55 / 100, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_CENTER);
+        if (trend == :none) { return; }
+        var side = h * 13 / 100;
+        var color = (trend == :up) ? Graphics.COLOR_GREEN : Graphics.COLOR_RED;
+        dc.setColor(color, Graphics.COLOR_WHITE);
+        dc.fillRectangle(cx - side / 2, h * 69 / 100, side, side);
     }
 }

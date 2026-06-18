@@ -83,6 +83,19 @@ function testRingBuffer(logger) {
     return true;
 }
 
+// Trend square logic: green (:up) when live beats the average by magnitude.
+(:test)
+function testTrend(logger) {
+    var v = new SailVMGView({:app => null});
+    Test.assertEqualMessage(v.trendOf(5.0, 4.0), :up, "upwind 5>4 -> up");
+    Test.assertEqualMessage(v.trendOf(3.0, 4.0), :down, "upwind 3<4 -> down");
+    Test.assertEqualMessage(v.trendOf(-5.0, -4.0), :up, "downwind |5|>|4| -> up");
+    Test.assertEqualMessage(v.trendOf(-3.0, -4.0), :down, "downwind |3|<|4| -> down");
+    Test.assertEqualMessage(v.trendOf(null, 4.0), :none, "no live -> none");
+    Test.assertEqualMessage(v.trendOf(5.0, null), :none, "no avg -> none");
+    return true;
+}
+
 // VMG math: sog 5 m/s, heading == TWD -> angle 0 -> vmg = 5 * 1.9438 kn.
 (:test)
 function testVmgCalc(logger) {
