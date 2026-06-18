@@ -340,11 +340,18 @@ class SailVMGView extends WatchUi.View {
 
     function drawColTrend(dc, cx, h, text, trend) {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
-        dc.drawText(cx, h * 55 / 100, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, h * 56 / 100, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_CENTER);
         if (trend == :none) { return; }
-        var side = h * 13 / 100;
-        var color = (trend == :up) ? Graphics.COLOR_GREEN : Graphics.COLOR_RED;
-        dc.setColor(color, Graphics.COLOR_WHITE);
-        dc.fillRectangle(cx - side / 2, h * 69 / 100, side, side);
+        // Big up (better) / down (worse) triangle: direction + colour.
+        var aw = h * 20 / 100;          // arrow width
+        var top = h * 66 / 100;
+        var bot = h * 84 / 100;
+        if (trend == :up) {
+            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_WHITE);
+            dc.fillPolygon([[cx, top], [cx - aw / 2, bot], [cx + aw / 2, bot]]);
+        } else {
+            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_WHITE);
+            dc.fillPolygon([[cx - aw / 2, top], [cx + aw / 2, top], [cx, bot]]);
+        }
     }
 }
