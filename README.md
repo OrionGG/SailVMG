@@ -32,17 +32,18 @@ font that renders on this device (`FONT_NUMBER_HOT`), vertically centred.
 A trailing `*` on the big value means it's a *held* last value (no live reading above
 the Min ABS VMG threshold right now).
 
-### Better/worse trend squares (Screens 1 & 2)
+### Better/worse trend triangles (Screens 1 & 2)
 
-Each AVG VMG column shows its value in a small font plus a colour square comparing the
-**live** VMG to that average:
+Each AVG VMG column shows its value in a small font plus a large colour triangle
+comparing the **live** VMG to that average:
 
-- 🟩 **green** — you're currently **beating** that average,
-- 🟥 **red** — you're **below** it,
-- **no square** — no live reading yet (held/`--`).
+- green **▲** — you're currently **beating** that average,
+- red **▼** — you're **below** it,
+- **no triangle** — no live reading yet (held/`--`).
 
-The comparison is by **magnitude**, so "green = doing better for this point of sail"
-holds both upwind and downwind. The HR screen has no trend squares.
+The triangle shows both direction and colour (glanceable in sunlight). The comparison
+is by **magnitude**, so "▲ = doing better for this point of sail" holds both upwind and
+downwind. The HR screen has no trend triangle.
 
 ## Controls (fēnix 3 HR buttons)
 
@@ -99,7 +100,7 @@ monkeydo SailVMG.prg fenix3_hr  # load the app into it
 
 Note: the simulator's *Data Simulation* drives `Activity.Info` and `Sensor` (so HR
 works), but **not** the GPS `Position` API the app reads — so VMG / SOG / COG and the
-trend squares stay `--` / hidden in the sim. Verify those on the watch (or by playing
+trend triangles stay `--` / hidden in the sim. Verify those on the watch (or by playing
 back a real GPS track).
 
 ## Unit tests
@@ -144,7 +145,7 @@ when synced to Garmin Connect / downloaded to a PC.
 | File | Role |
 |---|---|
 | `SailVMGApp.mc` | `AppBase`: loads/saves settings (Object Store), `getInitialView` |
-| `SailVMGView.mc` | Data screens, 1 Hz sampling, SOG/COG, trend squares, start/stop ring overlay |
+| `SailVMGView.mc` | Data screens, 1 Hz sampling, SOG/COG, trend triangles, start/stop ring overlay |
 | `SailVMGDelegate.mc` | `BehaviorDelegate` button mapping |
 | `DataModel.mc` | Stats, rolling averages, recording session, pause/resume, elapsed timer |
 | `VmgCalculator.mc` | VMG math |
