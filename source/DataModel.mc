@@ -26,8 +26,8 @@ class DataModel {
     var vmgField = null;
     var twdField = null;
 
-    var secondsWindow = 5;
-    var minutesWindow = 1;
+    var secondsWindow = 30;
+    var minutesWindow = 3;
 
     // params: {:avgLastSeconds => Number, :avgLastMinutes => Number}
     function initialize(params) {
@@ -35,12 +35,12 @@ class DataModel {
         if (params[:avgLastSeconds] != null) {
             me.secondsWindow = params[:avgLastSeconds];
         } else {
-            me.secondsWindow = 5;
+            me.secondsWindow = 30;
         }
         if (params[:avgLastMinutes] != null) {
             me.minutesWindow = params[:avgLastMinutes];
         } else {
-            me.minutesWindow = 1;
+            me.minutesWindow = 3;
         }
 
         var capacity = me.bufferCapacity();

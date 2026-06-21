@@ -185,13 +185,11 @@ class SailVMGView extends WatchUi.View {
     }
 
     function drawScreen1(dc) {
-        var minAbs = me.app.minAbsVmg;
-        var displayV = null;
+        // Hero: 5-second rolling average (not instantaneous)
+        var avg5s = me.app.model.avgPositiveSecs(5);
         var frozen = false;
-
-        if (me.lastVmg != null && me.lastVmg > 0 && me.lastVmg.abs() >= minAbs) {
-            displayV = me.lastVmg;
-        } else {
+        var displayV = avg5s;
+        if (displayV == null) {
             displayV = me.app.model.getLastPositive();
             if (displayV != null) { frozen = true; }
         }
@@ -206,19 +204,17 @@ class SailVMGView extends WatchUi.View {
         me.drawGrid(dc, "VMG", vmgText, frozen, "AVG VMG Secs", "AVG VMG Mins",
                     avgSecsText, avgMinsText, "TWD " + me.app.twd.format("%03d"));
         me.drawTopSogCog(dc);
-        var cur = frozen ? null : displayV;
+        // Trend: left = avg5s vs avgSecs, right = avgSecs vs avgMins
         me.drawColsTrend(dc, avgSecsText, avgMinsText,
-                         me.trendOf(cur, avgSecs), me.trendOf(cur, avgMins));
+                         me.trendOf(avg5s, avgSecs), me.trendOf(avgSecs, avgMins));
     }
 
     function drawScreen2(dc) {
-        var minAbs = me.app.minAbsVmg;
-        var displayV = null;
+        // Hero: 5-second rolling average (not instantaneous)
+        var avg5s = me.app.model.avgNegativeSecs(5);
         var frozen = false;
-
-        if (me.lastVmg != null && me.lastVmg < 0 && me.lastVmg.abs() >= minAbs) {
-            displayV = me.lastVmg;
-        } else {
+        var displayV = avg5s;
+        if (displayV == null) {
             displayV = me.app.model.getLastNegative();
             if (displayV != null) { frozen = true; }
         }
@@ -233,9 +229,9 @@ class SailVMGView extends WatchUi.View {
         me.drawGrid(dc, "-VMG", vmgText, frozen, "-AVG VMG Secs", "-AVG VMG Mins",
                     negSecsText, negMinsText, "TWD " + me.app.twd.format("%03d"));
         me.drawTopSogCog(dc);
-        var cur = frozen ? null : displayV;
+        // Trend: left = avg5s vs avgSecs, right = avgSecs vs avgMins
         me.drawColsTrend(dc, negSecsText, negMinsText,
-                         me.trendOf(cur, negSecs), me.trendOf(cur, negMins));
+                         me.trendOf(avg5s, negSecs), me.trendOf(negSecs, negMins));
     }
 
     function drawScreen3(dc) {

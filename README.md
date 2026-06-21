@@ -22,28 +22,36 @@ live speed/heading and heart‑rate data.
 Rendering is inverted (black on white). The headline value uses the largest number
 font that renders on this device (`FONT_NUMBER_HOT`), vertically centred.
 
-1. **VMG** (upwind) — big VMG number (centre‑top); **SOG** (kts) top‑left and **COG**
-   (deg) top‑right, above the upper divider; two columns **AVG VMG Secs** / **AVG VMG
-   Mins**; **TWD** footer.
+1. **VMG** (upwind) — big **5‑second rolling average VMG** (centre‑top); **SOG** (kts)
+   top‑left and **COG** (deg) top‑right, above the upper divider; two columns **AVG VMG
+   Secs** (default 30 s) / **AVG VMG Mins** (default 3 min); **TWD** footer.
 2. **−VMG** (downwind) — same layout for the negative component (values shown with a
    leading `−`).
 3. **HR** — current heart rate; **AVG HR** and the elapsed activity **TIMER**.
 
-A trailing `*` on the big value means it's a *held* last value (no live reading above
-the Min ABS VMG threshold right now).
+A trailing `*` on the big value means it's a *held* last value (no live 5 s average
+available yet — falls back to the last known good reading).
+
+The **instantaneous** VMG is still recorded to FIT every second; only the *displayed*
+hero number is the 5‑second rolling average (smoother and more actionable while sailing).
 
 ### Better/worse trend triangles (Screens 1 & 2)
 
-Each AVG VMG column shows its value in a small font plus a large colour triangle
-comparing the **live** VMG to that average:
+Each AVG VMG column shows its value in a small font plus a large colour triangle:
 
-- green **▲** — you're currently **beating** that average,
-- red **▼** — you're **below** it,
-- **no triangle** — no live reading yet (held/`--`).
+- **Left column (AVG VMG Secs):** compares the **5 s avg** to the **Secs avg** (default
+  30 s) — are you improving right now relative to the recent trend?
+- **Right column (AVG VMG Mins):** compares the **Secs avg** to the **Mins avg**
+  (default 3 min) — is the recent trend above the session‑level trend?
 
-The triangle shows both direction and colour (glanceable in sunlight). The comparison
-is by **magnitude**, so "▲ = doing better for this point of sail" holds both upwind and
-downwind. The HR screen has no trend triangle.
+Colours:
+
+- green **▲** — the shorter window **beats** the longer one (by magnitude),
+- red **▼** — the shorter window is **below** the longer one,
+- **no triangle** — not enough data yet.
+
+The comparison is by **magnitude**, so "▲ = doing better for this point of sail" holds
+both upwind and downwind. The HR screen has no trend triangle.
 
 ## Controls (fēnix 3 HR buttons)
 
@@ -67,9 +75,9 @@ downwind. The HR screen has no trend triangle.
 ## Settings (hold UP)
 
 `Set TWD` (compass snap menu → 1° fine adjust), `Set Min ABS VMG`,
-`Set AVG Last Seconds` (max 300), `Set AVG Last Minutes` (max 15). The averaging
-windows are capped to keep memory bounded on the device. Values persist in the Object
-Store (`get/setProperty`).
+`Set AVG Last Seconds` (default 30, max 300), `Set AVG Last Minutes` (default 3, max
+15). The averaging windows are capped to keep memory bounded on the device. Values
+persist in the Object Store (`get/setProperty`).
 
 ## Build
 
@@ -137,6 +145,8 @@ when synced to Garmin Connect / downloaded to a PC.
 - **Rolling averages** use a fixed‑capacity **circular buffer** of two primitive
   arrays (`RingBuffer.mc`) — no per‑second allocation, low memory, self‑bounding (so no
   per‑tick prune). Window settings are capped so the buffers can't exhaust device RAM.
+- The **hero number** is the 5‑second rolling average (queried from the same buffer
+  with a 5 s window). The per‑second instantaneous VMG is still written to the FIT.
 - **Battery**: the dominant cost is continuous GPS + the HR sensor, both inherent to a
   VMG app. Sampling/redraw run at 1 Hz.
 

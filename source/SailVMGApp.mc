@@ -9,8 +9,8 @@ class SailVMGApp extends App.AppBase {
     // Settings (persisted in the Object Store via get/setProperty).
     var twd = 0;
     var minAbsVmg = 0.5;
-    var avgLastSeconds = 5;
-    var avgLastMinutes = 1;
+    var avgLastSeconds = 30;
+    var avgLastMinutes = 3;
 
     function initialize() {
         App.AppBase.initialize();
@@ -20,9 +20,9 @@ class SailVMGApp extends App.AppBase {
         var m = getProperty("minAbsVmg");
         me.minAbsVmg = (m == null) ? 0.5 : m;
         var s = getProperty("avgLastSeconds");
-        me.avgLastSeconds = (s == null) ? 5 : s;
+        me.avgLastSeconds = (s == null) ? 30 : s;
         var n = getProperty("avgLastMinutes");
-        me.avgLastMinutes = (n == null) ? 1 : n;
+        me.avgLastMinutes = (n == null) ? 3 : n;
 
         me.model = new DataModel({
             :avgLastSeconds => me.avgLastSeconds,
