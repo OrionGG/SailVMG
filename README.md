@@ -44,14 +44,22 @@ Each AVG VMG column shows its value in a small font plus a large colour triangle
 - **Right column (AVG VMG Mins):** compares the **Secs avg** to the **Mins avg**
   (default 3 min) — is the recent trend above the session‑level trend?
 
-Colours:
+A **±3 % dead zone** (a percentage of the reference tier, so it self‑scales with
+conditions) separates three states, of which two are drawn:
 
-- green **▲** — the shorter window **beats** the longer one (by magnitude),
-- red **▼** — the shorter window is **below** the longer one,
+- green **▲** — **steady or rising**: the shorter window is within ±3 % of the
+  reference (neutral baseline) **or** above it. Steady = good — keep doing what you're
+  doing. When you're sailing well and consistently you should see green ▲ on both
+  comparisons.
+- red **▼** — **genuine drop**: the shorter window is more than 3 % *below* the
+  reference. Red only appears when something has actually changed, so it means
+  something when it does.
 - **no triangle** — not enough data yet.
 
-The comparison is by **magnitude**, so "▲ = doing better for this point of sail" holds
-both upwind and downwind. The HR screen has no trend triangle.
+The dead zone scales with the value: ≈±0.05 kn around 1.8 kn in light air, ≈±0.11 kn
+around 3.8 kn in breeze — no setting to touch. The comparison is by **magnitude**, so
+"▲ = doing at least as well for this point of sail" holds both upwind and downwind. The
+HR screen has no trend triangle.
 
 ## Controls (fēnix 3 HR buttons)
 

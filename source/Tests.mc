@@ -83,16 +83,25 @@ function testRingBuffer(logger) {
     return true;
 }
 
-// Trend square logic: green (:up) when live beats the average by magnitude.
+// Trend logic: three states with a +/-3% dead zone (by magnitude), so steady
+// sailing reads :neutral and only genuine moves read :up / :down.
 (:test)
 function testTrend(logger) {
     var v = new SailVMGView({:app => null});
-    Test.assertEqualMessage(v.trendOf(5.0, 4.0), :up, "upwind 5>4 -> up");
-    Test.assertEqualMessage(v.trendOf(3.0, 4.0), :down, "upwind 3<4 -> down");
-    Test.assertEqualMessage(v.trendOf(-5.0, -4.0), :up, "downwind |5|>|4| -> up");
-    Test.assertEqualMessage(v.trendOf(-3.0, -4.0), :down, "downwind |3|<|4| -> down");
-    Test.assertEqualMessage(v.trendOf(null, 4.0), :none, "no live -> none");
-    Test.assertEqualMessage(v.trendOf(5.0, null), :none, "no avg -> none");
+    // Clearly above/below the band.
+    Test.assertEqualMessage(v.trendOf(5.0, 4.0), :up, "upwind 5>>4 -> up");
+    Test.assertEqualMessage(v.trendOf(3.0, 4.0), :down, "upwind 3<<4 -> down");
+    Test.assertEqualMessage(v.trendOf(-5.0, -4.0), :up, "downwind |5|>>|4| -> up");
+    Test.assertEqualMessage(v.trendOf(-3.0, -4.0), :down, "downwind |3|<<|4| -> down");
+    // Inside the +/-3% dead zone -> neutral (the steady-state baseline).
+    Test.assertEqualMessage(v.trendOf(4.0, 4.0), :neutral, "equal -> neutral");
+    Test.assertEqualMessage(v.trendOf(4.1, 4.0), :neutral, "+2.5% -> neutral");
+    Test.assertEqualMessage(v.trendOf(3.9, 4.0), :neutral, "-2.5% -> neutral");
+    // Just past the band edges -> up / down.
+    Test.assertEqualMessage(v.trendOf(4.2, 4.0), :up, "+5% -> up");
+    Test.assertEqualMessage(v.trendOf(3.8, 4.0), :down, "-5% -> down");
+    Test.assertEqualMessage(v.trendOf(null, 4.0), :none, "no shorter -> none");
+    Test.assertEqualMessage(v.trendOf(5.0, null), :none, "no reference -> none");
     return true;
 }
 

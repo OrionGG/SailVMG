@@ -310,11 +310,23 @@ class SailVMGView extends WatchUi.View {
         dc.drawText(rx, h * 35 / 100, Graphics.FONT_TINY, cogText, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
-    // :up if the live value beats this average (by magnitude, so "better" works
-    // both upwind and downwind), :down if worse, :none with no live value/average.
+    // Three-state trend with a percentage dead zone, so normal steady-state
+    // sailing reads as "neutral" rather than flickering up/down. Compared by
+    // magnitude (so "better" works both upwind and downwind):
+    //   :up      shorter window beats the reference by > TREND_DEADBAND
+    //   :down    shorter window is below the reference by > TREND_DEADBAND
+    //   :neutral within +/- TREND_DEADBAND of the reference (steady)
+    //   :none    missing data on either side
+    // The dead zone is a percentage of the reference, so it self-scales with
+    // conditions (wider band in breeze, tighter in light air).
+    const TREND_DEADBAND = 0.03;   // +/- 3%
     function trendOf(cur, avg) {
         if (cur == null || avg == null) { return :none; }
-        return (cur.abs() >= avg.abs()) ? :up : :down;
+        var c = cur.abs();
+        var a = avg.abs();
+        if (c >= a * (1.0 + TREND_DEADBAND)) { return :up; }
+        if (c <= a * (1.0 - TREND_DEADBAND)) { return :down; }
+        return :neutral;
     }
 
     // HR screen: plain large column values, no trend square.
@@ -338,16 +350,18 @@ class SailVMGView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
         dc.drawText(cx, h * 56 / 100, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_CENTER);
         if (trend == :none) { return; }
-        // Big up (better) / down (worse) triangle: direction + colour.
+        // Big triangle: colour + direction. Steady (:neutral) and rising (:up)
+        // both show a green up triangle — "steady = good, keep doing this".
+        // Only a genuine drop (:down) shows the red down triangle.
         var aw = h * 20 / 100;          // arrow width
         var top = h * 66 / 100;
         var bot = h * 84 / 100;
-        if (trend == :up) {
-            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_WHITE);
-            dc.fillPolygon([[cx, top], [cx - aw / 2, bot], [cx + aw / 2, bot]]);
-        } else {
+        if (trend == :down) {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_WHITE);
             dc.fillPolygon([[cx - aw / 2, top], [cx + aw / 2, top], [cx, bot]]);
+        } else {
+            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_WHITE);
+            dc.fillPolygon([[cx, top], [cx - aw / 2, bot], [cx + aw / 2, bot]]);
         }
     }
 }
