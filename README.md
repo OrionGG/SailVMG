@@ -28,6 +28,10 @@ font that renders on this device (`FONT_NUMBER_HOT`), vertically centred.
 2. **−VMG** (downwind) — same layout for the negative component (values shown with a
    leading `−`).
 3. **HR** — current heart rate; **AVG HR** and the elapsed activity **TIMER**.
+4. **Countdown** — a giant two‑digit 7‑segment **seconds** display on a black
+   background, driven by the same START as the rest of the app. On start it counts
+   `60 → 0`, then loops `59 → 0` repeatedly (i.e. `…1, 0, 59, 58…`). Green digits while
+   running, white when stopped.
 
 A trailing `*` on the big value means it's a *held* last value (no live 5 s average
 available yet — falls back to the last known good reading).

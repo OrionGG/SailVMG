@@ -17,6 +17,10 @@ class SailVMGView extends WatchUi.View {
     var lastSampleTs = null;
     var timer = null;
 
+    // Screen 4 countdown timer state
+    var countdownSecs = 60;
+    var countdownRunning = false;
+
     // Transient start/stop confirmation overlay (:start green, :stop red).
     var statusFlash = null;
     var flashTimer = null;
@@ -54,6 +58,13 @@ class SailVMGView extends WatchUi.View {
 
     function onTick() as Void {
         me.sample(Time.now().value());
+        if (me.countdownRunning) {
+            if (me.countdownSecs > 0) {
+                me.countdownSecs -= 1;
+            } else {
+                me.countdownSecs = 59;   // after 0 wrap to 59 (..1,0,59,58..)
+            }
+        }
         WatchUi.requestUpdate();
     }
 
@@ -88,19 +99,22 @@ class SailVMGView extends WatchUi.View {
     }
 
     function prevScreen() {
-        me.screenIndex = (me.screenIndex + 2) % 3;
+        me.screenIndex = (me.screenIndex + 3) % 4;
         WatchUi.requestUpdate();
     }
 
     function nextScreen() {
-        me.screenIndex = (me.screenIndex + 1) % 3;
+        me.screenIndex = (me.screenIndex + 1) % 4;
         WatchUi.requestUpdate();
     }
 
     function handleStart() {
+        // START behaves the same on every screen: it starts/stops the activity.
+        // The screen-4 countdown is tied to that same lifecycle.
         if (!me.app.model.running) {
             me.app.model.reset();
             me.app.model.startRecording();
+            me.startCountdown();
             Notify.start();
             me.showFlash(:start, 1500);
         } else {
@@ -108,10 +122,27 @@ class SailVMGView extends WatchUi.View {
             // logging stops), vibrate + red ring/square for ~2s, then open the
             // Resume / Save / Exit menu.
             me.app.model.pauseRecording();
+            me.stopCountdown();
             Notify.stop();
             me.afterFlashMenu = true;
             me.showFlash(:stop, 2000);
         }
+    }
+
+    // Screen-4 countdown lifecycle, driven by the global activity start/stop.
+    // A fresh start resets to 60; pause freezes the value so resume continues
+    // from where it left off.
+    function startCountdown() {
+        me.countdownSecs = 60;
+        me.countdownRunning = true;
+    }
+
+    function stopCountdown() {
+        me.countdownRunning = false;   // keep countdownSecs so resume can continue
+    }
+
+    function resumeCountdown() {
+        me.countdownRunning = true;    // continue from the frozen value
     }
 
     function showSettings() {
@@ -150,8 +181,10 @@ class SailVMGView extends WatchUi.View {
             me.drawScreen1(dc);
         } else if (me.screenIndex == 1) {
             me.drawScreen2(dc);
-        } else {
+        } else if (me.screenIndex == 2) {
             me.drawScreen3(dc);
+        } else {
+            me.drawScreen4(dc);
         }
     }
 
@@ -363,5 +396,77 @@ class SailVMGView extends WatchUi.View {
             dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_WHITE);
             dc.fillPolygon([[cx, top], [cx - aw / 2, bot], [cx + aw / 2, bot]]);
         }
+    }
+
+    function drawScreen4(dc) {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        var cx = w / 2;
+
+        // White background, black digits — same inverted theme as the other
+        // screens.
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
+        dc.clear();
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
+
+        var bandBottom = h * 86 / 100;             // leave room for the status line
+
+        if (me.countdownSecs < 10) {
+            // Last 10 seconds: a single, larger, BOLD digit, centred.
+            var dh = bandBottom - 8;               // nearly the full band height
+            var dw = dh * 10 / 18;
+            var x0 = (w - dw) / 2;
+            var y0 = (bandBottom - dh) / 2;
+            if (y0 < 2) { y0 = 2; }
+            var t  = dw * 26 / 100;                // bold (vs ~17% normal)
+            me.drawSevenSeg(dc, x0, y0, dw, dh, me.countdownSecs, t);
+        } else {
+            // Two 7-seg digits, large but with a little margin: ~82% of the
+            // width and the band above the status line.
+            var dgap = w * 4 / 100;                // gap between the two digits
+            var dw   = (w * 82 / 100 - dgap) / 2;  // single digit width
+            var dh   = dw * 18 / 10;               // single digit height (~1.8:1)
+            var x0   = (w - (2 * dw + dgap)) / 2;
+            var y0   = (bandBottom - dh) / 2;
+            if (y0 < 2) { y0 = 2; }
+            var t    = dw * 17 / 100;              // normal thickness
+            me.drawSevenSeg(dc, x0,             y0, dw, dh, me.countdownSecs / 10, t);
+            me.drawSevenSeg(dc, x0 + dw + dgap, y0, dw, dh, me.countdownSecs % 10, t);
+        }
+
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
+        var statusText = me.countdownRunning ? "RUNNING" : "PRESS START";
+        dc.drawText(cx, h * 91 / 100, Graphics.FONT_XTINY, statusText, Graphics.TEXT_JUSTIFY_CENTER);
+    }
+
+    // 7-segment digit renderer using fillRectangle.
+    // Segments: a=top, b=top-right, c=bottom-right, d=bottom,
+    //           e=bottom-left, f=top-left, g=middle
+    function drawSevenSeg(dc, x0, y0, dw, dh, digit, t) {
+        if (t < 4) { t = 4; }   // caller sets thickness (bold for the last 10 s)
+        var g  = 3;       // gap around each segment end
+        var hh = dh / 2;  // half height (where middle segment sits)
+
+        // 70 integers: 7 segment flags per digit for 0-9
+        var segs = [
+            1,1,1,1,1,1,0,  // 0
+            0,1,1,0,0,0,0,  // 1
+            1,1,0,1,1,0,1,  // 2
+            1,1,1,1,0,0,1,  // 3
+            0,1,1,0,0,1,1,  // 4
+            1,0,1,1,0,1,1,  // 5
+            1,0,1,1,1,1,1,  // 6
+            1,1,1,0,0,0,0,  // 7
+            1,1,1,1,1,1,1,  // 8
+            1,1,1,1,0,1,1,  // 9
+        ];
+        var i = digit * 7;
+        if (segs[i+0] != 0) { dc.fillRectangle(x0 + t+g,      y0,            dw - 2*(t+g), t); }   // a top
+        if (segs[i+1] != 0) { dc.fillRectangle(x0 + dw-t,     y0 + t+g,      t, hh - t - 2*g); }   // b top-right
+        if (segs[i+2] != 0) { dc.fillRectangle(x0 + dw-t,     y0 + hh+g,     t, hh - t - 2*g); }   // c bot-right
+        if (segs[i+3] != 0) { dc.fillRectangle(x0 + t+g,      y0 + dh-t,     dw - 2*(t+g), t); }   // d bottom
+        if (segs[i+4] != 0) { dc.fillRectangle(x0,            y0 + hh+g,     t, hh - t - 2*g); }   // e bot-left
+        if (segs[i+5] != 0) { dc.fillRectangle(x0,            y0 + t+g,      t, hh - t - 2*g); }   // f top-left
+        if (segs[i+6] != 0) { dc.fillRectangle(x0 + t+g,      y0 + hh - t/2, dw - 2*(t+g), t); }   // g middle
     }
 }

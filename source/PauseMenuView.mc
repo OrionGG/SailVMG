@@ -28,6 +28,7 @@ class PauseMenuDelegate extends WatchUi.MenuInputDelegate {
             // Resume feels like a start: un-pause, vibrate + green ring/play,
             // then the menu closes back to the last data screen.
             me.app.model.resumeRecording();
+            me.view.resumeCountdown();
             Notify.start();
             me.view.showFlash(:start, 1500);
         } else if (item == :save) {
