@@ -33,6 +33,7 @@ class PauseMenuDelegate extends WatchUi.MenuInputDelegate {
             me.view.showFlash(:start, 1500);
         } else if (item == :save) {
             me.app.model.saveRecording();
+            me.view.resetCountdown();
         } else if (item == :discard) {
             // Confirm before throwing the activity away.
             WatchUi.pushView(new DiscardConfirmMenu(),
@@ -70,6 +71,7 @@ class DiscardConfirmDelegate extends WatchUi.MenuInputDelegate {
                              WatchUi.SLIDE_UP);
         } else if (item == :yes) {
             me.app.model.discardRecording();
+            me.view.resetCountdown();
         }
     }
 }

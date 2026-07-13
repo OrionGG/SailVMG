@@ -145,6 +145,12 @@ class SailVMGView extends WatchUi.View {
         me.countdownRunning = true;    // continue from the frozen value
     }
 
+    // Save/Discard: back to the initial state (60, stopped).
+    function resetCountdown() {
+        me.countdownSecs = 60;
+        me.countdownRunning = false;
+    }
+
     function showSettings() {
         WatchUi.pushView(new SettingsMenu(), new SettingsMenuDelegate(me.app), WatchUi.SLIDE_UP);
     }
