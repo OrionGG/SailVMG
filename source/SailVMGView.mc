@@ -95,7 +95,10 @@ class SailVMGView extends WatchUi.View {
         me.lastVmg = vmg;
         me.lastSog = (sog != null) ? sog * 1.9438 : null;   // m/s -> knots
         me.lastCog = cog;                                    // degrees (0..360 at draw)
-        me.app.model.addSample(ts, vmg, me.app.twd, hr, me.app.minAbsVmg);
+
+        var twa = me.twaOf(cog, me.app.twd);
+        var absTwa = (twa == null) ? null : twa.abs();
+        me.app.model.addSample(ts, vmg, me.app.twd, hr, me.app.minAbsVmg, me.lastSog, absTwa);
     }
 
     function prevScreen() {
@@ -305,9 +308,12 @@ class SailVMGView extends WatchUi.View {
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         if (frozen) {
             // Number fonts have no '*', so draw the "held value" marker separately.
+            // On the LEFT of the value: the right-hand side of this band is where
+            // the wind-shift triangle lives, and a wide value (e.g. "-12.34", 107px
+            // on a 218px screen) would otherwise push the '*' straight into it.
             var half = dc.getTextWidthInPixels(valueText, Graphics.FONT_NUMBER_HOT) / 2;
-            dc.drawText(midX + half + 3, valueCy, Graphics.FONT_XTINY, "*",
-                        Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+            dc.drawText(midX - half - 3, valueCy, Graphics.FONT_XTINY, "*",
+                        Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
         // Split lines: one horizontal above the columns, one vertical between
@@ -356,6 +362,66 @@ class SailVMGView extends WatchUi.View {
         dc.drawText(lx, h * 35 / 100, Graphics.FONT_TINY, sogText, Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(rx, h * 28 / 100, Graphics.FONT_XTINY, "TWA", Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(rx, h * 35 / 100, Graphics.FONT_TINY, twaText, Graphics.TEXT_JUSTIFY_CENTER);
+
+        // Small wind-shift marker up-right of the TWA label (see windShiftTrend).
+        // Geometry is tight here: on a 218px round screen the hero number reaches
+        // x=163 (widest realistic value "-12.34" = 107px) and the bezel cuts in at
+        // x=191 at this height, so this sits in the ~8px-clear gap between them.
+        me.drawSmallTrend(dc, w * 82 / 100, h * 17 / 100, h * 7 / 100, me.windShiftTrend());
+    }
+
+    // Dead zone for the TWA comparison, in DEGREES (absolute, not a percentage).
+    // A percentage band would be far too tight to be meaningful on an angle:
+    // +/-3% of a 45 deg beat is only +/-1.4 deg, well inside normal steering and
+    // COG noise, so the marker would flicker instead of resting on "steady".
+    // Real oscillating shifts are 5-15 deg, so 5 deg is the useful floor.
+    const TWA_SHIFT_DEADBAND = 5;   // degrees
+
+    // The reference window must stay clearly longer than the 5 s window it is
+    // compared against. "Set AVG Last Seconds" allows values down to 1, which
+    // would otherwise compare the 5 s average against (almost) itself and pin
+    // the marker to a permanent, meaningless "steady". Mirrored by
+    // DataModel.navCapacity so the buffer can hold the clamped window.
+    const SHIFT_REF_MIN_SECS = 20;
+
+    // Wind-shift detector for the small triangle above TWA. With the TWD knob
+    // fixed on the watch, holding a steady course while the *true* wind shifts
+    // changes the boat's angle-to-old-TWD (our TWA) even though nothing the
+    // sailor did changed, so a move in |TWA| flags the shift.
+    //   Upwind (screen 1):   |TWA| shrinking  = favourable lift  -> green up
+    //   Downwind (screen 2): |TWA| growing    = favourable lift  -> green up
+    // Either screen: the opposite direction is an unfavourable header -> red
+    // down; no change either way is steady -> green up (same "steady=good"
+    // convention as the VMG trend triangles).
+    // SOG is deliberately NOT consulted: the reading is purely the angle change.
+    function windShiftTrend() {
+        var refSecs = Util.max(SHIFT_REF_MIN_SECS, me.app.avgLastSeconds);
+        var twa5 = me.app.model.avgTwaWindow(5);
+        var twaRef = me.app.model.avgTwaWindow(refSecs);
+        if (twa5 == null || twaRef == null) { return :none; }
+
+        var d = twa5 - twaRef;                       // + = sailing a wider angle
+        if (d.abs() < TWA_SHIFT_DEADBAND) { return :up; }   // steady = good
+
+        // Upwind a shrinking |TWA| is the favourable lift; downwind it's mirrored.
+        if (me.screenIndex == 0) {
+            return (d < 0) ? :up : :down;
+        }
+        return (d > 0) ? :up : :down;
+    }
+
+    // Small filled triangle (no text), used for the wind-shift marker.
+    function drawSmallTrend(dc, cx, topY, size, trend) {
+        if (trend == :none) { return; }
+        var half = size / 2;
+        if (trend == :down) {
+            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_WHITE);
+            dc.fillPolygon([[cx - half, topY], [cx + half, topY], [cx, topY + size]]);
+        } else {
+            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_WHITE);
+            dc.fillPolygon([[cx, topY], [cx - half, topY + size], [cx + half, topY + size]]);
+        }
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);   // restore default
     }
 
     // Three-state trend with a percentage dead zone, so normal steady-state

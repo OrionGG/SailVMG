@@ -38,8 +38,10 @@ font that renders on this device (`FONT_NUMBER_HOT`), vertically centred.
    `60 → 0`, then loops `59 → 0` repeatedly (i.e. `…1, 0, 59, 58…`). Green digits while
    running, white when stopped.
 
-A trailing `*` on the big value means it's a *held* last value (no live 5 s average
-available yet — falls back to the last known good reading).
+A `*` to the **left** of the big value means it's a *held* last value (no live 5 s
+average available yet — falls back to the last known good reading). It sits on the left
+because the right of that band is where the wind‑shift triangle lives, and a wide value
+like `-12.34` (107 px of a 218 px screen) would otherwise push the `*` into it.
 
 The **instantaneous** VMG is still recorded to FIT every second; only the *displayed*
 hero number is the 5‑second rolling average (smoother and more actionable while sailing).
@@ -69,6 +71,40 @@ The dead zone scales with the value: ≈±0.05 kn around 1.8 kn in light air, �
 around 3.8 kn in breeze — no setting to touch. The comparison is by **magnitude**, so
 "▲ = doing at least as well for this point of sail" holds both upwind and downwind. The
 HR screen has no trend triangle.
+
+### Wind‑shift marker (Screens 1 & 2)
+
+A small triangle above **TWA** flags a likely **true‑wind shift**, using the classic
+compass‑oscillation technique: with **TWD fixed** on the watch (it's set once before
+sailing and doesn't track the real wind in real time), holding a steady heading while
+the *actual* wind shifts changes the boat's angle relative to that fixed TWD — even
+though the sailor did nothing differently.
+
+It compares **|TWA|** (5 s avg vs the reference avg) using a **±5° dead zone**. That
+band is *absolute degrees*, not a percentage: ±3 % of a 45° beat is only ±1.4°, well
+inside normal steering and COG noise, which would make the marker flicker instead of
+resting on "steady". Real oscillating shifts are 5–15°.
+  - **Screen 1 (upwind):** |TWA| **shrinking** = a favourable **lift** → green ▲.
+    |TWA| growing = an unfavourable **header** → red ▼.
+  - **Screen 2 (downwind):** it's mirrored — |TWA| **growing** (sailing deeper) is the
+    favourable lift → green ▲; shrinking is the header → red ▼.
+  - No meaningful change either way → green ▲ (steady, same "steady = good"
+    convention as the VMG triangles).
+
+The reference window is `Set AVG Last Seconds`, clamped to a **minimum of 20 s** — that
+setting goes as low as 1 s, which would otherwise compare the 5 s average against
+(almost) itself and pin the marker to a permanent, meaningless "steady".
+
+Like the VMG averages, the shift buffers only fill **while the activity is recording**,
+so the marker appears once you've been running for a few seconds.
+
+**SOG is not consulted** — the reading is purely the angle change. That keeps it simple
+and predictable, at the cost of the marker also reacting when *you* change course rather
+than the wind: steering up or bearing away moves |TWA| just like a shift does. Read it
+alongside the SOG number, which is right next to it.
+
+There's no separate trend marker above SOG — "SOG went up" isn't reliably good or bad on
+its own (bearing away raises SOG while it can lower VMG).
 
 ## Controls (fēnix 3 HR buttons)
 

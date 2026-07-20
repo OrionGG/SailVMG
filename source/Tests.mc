@@ -2,6 +2,19 @@ using Toybox.Test as Test;
 using Toybox.System as System;
 using Toybox.Time as Time;
 
+// Minimal stand-in for SailVMGApp exposing just what SailVMGView.windShiftTrend
+// reads (me.app.model, me.app.avgLastSeconds). (:test)-gated like the test
+// functions so it never enters non-test builds.
+(:test)
+class FakeNavApp {
+    var model;
+    var avgLastSeconds;
+    function initialize(m, secs) {
+        me.model = m;
+        me.avgLastSeconds = secs;
+    }
+}
+
 // Exercises the exact path that crashed on START
 // (handleStart -> DataModel.startRecording). Before the fix this threw
 // "Symbol Not Found: SPORT_SAILING". If it returns without throwing, it passes.
@@ -10,8 +23,8 @@ function testStartRecordingNoCrash(logger) {
     var model = new DataModel({:avgLastSeconds => 5, :avgLastMinutes => 1});
     model.reset();
     model.startRecording();                       // <-- former crash site
-    model.addSample(1000, 3.5, 45, 120, 0.5);     // positive VMG sample
-    model.addSample(1001, -2.0, 45, 121, 0.5);    // negative VMG sample
+    model.addSample(1000, 3.5, 45, 120, 0.5, 5.0, 40);     // positive VMG sample
+    model.addSample(1001, -2.0, 45, 121, 0.5, 4.0, 140);   // negative VMG sample
     model.saveRecording();                        // close the session cleanly
     logger.debug("startRecording path completed without crashing");
     return true;
@@ -22,19 +35,19 @@ function testStartRecordingNoCrash(logger) {
 function testPauseStopsLogging(logger) {
     var model = new DataModel({:avgLastSeconds => 5, :avgLastMinutes => 1});
     model.reset();
-    model.addSample(1000, 3.0, 45, 120, 0.5);
+    model.addSample(1000, 3.0, 45, 120, 0.5, 5.0, 40);
     Test.assertEqualMessage(model.positiveCount, 1, "logs while running");
 
     model.pauseRecording();
     Test.assertEqualMessage(model.running, false, "paused -> running=false");
     // Timer frozen: two reads while paused are equal.
     Test.assertEqualMessage(model.elapsedSeconds(), model.elapsedSeconds(), "timer frozen when paused");
-    model.addSample(1001, 9.0, 45, 121, 0.5);
+    model.addSample(1001, 9.0, 45, 121, 0.5, 5.0, 40);
     Test.assertEqualMessage(model.positiveCount, 1, "no logging while paused");
 
     model.resumeRecording();
     Test.assertEqualMessage(model.running, true, "resumed -> running=true");
-    model.addSample(1002, 4.0, 45, 122, 0.5);
+    model.addSample(1002, 4.0, 45, 122, 0.5, 5.0, 40);
     Test.assertEqualMessage(model.positiveCount, 2, "logging resumes");
     return true;
 }
@@ -44,7 +57,7 @@ function testPauseStopsLogging(logger) {
 function testSaveResetsTimer(logger) {
     var model = new DataModel({:avgLastSeconds => 5, :avgLastMinutes => 1});
     model.reset();
-    model.addSample(1000, 3.0, 45, 120, 0.5);
+    model.addSample(1000, 3.0, 45, 120, 0.5, 5.0, 40);
     Test.assertEqualMessage(model.positiveCount, 1, "logged a sample");
     model.pauseRecording();
     model.saveRecording();
@@ -120,6 +133,76 @@ function testTwa(logger) {
     // assertEqualMessage can't compare null (it invokes equals()), so test the
     // predicate instead.
     Test.assertEqualMessage(v.twaOf(null, 0) == null, true, "no COG -> null");
+    return true;
+}
+
+// Wind-shift triangle above TWA: only claims a shift when SOG stayed inside
+// its dead zone; the direction that counts as "favourable" flips per screen.
+(:test)
+function testWindShiftTrend(logger) {
+    var now = Time.now().value();
+
+    // 30 s steady at SOG 5.0 / TWA 45 deg, then the last 5 s settle at TWA 35
+    // (a lift) with SOG unchanged.
+    var model = new DataModel({:avgLastSeconds => 30, :avgLastMinutes => 3});
+    model.reset();
+    for (var i = 0; i < 25; i += 1) {
+        model.addSample(now - 29 + i, 3.0, 45, 120, 0.5, 5.0, 45);
+    }
+    for (var i = 25; i < 30; i += 1) {
+        model.addSample(now - 29 + i, 3.0, 45, 120, 0.5, 5.0, 35);
+    }
+    var v = new SailVMGView({:app => new FakeNavApp(model, 30)});
+    v.screenIndex = 0;   // upwind: shrinking |TWA| is a favourable lift
+    Test.assertEqualMessage(v.windShiftTrend(), :up, "steady SOG + shrinking TWA upwind -> favourable");
+    v.screenIndex = 1;   // downwind: the same shrink is now unfavourable
+    Test.assertEqualMessage(v.windShiftTrend(), :down, "same shift read downwind -> unfavourable");
+
+    // SOG is deliberately ignored: the same TWA shift reads identically even
+    // when SOG drops hard at the same time.
+    var model2 = new DataModel({:avgLastSeconds => 30, :avgLastMinutes => 3});
+    model2.reset();
+    for (var i = 0; i < 25; i += 1) {
+        model2.addSample(now - 29 + i, 3.0, 45, 120, 0.5, 5.0, 45);
+    }
+    for (var i = 25; i < 30; i += 1) {
+        model2.addSample(now - 29 + i, 3.0, 45, 120, 0.5, 3.5, 35);
+    }
+    var v2 = new SailVMGView({:app => new FakeNavApp(model2, 30)});
+    v2.screenIndex = 0;
+    Test.assertEqualMessage(v2.windShiftTrend(), :up, "SOG ignored: same lift reading despite SOG drop");
+
+    // Dead zone must be ABSOLUTE degrees, not a percentage. A 2 deg drift the
+    // unfavourable way sits inside the 5 deg band -> steady (green). Under the
+    // old +/-3% rule the band at ~45 deg was only 1.4 deg, so this same input
+    // would have wrongly reported a header (red).
+    var model3 = new DataModel({:avgLastSeconds => 30, :avgLastMinutes => 3});
+    model3.reset();
+    for (var i = 0; i < 25; i += 1) {
+        model3.addSample(now - 29 + i, 3.0, 45, 120, 0.5, 5.0, 45);
+    }
+    for (var i = 25; i < 30; i += 1) {
+        model3.addSample(now - 29 + i, 3.0, 45, 120, 0.5, 5.0, 47);
+    }
+    var v3 = new SailVMGView({:app => new FakeNavApp(model3, 30)});
+    v3.screenIndex = 0;
+    Test.assertEqualMessage(v3.windShiftTrend(), :up, "2 deg drift is inside the 5 deg band -> steady");
+
+    // A user-set 5 s "AVG Last Seconds" must not make the reference window equal
+    // the 5 s window (which would compare it against itself and always read
+    // steady). The reference is clamped to SHIFT_REF_MIN_SECS, so a real shift
+    // is still detected with that setting.
+    var model4 = new DataModel({:avgLastSeconds => 5, :avgLastMinutes => 3});
+    model4.reset();
+    for (var i = 0; i < 25; i += 1) {
+        model4.addSample(now - 29 + i, 3.0, 45, 120, 0.5, 5.0, 45);
+    }
+    for (var i = 25; i < 30; i += 1) {
+        model4.addSample(now - 29 + i, 3.0, 45, 120, 0.5, 5.0, 35);
+    }
+    var v4 = new SailVMGView({:app => new FakeNavApp(model4, 5)});
+    v4.screenIndex = 0;
+    Test.assertEqualMessage(v4.windShiftTrend(), :up, "5 s setting still detects a real lift");
     return true;
 }
 

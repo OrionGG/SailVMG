@@ -65,9 +65,12 @@ class DataModel {
     }
 
     // Shift detection only compares the 5 s window against the seconds window,
-    // so these buffers never need the (much larger) minutes capacity.
+    // so these buffers never need the (much larger) minutes capacity. The floor
+    // matches SHIFT_REF_MIN_SECS in the view: the reference window is clamped to
+    // at least 20 s (otherwise a user-set 5 s window would be compared against
+    // itself), so the buffer has to be able to hold that many samples.
     function navCapacity() {
-        return Util.min(Util.max(5, me.secondsWindow), 300);
+        return Util.min(Util.max(20, me.secondsWindow), 300);
     }
 
     // Start (or restart) a recording session and register FIT fields.
@@ -145,6 +148,14 @@ class DataModel {
             me.posBuffer.setCapacity(capacity);
             me.negBuffer.setCapacity(capacity);
         }
+        var navCap = me.navCapacity();
+        if (me.sogBuffer == null) {
+            me.sogBuffer = new RingBuffer(navCap);
+            me.twaBuffer = new RingBuffer(navCap);
+        } else {
+            me.sogBuffer.setCapacity(navCap);
+            me.twaBuffer.setCapacity(navCap);
+        }
     }
 
     // Zero all accumulators (timer, sums, buffers). Leaves running unchanged.
@@ -159,6 +170,8 @@ class DataModel {
         me.hrCount = 0;
         if (me.posBuffer != null) { me.posBuffer.clear(); }
         if (me.negBuffer != null) { me.negBuffer.clear(); }
+        if (me.sogBuffer != null) { me.sogBuffer.clear(); }
+        if (me.twaBuffer != null) { me.twaBuffer.clear(); }
         me.lastPositive = null;
         me.lastNegative = null;
     }
@@ -191,9 +204,12 @@ class DataModel {
         }
     }
 
-    // Add a sample once per second. ts is integer epoch seconds.
-    // No-op while paused so the activity stops accumulating data.
-    function addSample(ts, vmg, twd, hr, minAbs) {
+    // Add a sample once per second. ts is integer epoch seconds. sog (knots)
+    // and absTwa (0..180 deg, already abs()'d by the caller) feed the
+    // wind-shift buffers and are recorded whenever available, independent of
+    // the VMG min-threshold gate below. No-op while paused so the activity
+    // stops accumulating data.
+    function addSample(ts, vmg, twd, hr, minAbs, sog, absTwa) {
         if (!me.running) { return; }
 
         if (hr != null && hr > 0) {
@@ -217,6 +233,9 @@ class DataModel {
                 }
             }
         }
+
+        if (sog != null && me.sogBuffer != null) { me.sogBuffer.add(ts, sog); }
+        if (absTwa != null && me.twaBuffer != null) { me.twaBuffer.add(ts, absTwa); }
 
         // Write FIT record fields (best-effort).
         if (me.vmgField != null && vmg != null) { me.vmgField.setData(vmg.toFloat()); }
@@ -258,6 +277,17 @@ class DataModel {
     function avgNegativeMins(windowMins) {
         if (me.negBuffer == null) { return null; }
         return me.negBuffer.getAvgWindow(windowMins * 60);
+    }
+
+    // Wind-shift rolling averages: SOG (kn) and |TWA| (deg, 0..180).
+    function avgSogWindow(windowSecs) {
+        if (me.sogBuffer == null) { return null; }
+        return me.sogBuffer.getAvgWindow(windowSecs);
+    }
+
+    function avgTwaWindow(windowSecs) {
+        if (me.twaBuffer == null) { return null; }
+        return me.twaBuffer.getAvgWindow(windowSecs);
     }
 
     // Elapsed activity time in seconds (banked segments + current running one).
