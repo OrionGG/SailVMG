@@ -23,8 +23,13 @@ Rendering is inverted (black on white). The headline value uses the largest numb
 font that renders on this device (`FONT_NUMBER_HOT`), vertically centred.
 
 1. **VMG** (upwind) — big **5‑second rolling average VMG** (centre‑top); **SOG** (kts)
-   top‑left and **COG** (deg) top‑right, above the upper divider; two columns **AVG VMG
+   top‑left and **TWA** (deg) top‑right, above the upper divider; two columns **AVG VMG
    Secs** (default 30 s) / **AVG VMG Mins** (default 3 min); **TWD** footer.
+
+   **TWA** (True Wind Angle) is the course relative to the wind, normalised to
+   (−180, 180]: **negative = heading is to port of the TWD**. `0` is head to wind,
+   `±180` dead downwind. Since `VMG = SOG × cos(TWA)`, `|TWA| < 90` is upwind
+   (Screen 1) and `> 90` downwind (Screen 2).
 2. **−VMG** (downwind) — same layout for the negative component (values shown with a
    leading `−`).
 3. **HR** — current heart rate; **AVG HR** and the elapsed activity **TIMER**.
@@ -119,7 +124,7 @@ monkeydo SailVMG.prg fenix3_hr  # load the app into it
 ```
 
 Note: the simulator's *Data Simulation* drives `Activity.Info` and `Sensor` (so HR
-works), but **not** the GPS `Position` API the app reads — so VMG / SOG / COG and the
+works), but **not** the GPS `Position` API the app reads — so VMG / SOG / TWA and the
 trend triangles stay `--` / hidden in the sim. Verify those on the watch (or by playing
 back a real GPS track).
 
@@ -167,7 +172,7 @@ when synced to Garmin Connect / downloaded to a PC.
 | File | Role |
 |---|---|
 | `SailVMGApp.mc` | `AppBase`: loads/saves settings (Object Store), `getInitialView` |
-| `SailVMGView.mc` | Data screens, 1 Hz sampling, SOG/COG, trend triangles, start/stop ring overlay |
+| `SailVMGView.mc` | Data screens, 1 Hz sampling, SOG/TWA, trend triangles, countdown, start/stop ring overlay |
 | `SailVMGDelegate.mc` | `BehaviorDelegate` button mapping |
 | `DataModel.mc` | Stats, rolling averages, recording session, pause/resume, elapsed timer |
 | `VmgCalculator.mc` | VMG math |

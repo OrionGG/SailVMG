@@ -105,6 +105,24 @@ function testTrend(logger) {
     return true;
 }
 
+// TWA: COG relative to TWD, normalised to (-180, 180], negative to port.
+(:test)
+function testTwa(logger) {
+    var v = new SailVMGView({:app => null});
+    Test.assertEqualMessage(v.twaOf(0,   0),   0,    "head to wind -> 0");
+    Test.assertEqualMessage(v.twaOf(45,  0),   45,   "45 to stbd of TWD -> +45");
+    Test.assertEqualMessage(v.twaOf(350, 0),  -10,   "10 to port of TWD -> -10");
+    Test.assertEqualMessage(v.twaOf(180, 0),   180,  "dead downwind -> 180");
+    Test.assertEqualMessage(v.twaOf(190, 0),  -170,  "190 wraps to -170 (port)");
+    // Wrap across the 0/360 boundary with a non-zero TWD.
+    Test.assertEqualMessage(v.twaOf(10,  350),  20,  "10 vs TWD 350 -> +20");
+    Test.assertEqualMessage(v.twaOf(340, 10),  -30,  "340 vs TWD 10 -> -30");
+    // assertEqualMessage can't compare null (it invokes equals()), so test the
+    // predicate instead.
+    Test.assertEqualMessage(v.twaOf(null, 0) == null, true, "no COG -> null");
+    return true;
+}
+
 // VMG math: sog 5 m/s, heading == TWD -> angle 0 -> vmg = 5 * 1.9438 kn.
 (:test)
 function testVmgCalc(logger) {

@@ -242,7 +242,7 @@ class SailVMGView extends WatchUi.View {
 
         me.drawGrid(dc, "VMG", vmgText, frozen, "AVG VMG Secs", "AVG VMG Mins",
                     avgSecsText, avgMinsText, "TWD " + me.app.twd.format("%03d"));
-        me.drawTopSogCog(dc);
+        me.drawTopSogTwa(dc);
         // Trend: left = avg5s vs avgSecs, right = avgSecs vs avgMins
         me.drawColsTrend(dc, avgSecsText, avgMinsText,
                          me.trendOf(avg5s, avgSecs), me.trendOf(avgSecs, avgMins));
@@ -267,7 +267,7 @@ class SailVMGView extends WatchUi.View {
 
         me.drawGrid(dc, "-VMG", vmgText, frozen, "-AVG VMG Secs", "-AVG VMG Mins",
                     negSecsText, negMinsText, "TWD " + me.app.twd.format("%03d"));
-        me.drawTopSogCog(dc);
+        me.drawTopSogTwa(dc);
         // Trend: left = avg5s vs avgSecs, right = avgSecs vs avgMins
         me.drawColsTrend(dc, negSecsText, negMinsText,
                          me.trendOf(avg5s, negSecs), me.trendOf(negSecs, negMins));
@@ -327,26 +327,35 @@ class SailVMGView extends WatchUi.View {
         }
     }
 
-    // Current SOG (left) and COG (right) in the top band, above the upper line —
+    // True Wind Angle: angle between the course (COG) and the wind direction
+    // (TWD), normalised to (-180, 180]. Negative = heading is to PORT of the
+    // TWD. |TWA| 0 = head to wind, 180 = dead downwind. Note VMG = SOG*cos(TWA),
+    // so |TWA| < 90 is upwind (screen 1) and > 90 downwind (screen 2).
+    function twaOf(cogDeg, twdDeg) {
+        if (cogDeg == null) { return null; }
+        var a = cogDeg.toNumber() - twdDeg;
+        a = a % 360;
+        if (a < 0) { a += 360; }
+        if (a > 180) { a -= 360; }
+        return a;
+    }
+
+    // Current SOG (left) and TWA (right) in the top band, above the upper line —
     // where the reference app shows the time. VMG screens only.
-    function drawTopSogCog(dc) {
+    function drawTopSogTwa(dc) {
         var w = dc.getWidth();
         var h = dc.getHeight();
         var lx = w * 21 / 100;
         var rx = w * 79 / 100;
 
         var sogText = (me.lastSog == null) ? "--" : me.lastSog.format("%.1f");
-        var cogText = "--";
-        if (me.lastCog != null) {
-            var c = me.lastCog.toNumber() % 360;
-            if (c < 0) { c += 360; }
-            cogText = c.format("%d") + "°";
-        }
+        var twa = me.twaOf(me.lastCog, me.app.twd);
+        var twaText = (twa == null) ? "--" : twa.format("%d") + "°";
 
         dc.drawText(lx, h * 28 / 100, Graphics.FONT_XTINY, "SOG", Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(lx, h * 35 / 100, Graphics.FONT_TINY, sogText, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(rx, h * 28 / 100, Graphics.FONT_XTINY, "COG", Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(rx, h * 35 / 100, Graphics.FONT_TINY, cogText, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(rx, h * 28 / 100, Graphics.FONT_XTINY, "TWA", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(rx, h * 35 / 100, Graphics.FONT_TINY, twaText, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
     // Three-state trend with a percentage dead zone, so normal steady-state

@@ -19,6 +19,12 @@ class DataModel {
     var posBuffer = null;
     var negBuffer = null;
 
+    // Wind-shift detection: rolling SOG (kn) and |TWA| (deg). |TWA| rather than
+    // signed TWA so there is no wrap discontinuity at +/-180 (dead downwind) and
+    // so a tack/gybe doesn't register as a shift.
+    var sogBuffer = null;
+    var twaBuffer = null;
+
     var lastPositive = null;
     var lastNegative = null;
 
@@ -46,6 +52,9 @@ class DataModel {
         var capacity = me.bufferCapacity();
         me.posBuffer = new RingBuffer(capacity);
         me.negBuffer = new RingBuffer(capacity);
+        var navCap = me.navCapacity();
+        me.sogBuffer = new RingBuffer(navCap);
+        me.twaBuffer = new RingBuffer(navCap);
     }
 
     function bufferCapacity() {
@@ -53,6 +62,12 @@ class DataModel {
         var capMinutesSec = Util.max(1, me.minutesWindow * 60);
         // Cap entries so the preallocated buffers stay well within device RAM.
         return Util.min(Util.max(capSeconds, capMinutesSec), 900);
+    }
+
+    // Shift detection only compares the 5 s window against the seconds window,
+    // so these buffers never need the (much larger) minutes capacity.
+    function navCapacity() {
+        return Util.min(Util.max(5, me.secondsWindow), 300);
     }
 
     // Start (or restart) a recording session and register FIT fields.
