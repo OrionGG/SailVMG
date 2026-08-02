@@ -74,37 +74,45 @@ HR screen has no trend triangle.
 
 ### Wind‑shift marker (Screens 1 & 2)
 
-A small triangle above **TWA** flags a likely **true‑wind shift**, using the classic
-compass‑oscillation technique: with **TWD fixed** on the watch (it's set once before
-sailing and doesn't track the real wind in real time), holding a steady heading while
-the *actual* wind shifts changes the boat's angle relative to that fixed TWD — even
-though the sailor did nothing differently.
+A two‑layer marker up‑right of the hero number flags a likely **true‑wind shift**, using
+the classic compass‑oscillation technique: with **TWD fixed** on the watch (it's set once
+before sailing and doesn't track the real wind in real time), holding a steady heading
+while the *actual* wind shifts changes the boat's angle relative to that fixed TWD — even
+though the sailor did nothing differently. So a change in **|TWA|** flags the shift.
 
-It compares **|TWA|** (5 s avg vs the reference avg) using a **±5° dead zone**. That
-band is *absolute degrees*, not a percentage: ±3 % of a 45° beat is only ±1.4°, well
-inside normal steering and COG noise, which would make the marker flicker instead of
-resting on "steady". Real oscillating shifts are 5–15°.
-  - **Screen 1 (upwind):** |TWA| **shrinking** = a favourable **lift** → green ▲.
-    |TWA| growing = an unfavourable **header** → red ▼.
-  - **Screen 2 (downwind):** it's mirrored — |TWA| **growing** (sailing deeper) is the
-    favourable lift → green ▲; shrinking is the header → red ▼.
-  - No meaningful change either way → green ▲ (steady, same "steady = good"
-    convention as the VMG triangles).
+The two layers answer two different questions at once:
 
-The reference window is `Set AVG Last Seconds`, clamped to a **minimum of 20 s** — that
-setting goes as low as 1 s, which would otherwise compare the 5 s average against
-(almost) itself and pin the marker to a permanent, meaningless "steady".
+- **Circle (fill) = phase, over the minutes window** — *which side of the oscillation am
+  I on right now?* Green = favourable side, red = unfavourable side, **nothing** when
+  you're within the dead zone of your multi‑minute average (on your mean beat heading).
+- **Triangle (on top, white‑haloed) = transition, over the seconds window** — *is it
+  changing right now?* Green ▲ improving, red ▼ worsening, **nothing** when steady.
 
-Like the VMG averages, the shift buffers only fill **while the activity is recording**,
-so the marker appears once you've been running for a few seconds.
+Reading combinations: a lone circle = "on this side, steady"; circle + a same‑colour
+triangle = both signals agree (the white halo keeps the triangle legible); a **red
+triangle on a green circle** = "good side, but it's starting to slip" — the most useful
+early warning.
+
+Both layers use **|TWA|** with an absolute **±5° dead zone** — not a percentage: ±3 % of
+a 45° beat is only ±1.4°, well inside normal steering and COG noise, which would make the
+marker flicker. Real oscillating shifts are 5–15°. The favourable direction flips per
+screen:
+
+- **Screen 1 (upwind):** |TWA| **shrinking** = favourable **lift**; growing = **header**.
+- **Screen 2 (downwind):** mirrored — |TWA| **growing** (sailing deeper) = the lift;
+  shrinking = the header.
+
+The transition compares the 5 s window against `Set AVG Last Seconds` (floored to a
+**minimum of 20 s** so a short setting can't compare the 5 s window against itself); the
+phase compares it against `Set AVG Last Minutes`. Both buffers only fill **while the
+activity is recording**, so the marker appears once you've been running a little.
 
 **SOG is not consulted** — the reading is purely the angle change. That keeps it simple
 and predictable, at the cost of the marker also reacting when *you* change course rather
 than the wind: steering up or bearing away moves |TWA| just like a shift does. Read it
-alongside the SOG number, which is right next to it.
-
-There's no separate trend marker above SOG — "SOG went up" isn't reliably good or bad on
-its own (bearing away raises SOG while it can lower VMG).
+alongside the SOG number, which is right next to it. There's no separate trend marker
+above SOG — "SOG went up" isn't reliably good or bad on its own (bearing away raises SOG
+while it can lower VMG).
 
 ## Controls (fēnix 3 HR buttons)
 

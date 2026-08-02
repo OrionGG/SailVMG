@@ -19,10 +19,10 @@ class DataModel {
     var posBuffer = null;
     var negBuffer = null;
 
-    // Wind-shift detection: rolling SOG (kn) and |TWA| (deg). |TWA| rather than
-    // signed TWA so there is no wrap discontinuity at +/-180 (dead downwind) and
-    // so a tack/gybe doesn't register as a shift.
-    var sogBuffer = null;
+    // Wind-shift detection: rolling |TWA| (deg). Absolute rather than signed so
+    // there is no wrap discontinuity at +/-180 (dead downwind) and so a
+    // tack/gybe doesn't register as a shift. Sized like the VMG buffers because
+    // the phase marker compares against the minutes window.
     var twaBuffer = null;
 
     var lastPositive = null;
@@ -52,9 +52,7 @@ class DataModel {
         var capacity = me.bufferCapacity();
         me.posBuffer = new RingBuffer(capacity);
         me.negBuffer = new RingBuffer(capacity);
-        var navCap = me.navCapacity();
-        me.sogBuffer = new RingBuffer(navCap);
-        me.twaBuffer = new RingBuffer(navCap);
+        me.twaBuffer = new RingBuffer(capacity);
     }
 
     function bufferCapacity() {
@@ -62,15 +60,6 @@ class DataModel {
         var capMinutesSec = Util.max(1, me.minutesWindow * 60);
         // Cap entries so the preallocated buffers stay well within device RAM.
         return Util.min(Util.max(capSeconds, capMinutesSec), 900);
-    }
-
-    // Shift detection only compares the 5 s window against the seconds window,
-    // so these buffers never need the (much larger) minutes capacity. The floor
-    // matches SHIFT_REF_MIN_SECS in the view: the reference window is clamped to
-    // at least 20 s (otherwise a user-set 5 s window would be compared against
-    // itself), so the buffer has to be able to hold that many samples.
-    function navCapacity() {
-        return Util.min(Util.max(20, me.secondsWindow), 300);
     }
 
     // Start (or restart) a recording session and register FIT fields.
@@ -148,13 +137,10 @@ class DataModel {
             me.posBuffer.setCapacity(capacity);
             me.negBuffer.setCapacity(capacity);
         }
-        var navCap = me.navCapacity();
-        if (me.sogBuffer == null) {
-            me.sogBuffer = new RingBuffer(navCap);
-            me.twaBuffer = new RingBuffer(navCap);
+        if (me.twaBuffer == null) {
+            me.twaBuffer = new RingBuffer(capacity);
         } else {
-            me.sogBuffer.setCapacity(navCap);
-            me.twaBuffer.setCapacity(navCap);
+            me.twaBuffer.setCapacity(capacity);
         }
     }
 
@@ -170,7 +156,6 @@ class DataModel {
         me.hrCount = 0;
         if (me.posBuffer != null) { me.posBuffer.clear(); }
         if (me.negBuffer != null) { me.negBuffer.clear(); }
-        if (me.sogBuffer != null) { me.sogBuffer.clear(); }
         if (me.twaBuffer != null) { me.twaBuffer.clear(); }
         me.lastPositive = null;
         me.lastNegative = null;
@@ -204,12 +189,11 @@ class DataModel {
         }
     }
 
-    // Add a sample once per second. ts is integer epoch seconds. sog (knots)
-    // and absTwa (0..180 deg, already abs()'d by the caller) feed the
-    // wind-shift buffers and are recorded whenever available, independent of
-    // the VMG min-threshold gate below. No-op while paused so the activity
-    // stops accumulating data.
-    function addSample(ts, vmg, twd, hr, minAbs, sog, absTwa) {
+    // Add a sample once per second. ts is integer epoch seconds. absTwa
+    // (0..180 deg, already abs()'d by the caller) feeds the wind-shift buffer
+    // and is recorded whenever available, independent of the VMG min-threshold
+    // gate below. No-op while paused so the activity stops accumulating data.
+    function addSample(ts, vmg, twd, hr, minAbs, absTwa) {
         if (!me.running) { return; }
 
         if (hr != null && hr > 0) {
@@ -234,7 +218,6 @@ class DataModel {
             }
         }
 
-        if (sog != null && me.sogBuffer != null) { me.sogBuffer.add(ts, sog); }
         if (absTwa != null && me.twaBuffer != null) { me.twaBuffer.add(ts, absTwa); }
 
         // Write FIT record fields (best-effort).
@@ -279,12 +262,7 @@ class DataModel {
         return me.negBuffer.getAvgWindow(windowMins * 60);
     }
 
-    // Wind-shift rolling averages: SOG (kn) and |TWA| (deg, 0..180).
-    function avgSogWindow(windowSecs) {
-        if (me.sogBuffer == null) { return null; }
-        return me.sogBuffer.getAvgWindow(windowSecs);
-    }
-
+    // Wind-shift rolling average of |TWA| (deg, 0..180).
     function avgTwaWindow(windowSecs) {
         if (me.twaBuffer == null) { return null; }
         return me.twaBuffer.getAvgWindow(windowSecs);

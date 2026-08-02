@@ -98,7 +98,7 @@ class SailVMGView extends WatchUi.View {
 
         var twa = me.twaOf(cog, me.app.twd);
         var absTwa = (twa == null) ? null : twa.abs();
-        me.app.model.addSample(ts, vmg, me.app.twd, hr, me.app.minAbsVmg, me.lastSog, absTwa);
+        me.app.model.addSample(ts, vmg, me.app.twd, hr, me.app.minAbsVmg, absTwa);
     }
 
     function prevScreen() {
@@ -363,11 +363,16 @@ class SailVMGView extends WatchUi.View {
         dc.drawText(rx, h * 28 / 100, Graphics.FONT_XTINY, "TWA", Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(rx, h * 35 / 100, Graphics.FONT_TINY, twaText, Graphics.TEXT_JUSTIFY_CENTER);
 
-        // Small wind-shift marker up-right of the TWA label (see windShiftTrend).
-        // Geometry is tight here: on a 218px round screen the hero number reaches
-        // x=163 (widest realistic value "-12.34" = 107px) and the bezel cuts in at
-        // x=191 at this height, so this sits in the ~8px-clear gap between them.
-        me.drawSmallTrend(dc, w * 82 / 100, h * 17 / 100, h * 7 / 100, me.windShiftTrend());
+        // Two-layer wind-shift marker up-right of the number. Geometry is tight:
+        // on a 218px round screen the hero number reaches x=163 (widest realistic
+        // value "-12.34" = 107px) and the bezel cuts in around x=190 at this
+        // height, so it sits centred in that gap.
+        // Circle = phase (minutes window); triangle = transition (seconds window).
+        var mx = w * 82 / 100;
+        var my = h * 17 / 100;
+        var mr = w * 5 / 100;
+        me.drawShiftMarker(dc, mx, my, mr, me.shiftTrend(me.transitionRefSecs()),
+                           me.shiftTrend(me.app.avgLastMinutes * 60));
     }
 
     // Dead zone for the TWA comparison, in DEGREES (absolute, not a percentage).
@@ -377,51 +382,74 @@ class SailVMGView extends WatchUi.View {
     // Real oscillating shifts are 5-15 deg, so 5 deg is the useful floor.
     const TWA_SHIFT_DEADBAND = 5;   // degrees
 
-    // The reference window must stay clearly longer than the 5 s window it is
-    // compared against. "Set AVG Last Seconds" allows values down to 1, which
-    // would otherwise compare the 5 s average against (almost) itself and pin
-    // the marker to a permanent, meaningless "steady". Mirrored by
-    // DataModel.navCapacity so the buffer can hold the clamped window.
+    // The transition reference window must stay clearly longer than the 5 s
+    // window it is compared against. "Set AVG Last Seconds" allows values down to
+    // 1, which would otherwise compare the 5 s average against (almost) itself and
+    // pin the marker to a permanent, meaningless "steady". See transitionRefSecs.
     const SHIFT_REF_MIN_SECS = 20;
 
-    // Wind-shift detector for the small triangle above TWA. With the TWD knob
-    // fixed on the watch, holding a steady course while the *true* wind shifts
-    // changes the boat's angle-to-old-TWD (our TWA) even though nothing the
-    // sailor did changed, so a move in |TWA| flags the shift.
-    //   Upwind (screen 1):   |TWA| shrinking  = favourable lift  -> green up
-    //   Downwind (screen 2): |TWA| growing    = favourable lift  -> green up
-    // Either screen: the opposite direction is an unfavourable header -> red
-    // down; no change either way is steady -> green up (same "steady=good"
-    // convention as the VMG trend triangles).
-    // SOG is deliberately NOT consulted: the reading is purely the angle change.
-    function windShiftTrend() {
-        var refSecs = Util.max(SHIFT_REF_MIN_SECS, me.app.avgLastSeconds);
+    // Reference window (seconds) for the TRANSITION layer, floored so a user-set
+    // short "AVG Last Seconds" can't collapse to comparing the 5 s window against
+    // (almost) itself and pin the marker to a meaningless steady.
+    function transitionRefSecs() {
+        return Util.max(SHIFT_REF_MIN_SECS, me.app.avgLastSeconds);
+    }
+
+    // Wind-shift reading, shared by both marker layers. With the TWD knob fixed
+    // on the watch, holding a steady course while the *true* wind shifts changes
+    // the boat's angle-to-fixed-TWD (our |TWA|) even though the sailor did
+    // nothing, so a move in |TWA| between the 5 s window and refSecs flags it.
+    //   Upwind (screen 1):   |TWA| shrinking  = favourable lift  -> :up
+    //   Downwind (screen 2): |TWA| growing    = favourable lift  -> :up
+    // Opposite direction = unfavourable header -> :down; inside +/-5 deg = :neutral
+    // (drawn as nothing); missing data = :none. SOG is deliberately not consulted.
+    function shiftTrend(refSecs) {
         var twa5 = me.app.model.avgTwaWindow(5);
         var twaRef = me.app.model.avgTwaWindow(refSecs);
         if (twa5 == null || twaRef == null) { return :none; }
 
         var d = twa5 - twaRef;                       // + = sailing a wider angle
-        if (d.abs() < TWA_SHIFT_DEADBAND) { return :up; }   // steady = good
+        if (d.abs() < TWA_SHIFT_DEADBAND) { return :neutral; }
 
-        // Upwind a shrinking |TWA| is the favourable lift; downwind it's mirrored.
         if (me.screenIndex == 0) {
             return (d < 0) ? :up : :down;
         }
         return (d > 0) ? :up : :down;
     }
 
-    // Small filled triangle (no text), used for the wind-shift marker.
-    function drawSmallTrend(dc, cx, topY, size, trend) {
-        if (trend == :none) { return; }
-        var half = size / 2;
-        if (trend == :down) {
-            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_WHITE);
-            dc.fillPolygon([[cx - half, topY], [cx + half, topY], [cx, topY + size]]);
-        } else {
-            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_WHITE);
-            dc.fillPolygon([[cx, topY], [cx - half, topY + size], [cx + half, topY + size]]);
+    // Two-layer shift marker at (cx, cy):
+    //   phase (minutes)      -> filled circle, green=favourable / red=header,
+    //                           nothing when neutral/no-data.
+    //   transition (seconds) -> triangle on top, green up / red down, with a thin
+    //                           white halo so it reads even on a same-colour
+    //                           circle; nothing when neutral/no-data.
+    function drawShiftMarker(dc, cx, cy, r, transition, phase) {
+        if (phase == :up || phase == :down) {
+            dc.setColor(phase == :up ? Graphics.COLOR_GREEN : Graphics.COLOR_RED,
+                        Graphics.COLOR_WHITE);
+            dc.fillCircle(cx, cy, r);
+        }
+        if (transition == :up || transition == :down) {
+            var hx = r * 70 / 100;      // triangle half-width
+            var hy = r * 80 / 100;      // triangle half-height
+            var oh = 2;                 // white halo thickness
+            // Halo first (slightly larger), then the coloured triangle on top.
+            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_WHITE);
+            me.fillTri(dc, cx, cy, hx + oh, hy + oh, transition == :up);
+            dc.setColor(transition == :up ? Graphics.COLOR_GREEN : Graphics.COLOR_RED,
+                        Graphics.COLOR_WHITE);
+            me.fillTri(dc, cx, cy, hx, hy, transition == :up);
         }
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);   // restore default
+    }
+
+    // Filled triangle centred on (cx, cy); pointing up when `up`, else down.
+    function fillTri(dc, cx, cy, hx, hy, up) {
+        if (up) {
+            dc.fillPolygon([[cx, cy - hy], [cx - hx, cy + hy], [cx + hx, cy + hy]]);
+        } else {
+            dc.fillPolygon([[cx - hx, cy - hy], [cx + hx, cy - hy], [cx, cy + hy]]);
+        }
     }
 
     // Three-state trend with a percentage dead zone, so normal steady-state
