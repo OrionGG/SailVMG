@@ -363,14 +363,13 @@ class SailVMGView extends WatchUi.View {
         dc.drawText(rx, h * 28 / 100, Graphics.FONT_XTINY, "TWA", Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(rx, h * 35 / 100, Graphics.FONT_TINY, twaText, Graphics.TEXT_JUSTIFY_CENTER);
 
-        // Two-layer wind-shift marker up-right of the number. Geometry is tight:
-        // on a 218px round screen the hero number reaches x=163 (widest realistic
-        // value "-12.34" = 107px) and the bezel cuts in around x=190 at this
-        // height, so it sits centred in that gap.
-        // Circle = phase (minutes window); triangle = transition (seconds window).
-        var mx = w * 82 / 100;
-        var my = h * 17 / 100;
-        var mr = w * 5 / 100;
+        // Two-layer wind-shift marker in the gap right of the hero number and
+        // above the TWA label (whose top edge is ~y=61 on a 218px screen). Sits
+        // aligned over the TWA column. Circle = phase (minutes window); triangle
+        // = transition (seconds window).
+        var mx = w * 79 / 100;
+        var my = h * 21 / 100;
+        var mr = w * 6 / 100;
         me.drawShiftMarker(dc, mx, my, mr, me.shiftTrend(me.transitionRefSecs()),
                            me.shiftTrend(me.app.avgLastMinutes * 60));
     }
@@ -421,7 +420,7 @@ class SailVMGView extends WatchUi.View {
     //   phase (minutes)      -> filled circle, green=favourable / red=header,
     //                           nothing when neutral/no-data.
     //   transition (seconds) -> triangle on top, green up / red down, with a thin
-    //                           white halo so it reads even on a same-colour
+    //                           white border so it reads even on a same-colour
     //                           circle; nothing when neutral/no-data.
     function drawShiftMarker(dc, cx, cy, r, transition, phase) {
         if (phase == :up || phase == :down) {
@@ -430,26 +429,30 @@ class SailVMGView extends WatchUi.View {
             dc.fillCircle(cx, cy, r);
         }
         if (transition == :up || transition == :down) {
+            var up = (transition == :up);
             var hx = r * 70 / 100;      // triangle half-width
             var hy = r * 80 / 100;      // triangle half-height
-            var oh = 2;                 // white halo thickness
-            // Halo first (slightly larger), then the coloured triangle on top.
+            var pts;
+            if (up) {
+                pts = [[cx, cy - hy], [cx - hx, cy + hy], [cx + hx, cy + hy]];
+            } else {
+                pts = [[cx - hx, cy - hy], [cx + hx, cy - hy], [cx, cy + hy]];
+            }
+            // Uniform 2px white border on every side: stroke the edges first with
+            // pen 4 (2px each side of the edge), then lay the coloured fill on
+            // top -- it covers the inner half and leaves an even 2px white rim
+            // outside. (Scaling a silhouette instead makes the horizontal base
+            // look thicker than the sloped sides.)
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_WHITE);
-            me.fillTri(dc, cx, cy, hx + oh, hy + oh, transition == :up);
-            dc.setColor(transition == :up ? Graphics.COLOR_GREEN : Graphics.COLOR_RED,
-                        Graphics.COLOR_WHITE);
-            me.fillTri(dc, cx, cy, hx, hy, transition == :up);
+            dc.setPenWidth(4);
+            dc.drawLine(pts[0][0], pts[0][1], pts[1][0], pts[1][1]);
+            dc.drawLine(pts[1][0], pts[1][1], pts[2][0], pts[2][1]);
+            dc.drawLine(pts[2][0], pts[2][1], pts[0][0], pts[0][1]);
+            dc.setPenWidth(1);
+            dc.setColor(up ? Graphics.COLOR_GREEN : Graphics.COLOR_RED, Graphics.COLOR_WHITE);
+            dc.fillPolygon(pts);
         }
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);   // restore default
-    }
-
-    // Filled triangle centred on (cx, cy); pointing up when `up`, else down.
-    function fillTri(dc, cx, cy, hx, hy, up) {
-        if (up) {
-            dc.fillPolygon([[cx, cy - hy], [cx - hx, cy + hy], [cx + hx, cy + hy]]);
-        } else {
-            dc.fillPolygon([[cx - hx, cy - hy], [cx + hx, cy - hy], [cx, cy + hy]]);
-        }
     }
 
     // Three-state trend with a percentage dead zone, so normal steady-state
