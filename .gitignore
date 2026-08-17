@@ -12,5 +12,9 @@ bin/
 SailVMG_test.prg
 *.iq
 
+# Local-only simulator fake-data build (enables SimConfig via :notsimdata).
+# Absent by default -> every committed/release build has fake data OFF.
+monkey.sim.jungle
+
 # Scratch
 trace_resume.txt

@@ -170,7 +170,8 @@ Repo files the build needs, beyond `source/`:
 | File / dir | Role |
 |---|---|
 | `manifest.xml` | app id, `entry="SailVMGApp"`, `type="watch-app"`, product `fenix3_hr`, `minApiLevel 1.3.0`, permissions, launcher icon + name refs |
-| `monkey.jungle` | build config (points at `manifest.xml`, `source/`, `resources/`) |
+| `monkey.jungle` | build config (points at `manifest.xml`, `source/`, `resources/`); excludes `:simdata` so fake data is off |
+| `monkey.sim.jungle` | **gitignored, optional** — local sim build that turns fake data on (excludes `:notsimdata`) |
 | `resources/strings/strings.xml` | `AppName` |
 | `resources/bitmaps.xml`, `resources/images/launcher.png` | launcher icon |
 | `keys/` | developer key (gitignored — never committed) |
@@ -191,10 +192,10 @@ monkeyc -d fenix3_hr -f monkey.jungle -o SailVMG.prg -r -w -y keys/developer_key
 monkeyc -d fenix3_hr -f monkey.jungle -o SailVMG.prg -g -w -y keys/developer_key
 ```
 
-> **Before any release (`-r`) build for the watch:** ensure `SIM_TEST_DATA = false`
-> in `source/SailVMGView.mc`. When it's `true`, the app shows fabricated GPS‑derived
-> data (VMG/SOG/TWA) — fine in the simulator, wrong on the wrist. See *Simulator test
-> data flag* below.
+> **Fake data can't leak to the watch:** the committed `monkey.jungle` **excludes** the
+> fake‑data path (`SimConfig.enabled()` compiles to `false`), so a plain release (`-r`)
+> build is always clean — nothing to remember. Fake data only turns on when you build
+> with the gitignored `monkey.sim.jungle` (see *Simulator test data flag* below).
 
 Generate a fresh developer key (if needed):
 
@@ -217,14 +218,36 @@ back a real GPS track).
 
 ### Simulator test data flag
 
-To see the full layout populated in the sim, `SailVMGView.mc` has a
-**`const SIM_TEST_DATA`** flag. When `true`, `sample()` calls `sampleFake()` instead of
-reading GPS and synthesises smoothly‑evolving VMG / SOG / TWA / HR (a plausible upwind
-leg) so the averages, trend triangles, and wind‑shift marker all animate — press START
-so the model records and the windows fill.
+The sim never feeds the GPS `Position` API, so to see the layout populated the app can
+fabricate smoothly‑evolving VMG / SOG / TWA / HR (a plausible upwind leg): `sample()`
+calls `sampleFake()` when `SimConfig.enabled()` is true, so the averages, trend
+triangles, and wind‑shift marker all animate — press START so the model records and the
+windows fill.
 
-**It must be `false` for the watch build** — there is no real‑GPS override, so it would
-show fake data on the wrist. Set it back to `false` before building the release `.prg`.
+`SimConfig.enabled()` is a **build‑time toggle, not an in‑code flag you edit** — so a
+`true` can never be committed or shipped:
+
+- `SimConfig.mc` defines two variants, `(:simdata)` → `true` and `(:notsimdata)` →
+  `false`. Each build excludes one, so exactly one survives.
+- The committed **`monkey.jungle`** excludes `:simdata` → `enabled()` is **false**.
+  Every committed / release / fresh‑checkout build is clean.
+- To turn it on for the sim, build with the **gitignored `monkey.sim.jungle`** (it
+  excludes `:notsimdata` instead → `enabled()` is **true**):
+
+  ```powershell
+  monkeyc -d fenix3_hr -f monkey.sim.jungle -o SailVMG.prg -g -w -y keys/developer_key
+  monkeydo SailVMG.prg fenix3_hr
+  ```
+
+  If `monkey.sim.jungle` doesn't exist (it's gitignored — recreate it locally from the
+  block below), builds fall back to `monkey.jungle` and fake data stays off.
+
+  ```
+  project.manifest = manifest.xml
+  base.sourcePath = source
+  base.resourcePath = resources
+  base.excludeAnnotations = notsimdata
+  ```
 
 ## Unit tests
 
@@ -272,7 +295,8 @@ when synced to Garmin Connect / downloaded to a PC.
 | File | Role |
 |---|---|
 | `SailVMGApp.mc` | `AppBase`: loads/saves settings (Object Store), `getInitialView`, TWS bands + polar target table |
-| `SailVMGView.mc` | Data screens, 1 Hz sampling, SOG/TWA, polar target, trend triangles, wind‑shift marker, countdown, start/stop ring overlay, `SIM_TEST_DATA` |
+| `SailVMGView.mc` | Data screens, 1 Hz sampling, SOG/TWA, polar target, trend triangles, wind‑shift marker, countdown, start/stop ring overlay, `sampleFake` |
+| `SimConfig.mc` | Build‑time `enabled()` toggle for the simulator fake‑data path (annotation‑gated) |
 | `SailVMGDelegate.mc` | `BehaviorDelegate` button mapping |
 | `DataModel.mc` | Stats, rolling averages, recording session, pause/resume, elapsed timer |
 | `VmgCalculator.mc` | VMG math |

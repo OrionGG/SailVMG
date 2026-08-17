@@ -5,3 +5,8 @@ project.manifest = manifest.xml
 # Set base paths
 base.sourcePath = source
 base.resourcePath = resources
+
+# Default (committed) build strips the simulator-only fake-data path, so
+# SimConfig.enabled() is false. The gitignored monkey.sim.jungle excludes
+# :notsimdata instead to turn it on for the simulator. See README.
+base.excludeAnnotations = simdata

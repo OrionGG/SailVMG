@@ -8,13 +8,9 @@ using Toybox.System as System;
 using Toybox.Math as Math;
 
 class SailVMGView extends WatchUi.View {
-    // SIMULATOR-ONLY test data. The sim never feeds the GPS Position API, so with
-    // this on, sample() synthesizes smoothly-evolving VMG / SOG / TWA / HR so the
-    // whole layout (averages, trend triangles, wind-shift marker) can be seen.
-    // Committed default is FALSE (there is no real-GPS override, so true would
-    // show fake data on the wrist). Flip to true LOCALLY only while testing in
-    // the simulator -- do not commit it as true.
-    const SIM_TEST_DATA = false;
+    // SIMULATOR-ONLY fake data is gated by SimConfig.enabled(), which is a
+    // build-time toggle (false in every committed/release build; true only via
+    // the gitignored monkey.sim.jungle). See SimConfig.mc / README.
 
     var app;
     var screenIndex = 0;
@@ -80,7 +76,7 @@ class SailVMGView extends WatchUi.View {
         if (me.lastSampleTs != null && ts == me.lastSampleTs) { return; }
         me.lastSampleTs = ts;
 
-        if (SIM_TEST_DATA) {
+        if (SimConfig.enabled()) {
             me.sampleFake(ts);
             return;
         }
@@ -118,7 +114,7 @@ class SailVMGView extends WatchUi.View {
     // every field and both trend markers exercise their states. Close-hauled
     // |TWA| oscillates ~28-56 deg (two slow sines + a little jitter), SOG ~5 kn,
     // HR ~110-140. Press START in the sim so the model records and the averages
-    // fill. Never runs on the watch (SIM_TEST_DATA is false in the release build).
+    // fill. Never runs on the watch (SimConfig.enabled() is false there).
     function sampleFake(ts) {
         var t = ts.toFloat();
         var twd = me.app.twd;
