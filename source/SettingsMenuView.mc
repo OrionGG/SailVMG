@@ -20,9 +20,12 @@ class SettingsMenuDelegate extends WatchUi.MenuInputDelegate {
     }
 
     function onMenuItem(item) {
-        // TWD uses a two-step flow: compass snap menu -> fine adjust.
+        // TWD uses a two-step flow: compass snap list -> fine adjust. The
+        // compass step is a plain View (not a nested legacy menu) so the flow
+        // can't over-pop and exit the app mid-activity.
         if (item == :twd) {
-            WatchUi.pushView(new TWDCompassMenu(), new TWDCompassDelegate(me.app), WatchUi.SLIDE_LEFT);
+            var compass = new TWDCompassView(me.app);
+            WatchUi.pushView(compass, new TWDCompassSelectDelegate(compass), WatchUi.SLIDE_LEFT);
             return;
         }
 

@@ -121,7 +121,7 @@ while it can lower VMG).
 | UP / DOWN | Previous / next screen |
 | START | Begin activity; press again to **Stop** |
 | hold UP (MENU) | Settings |
-| BACK | Exit app |
+| BACK | Exit app **when idle**; ignored while recording (stop via START first) |
 
 ## Activity flow (like the stock apps)
 
@@ -225,7 +225,7 @@ when synced to Garmin Connect / downloaded to a PC.
 | `Notify.mc` | Vibrate / tone (guarded for devices without a tone) |
 | `PauseMenuView.mc` | Pause menu + Discard (No/Yes) confirmation |
 | `SettingsMenuView.mc` | Settings menu + value‑adjust delegate |
-| `SettingsTWDView.mc` | TWD compass snap menu + fine adjust |
+| `SettingsTWDView.mc` | TWD compass snap list (plain View) + fine adjust |
 | `SettingsMinVmgView.mc`, `SettingsAvgSecsView.mc`, `SettingsAvgMinView.mc` | Value‑adjust screens |
 | `Tests.mc` | Unit tests (compiled only with `-t`) |
 
@@ -238,7 +238,13 @@ These compile but misbehave at runtime if ignored:
   (not `SPORT_SAILING`); `FONT_NUMBER_HOT` is the largest number font that renders
   (`FONT_NUMBER_THAI_HOT` is blank on the `ww` font set).
 - The legacy `WatchUi.Menu` **auto‑dismisses** on selection — never `popView` inside a
-  `MenuInputDelegate.onMenuItem` (that exits the app).
+  `MenuInputDelegate.onMenuItem` (that exits the app). Worse, **chaining two legacy
+  menus** (menu → menu → screen) makes the return pop‑count ambiguous *on‑device* (the
+  simulator hid it): it over‑popped past the root and exited the app. If that happens
+  mid‑recording, the OS auto‑saves the in‑progress activity and the next START begins a
+  new one — the activity silently splits in two. Fix: keep at most one legacy menu in a
+  chain; build deeper steps as plain `View` + `BehaviorDelegate` so every pop is explicit
+  (this is why `Set TWD`'s compass step is a `TWDCompassView`, not a menu).
 - No `Toybox.Storage` (use AppBase `get/setProperty`); self‑reference is `me`, not
   `this`; `Toybox.Math` has no `max`/`min`/`abs` (`abs()` is a method on numerics).
 - Git + OneDrive: avoid history rewrites / `gc` on a repo inside OneDrive (it can lock

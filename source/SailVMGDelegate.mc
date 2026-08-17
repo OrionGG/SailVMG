@@ -37,6 +37,13 @@ class SailVMGDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onBack() {
-        return false; // allow default OS handling (exit)
+        // Like the stock activity apps: while recording, BACK must not drop you
+        // out of the app (that would abandon/split the activity). Consume it and
+        // stay put -- you stop via START -> Save/Discard. When idle, BACK exits
+        // normally.
+        if (me.app.model != null && me.app.model.running) {
+            return true;  // consume: don't exit mid-activity
+        }
+        return false;     // idle: allow default OS handling (exit)
     }
 }

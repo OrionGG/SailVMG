@@ -9,6 +9,7 @@ using Toybox.Time as Time;
 class FakeNavApp {
     var model;
     var avgLastSeconds;
+    var twd = 0;
     function initialize(m, secs) {
         me.model = m;
         me.avgLastSeconds = secs;
@@ -192,6 +193,19 @@ function testTransitionRef(logger) {
     Test.assertEqualMessage(v30.transitionRefSecs(), 30, "30 s setting kept as-is");
     var v60 = new SailVMGView({:app => new FakeNavApp(m, 60)});
     Test.assertEqualMessage(v60.transitionRefSecs(), 60, "60 s setting kept as-is");
+    return true;
+}
+
+// Compass list starts on the cardinal nearest the current TWD (circular
+// distance, so 350 deg snaps to N not NW).
+(:test)
+function testCompassNearestIndex(logger) {
+    var v = new TWDCompassView(new FakeNavApp(null, 30));
+    Test.assertEqualMessage(v.nearestIndex(0),   0, "0 -> N");
+    Test.assertEqualMessage(v.nearestIndex(350), 0, "350 -> N (wrap)");
+    Test.assertEqualMessage(v.nearestIndex(46),  1, "46 -> NE");
+    Test.assertEqualMessage(v.nearestIndex(180), 4, "180 -> S");
+    Test.assertEqualMessage(v.nearestIndex(315), 7, "315 -> NW");
     return true;
 }
 

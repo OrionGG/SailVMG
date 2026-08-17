@@ -1,48 +1,95 @@
 using Toybox.WatchUi as WatchUi;
 using Toybox.Graphics as Graphics;
 
-// Step 1: compass snap menu. UP/DOWN scroll the 8 options, START selects one.
-class TWDCompassMenu extends WatchUi.Menu {
-    function initialize() {
-        WatchUi.Menu.initialize();
-        setTitle("Set TWD");
-        addItem("N (0°)", :d0);
-        addItem("NE (45°)", :d45);
-        addItem("E (90°)", :d90);
-        addItem("SE (135°)", :d135);
-        addItem("S (180°)", :d180);
-        addItem("SW (225°)", :d225);
-        addItem("W (270°)", :d270);
-        addItem("NW (315°)", :d315);
+// Step 1: compass snap list. Rebuilt as a plain View (NOT a legacy WatchUi.Menu)
+// so the two-step TWD flow can no longer over-pop and exit the app mid-activity.
+// A legacy Menu auto-dismisses itself on selection; chaining two of them
+// (Settings -> compass) made the return pop-count ambiguous on-device, which
+// closed the app -> the OS then auto-saved the in-progress recording, splitting
+// the activity in two. A plain View has no auto-dismiss, so every pop is
+// explicit and deterministic.
+//   UP / DOWN -> move the highlight
+//   START     -> open the fine-adjust screen for the highlighted cardinal
+//   BACK      -> return to the data screen
+class TWDCompassView extends WatchUi.View {
+    var app;
+    var index = 0;
+    var labels = ["N (0°)", "NE (45°)", "E (90°)", "SE (135°)",
+                  "S (180°)", "SW (225°)", "W (270°)", "NW (315°)"];
+    var degrees = [0, 45, 90, 135, 180, 225, 270, 315];
+
+    function initialize(app) {
+        WatchUi.View.initialize();
+        me.app = app;
+        me.index = me.nearestIndex(app.twd);
+    }
+
+    // Start on the cardinal closest to the current TWD (circular distance so
+    // 350 deg snaps to N, not NW).
+    function nearestIndex(deg) {
+        var best = 0;
+        var bestd = 360;
+        for (var i = 0; i < me.degrees.size(); i += 1) {
+            var diff = (me.degrees[i] - deg).abs();
+            var d = (diff > 180) ? (360 - diff) : diff;
+            if (d < bestd) { best = i; bestd = d; }
+        }
+        return best;
+    }
+
+    function prev() { me.index = (me.index + me.labels.size() - 1) % me.labels.size(); }
+    function next() { me.index = (me.index + 1) % me.labels.size(); }
+    function selectedDegree() { return me.degrees[me.index]; }
+
+    function onUpdate(dc) {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        var midX = w / 2;
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
+        dc.clear();
+
+        dc.drawText(midX, h * 3 / 100, Graphics.FONT_TINY, "Set TWD", Graphics.TEXT_JUSTIFY_CENTER);
+
+        var startY = h * 16 / 100;
+        var rowH = h * 10 / 100;
+        for (var i = 0; i < me.labels.size(); i += 1) {
+            var y = startY + i * rowH;
+            if (i == me.index) {
+                // Highlighted row: inverted (white text on a black bar).
+                dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
+                dc.fillRectangle(w * 10 / 100, y, w * 80 / 100, rowH);
+                dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+            } else {
+                dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_WHITE);
+            }
+            dc.drawText(midX, y + rowH / 2, Graphics.FONT_XTINY, me.labels[i],
+                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        }
     }
 }
 
-class TWDCompassDelegate extends WatchUi.MenuInputDelegate {
-    var app;
+// Input for the compass list. A plain BehaviorDelegate, so pushes/pops are
+// explicit and can't over-pop into an app exit.
+class TWDCompassSelectDelegate extends WatchUi.BehaviorDelegate {
+    var view;
 
-    function initialize(app) {
-        WatchUi.MenuInputDelegate.initialize();
-        me.app = app;
+    function initialize(view) {
+        WatchUi.BehaviorDelegate.initialize();
+        me.view = view;
     }
 
-    function onMenuItem(item) {
-        var deg = degreeFor(item);
-        if (deg != null) {
-            var view = new SettingsTWDView(me.app, deg);
-            WatchUi.pushView(view, new TWDAdjustDelegate(view), WatchUi.SLIDE_LEFT);
-        }
+    function onPreviousPage() { me.view.prev(); WatchUi.requestUpdate(); return true; }
+    function onNextPage()     { me.view.next(); WatchUi.requestUpdate(); return true; }
+
+    function onSelect() {
+        var fine = new SettingsTWDView(me.view.app, me.view.selectedDegree());
+        WatchUi.pushView(fine, new TWDAdjustDelegate(fine), WatchUi.SLIDE_LEFT);
+        return true;
     }
 
-    function degreeFor(item) {
-        if (item == :d0)   { return 0; }
-        if (item == :d45)  { return 45; }
-        if (item == :d90)  { return 90; }
-        if (item == :d135) { return 135; }
-        if (item == :d180) { return 180; }
-        if (item == :d225) { return 225; }
-        if (item == :d270) { return 270; }
-        if (item == :d315) { return 315; }
-        return null;
+    function onBack() {
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);   // back to the data screen
+        return true;
     }
 }
 
@@ -92,8 +139,10 @@ class SettingsTWDView extends WatchUi.View {
 // Input for the fine-adjust screen.
 //   UP    -> +1 degree
 //   DOWN  -> -1 degree
-//   START -> save and return to the Settings menu (pop adjust + compass menu)
-//   BACK  -> return to the compass snap menu (pop adjust only)
+//   START -> save and return to the data screen (pop fine-adjust + compass)
+//   BACK  -> return to the compass list (pop fine-adjust only)
+// The stack here is always [data, compass, fine-adjust], so the two pops on save
+// land exactly on the data screen and can never over-pop into an app exit.
 class TWDAdjustDelegate extends WatchUi.BehaviorDelegate {
     var view;
 
@@ -116,14 +165,13 @@ class TWDAdjustDelegate extends WatchUi.BehaviorDelegate {
 
     function onSelect() {
         me.view.save();
-        // The compass menu already dismissed itself on selection, so a single
-        // pop returns to the data screen (a double pop would exit the app).
-        WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);   // pop fine-adjust
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);   // pop compass -> back to data
         return true;
     }
 
     function onBack() {
-        WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);   // back to the compass list
         return true;
     }
 }
