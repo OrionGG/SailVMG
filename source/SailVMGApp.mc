@@ -16,7 +16,21 @@ class SailVMGApp extends App.AppBase {
     var tws = 0;
     var twsBands = ["4-8 kts", "8-12 kts", "12-15 kts", "15-18 kts"];
 
+    // Polar TARGET SOG (kn) per TWS band, indexed like twsBands.
+    //   band       upwind  downwind
+    //   4-8 kts    4.11    4.37
+    //   8-12 kts   4.64    5.49
+    //   12-15 kts  5.08    7.56
+    //   15-18 kts  4.91    8.71
+    var twsUpwindSog   = [4.11, 4.64, 5.08, 4.91];
+    var twsDownwindSog = [4.37, 5.49, 7.56, 8.71];
+
     function twsLabel() { return me.twsBands[me.tws]; }
+
+    // Target SOG for the selected band, for the current point of sail.
+    function targetSog(upwind) {
+        return upwind ? me.twsUpwindSog[me.tws] : me.twsDownwindSog[me.tws];
+    }
 
     function initialize() {
         App.AppBase.initialize();

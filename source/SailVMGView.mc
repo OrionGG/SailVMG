@@ -283,7 +283,7 @@ class SailVMGView extends WatchUi.View {
 
         me.drawGrid(dc, "VMG", vmgText, frozen, "AVG VMG Secs", "AVG VMG Mins",
                     avgSecsText, avgMinsText, "TWD " + me.app.twd.format("%03d"));
-        me.drawTopSogTwa(dc);
+        me.drawTopSogTwa(dc, true);
         // Trend: left = avg5s vs avgSecs, right = avgSecs vs avgMins
         me.drawColsTrend(dc, avgSecsText, avgMinsText,
                          me.trendOf(avg5s, avgSecs), me.trendOf(avgSecs, avgMins));
@@ -308,7 +308,7 @@ class SailVMGView extends WatchUi.View {
 
         me.drawGrid(dc, "-VMG", vmgText, frozen, "-AVG VMG Secs", "-AVG VMG Mins",
                     negSecsText, negMinsText, "TWD " + me.app.twd.format("%03d"));
-        me.drawTopSogTwa(dc);
+        me.drawTopSogTwa(dc, false);
         // Trend: left = avg5s vs avgSecs, right = avgSecs vs avgMins
         me.drawColsTrend(dc, negSecsText, negMinsText,
                          me.trendOf(avg5s, negSecs), me.trendOf(negSecs, negMins));
@@ -385,16 +385,22 @@ class SailVMGView extends WatchUi.View {
     }
 
     // Current SOG (left) and TWA (right) in the top band, above the upper line —
-    // where the reference app shows the time. VMG screens only.
-    function drawTopSogTwa(dc) {
+    // where the reference app shows the time. VMG screens only. `upwind` picks
+    // which polar target SOG to show (Screen 1 upwind / Screen 2 downwind).
+    function drawTopSogTwa(dc, upwind) {
         var w = dc.getWidth();
         var h = dc.getHeight();
         var lx = w * 21 / 100;
         var rx = w * 79 / 100;
 
-        var sogText = (me.lastSog == null) ? "--" : me.lastSog.format("%.1f");
+        var sogText = (me.lastSog == null) ? "--" : me.lastSog.format("%.2f");
         var twa = me.twaOf(me.lastCog, me.app.twd);
         var twaText = (twa == null) ? "--" : twa.format("%d") + "°";
+
+        // Polar target SOG for the selected TWS band, just above the SOG label.
+        // Both target and live SOG use 2 decimals so they stack for comparison.
+        var target = me.app.targetSog(upwind);
+        dc.drawText(lx, h * 20 / 100, Graphics.FONT_XTINY, target.format("%.2f"), Graphics.TEXT_JUSTIFY_CENTER);
 
         dc.drawText(lx, h * 28 / 100, Graphics.FONT_XTINY, "SOG", Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(lx, h * 35 / 100, Graphics.FONT_TINY, sogText, Graphics.TEXT_JUSTIFY_CENTER);
