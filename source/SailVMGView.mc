@@ -8,6 +8,13 @@ using Toybox.System as System;
 using Toybox.Math as Math;
 
 class SailVMGView extends WatchUi.View {
+    // SIMULATOR-ONLY test data. The sim never feeds the GPS Position API, so with
+    // this on, sample() synthesizes smoothly-evolving VMG / SOG / TWA / HR so the
+    // whole layout (averages, trend triangles, wind-shift marker) can be seen.
+    // MUST be false for the watch build -- there is no real-GPS override, so it
+    // would show fake data on the wrist. Kept false in the release build.
+    const SIM_TEST_DATA = true;
+
     var app;
     var screenIndex = 0;
     var lastVmg = null;
@@ -72,6 +79,11 @@ class SailVMGView extends WatchUi.View {
         if (me.lastSampleTs != null && ts == me.lastSampleTs) { return; }
         me.lastSampleTs = ts;
 
+        if (SIM_TEST_DATA) {
+            me.sampleFake(ts);
+            return;
+        }
+
         var pos = Position.getInfo();
         var sensor = Sensor.getInfo();
 
@@ -99,6 +111,32 @@ class SailVMGView extends WatchUi.View {
         var twa = me.twaOf(cog, me.app.twd);
         var absTwa = (twa == null) ? null : twa.abs();
         me.app.model.addSample(ts, vmg, me.app.twd, hr, me.app.minAbsVmg, absTwa);
+    }
+
+    // SIMULATOR-ONLY: fabricate a plausible upwind leg that drifts over time, so
+    // every field and both trend markers exercise their states. Close-hauled
+    // |TWA| oscillates ~28-56 deg (two slow sines + a little jitter), SOG ~5 kn,
+    // HR ~110-140. Press START in the sim so the model records and the averages
+    // fill. Never runs on the watch (SIM_TEST_DATA is false in the release build).
+    function sampleFake(ts) {
+        var t = ts.toFloat();
+        var twd = me.app.twd;
+        var twaDeg = 42.0 + 9.0 * Math.sin(t / 17.0) + 5.0 * Math.sin(t / 41.0);
+        twaDeg += ((Math.rand() % 100) - 50) / 60.0;   // small jitter
+        var sogMs = 2.6 + 0.45 * Math.sin(t / 12.0);   // ~5 kn
+        var hr = (125 + 18 * Math.sin(t / 26.0)).toNumber();
+
+        var cog = twd + twaDeg;                        // degrees (may exceed 360)
+        var vmg = VmgCalculator.computeVmg(sogMs, cog, twd);
+
+        me.lastVmg = vmg;
+        me.lastSog = sogMs * 1.9438;                   // m/s -> knots
+        me.lastCog = cog;                              // normalised at draw
+        me.lastHr = hr;
+
+        var twa = me.twaOf(cog, twd);
+        var absTwa = (twa == null) ? null : twa.abs();
+        me.app.model.addSample(ts, vmg, twd, hr, me.app.minAbsVmg, absTwa);
     }
 
     function prevScreen() {

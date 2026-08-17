@@ -11,6 +11,12 @@ class SailVMGApp extends App.AppBase {
     var minAbsVmg = 0.5;
     var avgLastSeconds = 30;
     var avgLastMinutes = 3;
+    // True Wind Speed band (index into twsBands). Selected only for now; not yet
+    // shown or used, but stored centrally so it's ready to wire up.
+    var tws = 0;
+    var twsBands = ["4-8 kts", "8-12 kts", "12-15 kts", "15-18 kts"];
+
+    function twsLabel() { return me.twsBands[me.tws]; }
 
     function initialize() {
         App.AppBase.initialize();
@@ -23,6 +29,8 @@ class SailVMGApp extends App.AppBase {
         me.avgLastSeconds = (s == null) ? 30 : s;
         var n = getProperty("avgLastMinutes");
         me.avgLastMinutes = (n == null) ? 3 : n;
+        var ws = getProperty("tws");
+        me.tws = (ws == null) ? 0 : ws;
 
         me.model = new DataModel({
             :avgLastSeconds => me.avgLastSeconds,
@@ -47,6 +55,8 @@ class SailVMGApp extends App.AppBase {
             me.avgLastSeconds = value;
         } else if (key.equals("avgLastMinutes")) {
             me.avgLastMinutes = value;
+        } else if (key.equals("tws")) {
+            me.tws = value;
         }
 
         if (me.model != null &&

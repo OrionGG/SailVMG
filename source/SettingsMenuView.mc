@@ -5,6 +5,7 @@ class SettingsMenu extends WatchUi.Menu {
         WatchUi.Menu.initialize();
         setTitle("Settings");
         addItem("Set TWD", :twd);
+        addItem("Set TWS", :tws);
         addItem("Set Min ABS VMG", :minVmg);
         addItem("Set AVG Last Seconds", :avgSec);
         addItem("Set AVG Last Minutes", :avgMin);
@@ -30,7 +31,9 @@ class SettingsMenuDelegate extends WatchUi.MenuInputDelegate {
         }
 
         var view = null;
-        if (item == :minVmg) {
+        if (item == :tws) {
+            view = new SettingsTwsView(me.app);
+        } else if (item == :minVmg) {
             view = new SettingsMinVmgView(me.app);
         } else if (item == :avgMin) {
             view = new SettingsAvgMinView(me.app);
