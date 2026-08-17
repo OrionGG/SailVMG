@@ -30,6 +30,11 @@ font that renders on this device (`FONT_NUMBER_HOT`), vertically centred.
    (−180, 180]: **negative = heading is to port of the TWD**. `0` is head to wind,
    `±180` dead downwind. Since `VMG = SOG × cos(TWA)`, `|TWA| < 90` is upwind
    (Screen 1) and `> 90` downwind (Screen 2).
+
+   Just **above the SOG label** is the **polar target SOG** for the selected TWS band —
+   the upwind target on Screen 1, the downwind target on Screen 2 — so the target and
+   the live SOG stack for a glance comparison (both to 2 decimals). See *Settings* for
+   the band selection and the polar table.
 2. **−VMG** (downwind) — same layout for the negative component (values shown with a
    leading `−`).
 3. **HR** — current heart rate; **AVG HR** and the elapsed activity **TIMER**.
@@ -135,10 +140,43 @@ while it can lower VMG).
 
 ## Settings (hold UP)
 
-`Set TWD` (compass snap menu → 1° fine adjust), `Set Min ABS VMG`,
+`Set TWD` (compass snap list → 1° fine adjust), `Set TWS`, `Set Min ABS VMG`,
 `Set AVG Last Seconds` (default 30, max 300), `Set AVG Last Minutes` (default 3, max
 15). The averaging windows are capped to keep memory bounded on the device. Values
 persist in the Object Store (`get/setProperty`).
+
+`Set TWS` picks the **True Wind Speed band** (UP/DOWN to change, START to save). It
+drives the **polar target SOG** shown above the SOG label. The band list and the polar
+targets live together in `SailVMGApp` (`twsBands`, `twsUpwindSog`, `twsDownwindSog`):
+
+| TWS band | Upwind target (kn) | Downwind target (kn) |
+|---|---|---|
+| 4–8 kts | 4.11 | 4.37 |
+| 8–12 kts | 4.64 | 5.49 |
+| 12–15 kts | 5.08 | 7.56 |
+| 15–18 kts | 4.91 | 8.71 |
+
+## Prerequisites
+
+- **Connect IQ SDK** — builds with a current SDK (verified on **9.2.0**); `monkeyc` /
+  `monkeydo` live in the SDK `bin/`.
+- **The `fenix3_hr` device package** installed via the **SDK Manager**. Device packages
+  download separately from the SDK; without it the build fails with a "device not found"
+  error. (CIQ 1.x devices are still available — they were not dropped.)
+- **A developer key** at `keys/developer_key` (PKCS#8 DER) — see below.
+
+Repo files the build needs, beyond `source/`:
+
+| File / dir | Role |
+|---|---|
+| `manifest.xml` | app id, `entry="SailVMGApp"`, `type="watch-app"`, product `fenix3_hr`, `minApiLevel 1.3.0`, permissions, launcher icon + name refs |
+| `monkey.jungle` | build config (points at `manifest.xml`, `source/`, `resources/`) |
+| `resources/strings/strings.xml` | `AppName` |
+| `resources/bitmaps.xml`, `resources/images/launcher.png` | launcher icon |
+| `keys/` | developer key (gitignored — never committed) |
+
+The `id` in `manifest.xml` is a placeholder UUID; it's fine for sideloading and the
+simulator, and only needs to be a real app id for Connect IQ Store submission.
 
 ## Build
 
@@ -152,6 +190,11 @@ monkeyc -d fenix3_hr -f monkey.jungle -o SailVMG.prg -r -w -y keys/developer_key
 # Debug build (symbolicated, for the simulator)
 monkeyc -d fenix3_hr -f monkey.jungle -o SailVMG.prg -g -w -y keys/developer_key
 ```
+
+> **Before any release (`-r`) build for the watch:** ensure `SIM_TEST_DATA = false`
+> in `source/SailVMGView.mc`. When it's `true`, the app shows fabricated GPS‑derived
+> data (VMG/SOG/TWA) — fine in the simulator, wrong on the wrist. See *Simulator test
+> data flag* below.
 
 Generate a fresh developer key (if needed):
 
@@ -172,6 +215,17 @@ works), but **not** the GPS `Position` API the app reads — so VMG / SOG / TWA 
 trend triangles stay `--` / hidden in the sim. Verify those on the watch (or by playing
 back a real GPS track).
 
+### Simulator test data flag
+
+To see the full layout populated in the sim, `SailVMGView.mc` has a
+**`const SIM_TEST_DATA`** flag. When `true`, `sample()` calls `sampleFake()` instead of
+reading GPS and synthesises smoothly‑evolving VMG / SOG / TWA / HR (a plausible upwind
+leg) so the averages, trend triangles, and wind‑shift marker all animate — press START
+so the model records and the windows fill.
+
+**It must be `false` for the watch build** — there is no real‑GPS override, so it would
+show fake data on the wrist. Set it back to `false` before building the release `.prg`.
+
 ## Unit tests
 
 ```powershell
@@ -179,9 +233,11 @@ monkeyc -t -d fenix3_hr -f monkey.jungle -o SailVMG_test.prg -g -w -y keys/devel
 monkeydo SailVMG_test.prg fenix3_hr /t
 ```
 
-`source/Tests.mc` covers VMG math, nearest‑compass wrap, the ring buffer (windowed
-average / capacity / resize), pause stops logging, save resets the timer, the trend
-logic, and that start/stop feedback never crashes.
+`source/Tests.mc` (12 tests) covers VMG math, TWA normalisation, nearest‑compass wrap +
+the compass list's initial index, the ring buffer (windowed average / capacity /
+resize), pause stops logging, save resets the timer, the VMG trend logic, the wind‑shift
+reading + its ±5° dead zone and reference‑window floor, and that start/stop feedback
+never crashes.
 
 ## Sideload to the watch
 
@@ -215,8 +271,8 @@ when synced to Garmin Connect / downloaded to a PC.
 
 | File | Role |
 |---|---|
-| `SailVMGApp.mc` | `AppBase`: loads/saves settings (Object Store), `getInitialView` |
-| `SailVMGView.mc` | Data screens, 1 Hz sampling, SOG/TWA, trend triangles, countdown, start/stop ring overlay |
+| `SailVMGApp.mc` | `AppBase`: loads/saves settings (Object Store), `getInitialView`, TWS bands + polar target table |
+| `SailVMGView.mc` | Data screens, 1 Hz sampling, SOG/TWA, polar target, trend triangles, wind‑shift marker, countdown, start/stop ring overlay, `SIM_TEST_DATA` |
 | `SailVMGDelegate.mc` | `BehaviorDelegate` button mapping |
 | `DataModel.mc` | Stats, rolling averages, recording session, pause/resume, elapsed timer |
 | `VmgCalculator.mc` | VMG math |
@@ -226,6 +282,7 @@ when synced to Garmin Connect / downloaded to a PC.
 | `PauseMenuView.mc` | Pause menu + Discard (No/Yes) confirmation |
 | `SettingsMenuView.mc` | Settings menu + value‑adjust delegate |
 | `SettingsTWDView.mc` | TWD compass snap list (plain View) + fine adjust |
+| `SettingsTwsView.mc` | TWS band picker |
 | `SettingsMinVmgView.mc`, `SettingsAvgSecsView.mc`, `SettingsAvgMinView.mc` | Value‑adjust screens |
 | `Tests.mc` | Unit tests (compiled only with `-t`) |
 

@@ -11,9 +11,10 @@ class SailVMGView extends WatchUi.View {
     // SIMULATOR-ONLY test data. The sim never feeds the GPS Position API, so with
     // this on, sample() synthesizes smoothly-evolving VMG / SOG / TWA / HR so the
     // whole layout (averages, trend triangles, wind-shift marker) can be seen.
-    // MUST be false for the watch build -- there is no real-GPS override, so it
-    // would show fake data on the wrist. Kept false in the release build.
-    const SIM_TEST_DATA = true;
+    // Committed default is FALSE (there is no real-GPS override, so true would
+    // show fake data on the wrist). Flip to true LOCALLY only while testing in
+    // the simulator -- do not commit it as true.
+    const SIM_TEST_DATA = false;
 
     var app;
     var screenIndex = 0;
