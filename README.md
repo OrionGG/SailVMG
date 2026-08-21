@@ -159,10 +159,18 @@ targets live together in `SailVMGApp` (`twsBands`, `twsUpwindSog`, `twsDownwindS
 ## Prerequisites
 
 - **Connect IQ SDK** — builds with a current SDK (verified on **9.2.0**); `monkeyc` /
-  `monkeydo` live in the SDK `bin/`.
+  `monkeydo` live in the SDK `bin/`. The SDK core zip is a **direct, no‑login download**
+  from `developer.garmin.com/downloads/connect-iq/sdks/` (the `sdks.json` there lists every
+  version + Windows/Mac/Linux filename). It ships **no bundled JRE**, so a system Java is
+  required — `monkeyc` runs on **Java 8+** (9.2.0 verified under JRE 1.8).
 - **The `fenix3_hr` device package** installed via the **SDK Manager**. Device packages
-  download separately from the SDK; without it the build fails with a "device not found"
-  error. (CIQ 1.x devices are still available — they were not dropped.)
+  download separately from the SDK **and require a Garmin account sign‑in** — the device
+  endpoints (`api.gcs.garmin.com/ciq-product-onboarding/…`) are auth‑gated (Bearer token),
+  so unlike the SDK core there is no anonymous download. Without the package the build
+  fails with `Invalid device id specified: 'fenix3_hr'`. It installs under
+  `%APPDATA%\Garmin\ConnectIQ\Devices\fenix3_hr\` (macOS `~/Library/Application Support/…`,
+  Linux `~/.Garmin/…`), where `monkeyc` from any SDK finds it. (CIQ 1.x devices are still
+  available — they were not dropped.)
 - **A developer key** at `keys/developer_key` (PKCS#8 DER) — see below.
 
 Repo files the build needs, beyond `source/`:
@@ -185,17 +193,32 @@ Use the Connect IQ SDK tools (`monkeyc`/`monkeydo` in the SDK `bin/`). A develop
 is required at `keys/developer_key` (PKCS#8 DER). `keys/` is gitignored — never commit it.
 
 ```powershell
-# Release build (stripped, for the watch)
+# Release build (stripped, ~28 KB, for the watch)
 monkeyc -d fenix3_hr -f monkey.jungle -o SailVMG.prg -r -w -y keys/developer_key
 
-# Debug build (symbolicated, for the simulator)
-monkeyc -d fenix3_hr -f monkey.jungle -o SailVMG.prg -g -w -y keys/developer_key
+# Debug build (symbolicated, ~130 KB, for the simulator)
+monkeyc -d fenix3_hr -f monkey.jungle -o SailVMG-debug.prg -g -w -y keys/developer_key
 ```
 
 > **Fake data can't leak to the watch:** the committed `monkey.jungle` **excludes** the
 > fake‑data path (`SimConfig.enabled()` compiles to `false`), so a plain release (`-r`)
 > build is always clean — nothing to remember. Fake data only turns on when you build
 > with the gitignored `monkey.sim.jungle` (see *Simulator test data flag* below).
+
+### Committed build variants
+
+Three prebuilt binaries are committed, so a fresh checkout has all three on hand. The `-o`
+output name is the only thing that differs in how each is produced:
+
+| File | How it's built | Fake data | Use |
+|---|---|---|---|
+| `SailVMG.prg` | `-r` release, `monkey.jungle` | off | **Sideload this to the watch** (~28 KB) |
+| `SailVMG-debug.prg` | `-g` debug, `monkey.jungle` | off | Simulator / on‑device debugging (~130 KB) |
+| `SailVMG-sim.prg` | `-g` debug, `monkey.sim.jungle` | **on** | Simulator only — **never sideload** (~130 KB) |
+
+`SailVMG-sim.prg` is the only committed binary with `SimConfig.enabled()` true; it exists
+purely to demo the populated layout in the simulator (the sim never feeds the GPS
+`Position` API). The watch artifact is always `SailVMG.prg` (release, fake data off).
 
 Generate a fresh developer key (if needed):
 
@@ -225,18 +248,19 @@ triangles, and wind‑shift marker all animate — press START so the model reco
 windows fill.
 
 `SimConfig.enabled()` is a **build‑time toggle, not an in‑code flag you edit** — so a
-`true` can never be committed or shipped:
+`true` can never reach the **release / watch** build:
 
 - `SimConfig.mc` defines two variants, `(:simdata)` → `true` and `(:notsimdata)` →
   `false`. Each build excludes one, so exactly one survives.
 - The committed **`monkey.jungle`** excludes `:simdata` → `enabled()` is **false**.
-  Every committed / release / fresh‑checkout build is clean.
+  Every build from `monkey.jungle` — including the release `SailVMG.prg` — is clean; the
+  only fake‑data binary in the repo is the clearly‑named `SailVMG-sim.prg` (simulator only).
 - To turn it on for the sim, build with the **gitignored `monkey.sim.jungle`** (it
   excludes `:notsimdata` instead → `enabled()` is **true**):
 
   ```powershell
-  monkeyc -d fenix3_hr -f monkey.sim.jungle -o SailVMG.prg -g -w -y keys/developer_key
-  monkeydo SailVMG.prg fenix3_hr
+  monkeyc -d fenix3_hr -f monkey.sim.jungle -o SailVMG-sim.prg -g -w -y keys/developer_key
+  monkeydo SailVMG-sim.prg fenix3_hr
   ```
 
   If `monkey.sim.jungle` doesn't exist (it's gitignored — recreate it locally from the
